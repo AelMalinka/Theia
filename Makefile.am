@@ -4,6 +4,41 @@
 ACLOCAL_AMFLAGS = -Im4
 AM_CPPFLAGS = -I$(srcdir)/src
 
+theiaheadersdir = Entropy/Theia
+theiaheaders_HEADERS = \
+	src/Exception.hh
+	src/Window.hh \
+	src/Array.hh \
+	src/Bind.hh \
+	src/Buffer.hh \
+	src/Buffer.impl.hh \
+	src/Program.hh \
+	src/Shader.hh \
+	src/Texture.hh
+
+glfwheadersdir = Entropy/Theia/GLFW
+glfwheaders_HEADERS = \
+	src/GLFW/Glfw.hh \
+	src/GLFW/Window.hh
+
+lib_LTLIBRARIES = libtheia.la
+
+libtheia_la_SOURCES = \
+	src/GLFW/Glfw.cc \
+	src/GLFW/Window.cc \
+	src/Array.cc \
+	src/Bind.cc \
+	src/Buffer.cc \
+	src/Program.cc \
+	src/Shader.cc \
+	src/Texture.cc
+
+check_PROGRAMS = \
+	hand-basic
+
+hand_basic_SOURCES = test/hand/basic.cc
+hand_basic_LDADD = -ltheia
+
 TESTSUITE = $(srcdir)/test/testsuite
 
 TESTSUITE_FILES =
@@ -37,7 +72,6 @@ check-local: test/atconfig atlocal $(TESTSUITE) $(check_PROGRAMS)
 clean-local:
 	test ! -f '$(TESTSUITE)' || \
 		$(SHELL) '$(TESTSUITE)' --clean
-	$(RM) atlocal module.so pnglogo.png
 
 AUTOM4TE = $(SHELL) $(srcdir)/build-aux/missing --run autom4te
 AUTOTEST = $(AUTOM4TE) --language=autotest
