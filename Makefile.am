@@ -6,7 +6,7 @@ AM_CPPFLAGS = -I$(srcdir)/src
 
 theiaheadersdir = Entropy/Theia
 theiaheaders_HEADERS = \
-	src/Exception.hh
+	src/Exception.hh \
 	src/Window.hh \
 	src/Array.hh \
 	src/Bind.hh \
