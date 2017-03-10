@@ -5,6 +5,7 @@
 #include "Window.hh"
 
 using namespace Entropy::Theia;
+using namespace Entropy::Theia::GLFW;
 using namespace std;
 
 Glfw Window::_glfw;
