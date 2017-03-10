@@ -5,7 +5,7 @@
 #if !defined ENTROPY_THEIA_GLFW_GLFW_INC
 #	define ENTROPY_THEIA_GLFW_GLFW_INC
 
-#	include "Exception.hh"
+#	include "../Exception.hh"
 
 	namespace Entropy
 	{
