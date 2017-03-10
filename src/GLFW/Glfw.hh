@@ -2,8 +2,8 @@
 	Distributed under the terms of the GNU Affero General Public License v3
 */
 
-#if !defined ENTROPY_THEIA_GLFW_INC
-#	define ENTROPY_THEIA_GLFW_INC
+#if !defined ENTROPY_THEIA_GLFW_GLFW_INC
+#	define ENTROPY_THEIA_GLFW_GLFW_INC
 
 #	include "Exception.hh"
 
