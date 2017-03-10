@@ -9,9 +9,78 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Implementation Files">
+      <UniqueIdentifier>{396cb9ef-8ab3-4b1a-b7b6-04beeafffbfa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GLFW">
+      <UniqueIdentifier>{79ff4f34-a648-41e0-8466-74f041e09481}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GLFW">
+      <UniqueIdentifier>{a005a17a-2535-4eb6-97e1-93cc2902eea8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Array.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Bind.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Buffer.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Program.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Shader.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Texture.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GLFW\Glfw.cc">
+      <Filter>Source Files\GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GLFW\Window.cc">
+      <Filter>Source Files\GLFW</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\Array.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Bind.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Buffer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Exception.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Program.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Shader.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Texture.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Window.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Program.impl.hh">
+      <Filter>Implementation Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Buffer.impl.hh">
+      <Filter>Implementation Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GLFW\Glfw.hh">
+      <Filter>Header Files\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GLFW\Window.hh">
+      <Filter>Header Files\GLFW</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

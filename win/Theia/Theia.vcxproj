@@ -25,30 +25,30 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -74,6 +74,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -81,6 +82,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -90,6 +92,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -103,6 +106,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -110,6 +114,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\Array.cc" />
+    <ClCompile Include="..\..\src\Bind.cc" />
+    <ClCompile Include="..\..\src\Buffer.cc" />
+    <ClCompile Include="..\..\src\GLFW\Glfw.cc" />
+    <ClCompile Include="..\..\src\GLFW\Window.cc" />
+    <ClCompile Include="..\..\src\Program.cc" />
+    <ClCompile Include="..\..\src\Shader.cc" />
+    <ClCompile Include="..\..\src\Texture.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\Array.hh" />
+    <ClInclude Include="..\..\src\Bind.hh" />
+    <ClInclude Include="..\..\src\Buffer.hh" />
+    <ClInclude Include="..\..\src\Buffer.impl.hh" />
+    <ClInclude Include="..\..\src\Exception.hh" />
+    <ClInclude Include="..\..\src\GLFW\Glfw.hh" />
+    <ClInclude Include="..\..\src\GLFW\Window.hh" />
+    <ClInclude Include="..\..\src\Program.hh" />
+    <ClInclude Include="..\..\src\Program.impl.hh" />
+    <ClInclude Include="..\..\src\Shader.hh" />
+    <ClInclude Include="..\..\src\Texture.hh" />
+    <ClInclude Include="..\..\src\Window.hh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
