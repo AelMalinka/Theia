@@ -7,13 +7,16 @@
 
 #	include "Glfw.hh"
 
+#	include "../Drawable.hh"
+
 	namespace Entropy
 	{
 		namespace Theia
 		{
 			namespace GLFW
 			{
-				class Window
+				class Window :
+					public Drawable
 				{
 					public:
 						Window(const std::string &, const int, const int);
@@ -33,14 +36,13 @@
 						virtual void Mouse(const int button, const int action, const int modifiers) = 0;
 						virtual void Move(double xpos, double ypos) = 0;
 					protected:
-						virtual void Draw() = 0;
-					protected:
 						virtual void _create_window(const std::string &);
 						virtual GLFWmonitor *_get_monitor() const;
 						virtual const GLFWvidmode *_get_mode() const;
 					private:
 						GLFWwindow *_handle;
 						std::tuple<int, int , int, int> _size_pos;
+						std::chrono::high_resolution_clock::time_point _last;
 					private:
 						static Glfw _glfw;
 				};

@@ -15,7 +15,7 @@ void mouse_cb(GLFWwindow *, int, int, int);
 void move_cb(GLFWwindow *, double, double);
 
 Window::Window(const string &name, const int width, const int height)
-	: _handle(nullptr), _size_pos(width, height, 0, 0)
+	: _handle(nullptr), _size_pos(width, height, 0, 0), _last(chrono::high_resolution_clock::now())
 {
 	_create_window(name);
 }
@@ -81,10 +81,17 @@ bool Window::isDone() const
 
 void Window::operator () ()
 {
+	using chrono::duration_cast;
+	using chrono::duration;
+	using chrono::high_resolution_clock;
+
 	if (isVisible()) {
 		glfwMakeContextCurrent(_handle);
 		glClear(GL_COLOR_BUFFER_BIT);
-		Draw();
+
+		Draw(duration_cast<duration<double>>(high_resolution_clock::now() - _last));
+		_last = high_resolution_clock::now();
+
 		glfwSwapBuffers(_handle);
 		glfwPollEvents();
 	}

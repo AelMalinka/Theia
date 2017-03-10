@@ -45,7 +45,7 @@ class MyWindow :
 	public:
 		MyWindow(const string &);
 	private:
-		void Draw();
+		void Draw(const chrono::duration<double> &);
 		void Key(const int, const int, const int, const int);
 		void Mouse(const int, const int, const int);
 		void Move(double, double);
@@ -91,7 +91,7 @@ MyWindow::MyWindow(const string &name)
 	_vao.Bind(_program, _vbo, "position"s, 2, GL_FLOAT);
 }
 
-void MyWindow::Draw()
+void MyWindow::Draw(const chrono::duration<double> &)
 {
 	Bind p(_program), a(_vao);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
