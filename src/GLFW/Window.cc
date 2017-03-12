@@ -145,7 +145,7 @@ void mouse_cb(GLFWwindow *handle, int button, int action, int modifiers)
 	reinterpret_cast<Window *>(glfwGetWindowUserPointer(handle))->Mouse(button, action, modifiers);
 }
 
-void move_cb(GLFWwindow *handle, double x, double y)
+void move_cb(GLFWwindow *handle, const double x, const double y)
 {
 	reinterpret_cast<Window *>(glfwGetWindowUserPointer(handle))->Move(x, y);
 }

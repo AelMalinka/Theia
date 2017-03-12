@@ -48,7 +48,7 @@ class MyWindow :
 		void Draw(const chrono::duration<double> &);
 		void Key(const int, const int, const int, const int);
 		void Mouse(const int, const int, const int);
-		void Move(double, double);
+		void Move(const double, const double);
 	private:
 		Program _program;
 		Buffer _vbo;
