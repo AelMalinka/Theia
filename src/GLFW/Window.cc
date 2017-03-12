@@ -13,6 +13,7 @@ Glfw Window::_glfw;
 void key_cb(GLFWwindow *, int, int, int, int);
 void mouse_cb(GLFWwindow *, int, int, int);
 void move_cb(GLFWwindow *, double, double);
+void resize_cb(GLFWwindow *, int, int);
 
 Window::Window(const string &name, const int width, const int height)
 	: _handle(nullptr), _size_pos(width, height, 0, 0), _last(chrono::high_resolution_clock::now())
@@ -97,6 +98,11 @@ void Window::operator () ()
 	}
 }
 
+void Window::Resize(const int width, const int height)
+{
+	glViewport(0, 0, width, height);
+}
+
 void Window::_create_window(const string &name)
 {
 	const GLFWvidmode *mode = _get_mode();
@@ -116,6 +122,7 @@ void Window::_create_window(const string &name)
 	glfwSetKeyCallback(_handle, key_cb);
 	glfwSetCursorPosCallback(_handle, move_cb);
 	glfwSetMouseButtonCallback(_handle, mouse_cb);
+	glfwSetFramebufferSizeCallback(_handle, resize_cb);
 }
 
 GLFWmonitor *Window::_get_monitor() const
@@ -141,4 +148,9 @@ void mouse_cb(GLFWwindow *handle, int button, int action, int modifiers)
 void move_cb(GLFWwindow *handle, double x, double y)
 {
 	reinterpret_cast<Window *>(glfwGetWindowUserPointer(handle))->Move(x, y);
+}
+
+void resize_cb(GLFWwindow *handle, int width, int height)
+{
+	reinterpret_cast<Window *>(glfwGetWindowUserPointer(handle))->Resize(width, height);
 }

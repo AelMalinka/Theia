@@ -35,6 +35,7 @@
 						virtual void Key(const int key, const int scan, const int action, const int modifiers) = 0;
 						virtual void Mouse(const int button, const int action, const int modifiers) = 0;
 						virtual void Move(double xpos, double ypos) = 0;
+						virtual void Resize(const int width, const int height);
 					protected:
 						virtual void _create_window(const std::string &);
 						virtual GLFWmonitor *_get_monitor() const;
