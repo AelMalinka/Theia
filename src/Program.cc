@@ -32,12 +32,6 @@ void Program::Link()
 	CHECK_GL_ERRORS("failed to link program");
 }
 
-void Program::FragmentOut(const string &name, const GLuint which)
-{
-	glBindFragDataLocation(_program, which, name.c_str());
-	CHECK_GL_ERRORS("failed to bind fragment data");
-}
-
 const GLuint &Program::Handle() const
 {
 	return _program;

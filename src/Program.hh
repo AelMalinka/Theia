@@ -24,7 +24,6 @@
 					void Link();
 					template<typename T>
 					void SetUniform(const std::string &, const T &);
-					void FragmentOut(const std::string &, const GLuint);
 					const GLuint &Handle() const;
 				private:
 					GLuint _program;

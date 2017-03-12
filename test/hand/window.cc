@@ -16,31 +16,31 @@ using namespace Entropy::Theia;
 string vert_code =
 	"#version 130\n"
 
-	"in vec2 position;"
+	"in vec2 in_position;"
 
 	"void main() {"
-		"gl_Position = vec4(position, 0.0, 1.0);"
+		"gl_Position = vec4(in_position, 0.0, 1.0);"
 	"}"
 ;
 
 string frag_code =
 	"#version 130\n"
 
-	"out vec4 color;"
+	"out vec4 out_color;"
 
 	"void main() {"
-		"color = vec4(0.0, 0.0, 1.0, 1.0);"
+		"out_color = vec4(0.0, 0.0, 1.0, 1.0);"
 	"}"
 ;
 
 vector<float> vertices = {
-	0.0f, 0.5f,
-	0.0f, -0.5f,
-	-0.5f, -0.5f,
+	-0.8f, -0.8f,
+	0.8f, -0.8f,
+	0.0f, 0.8f
 };
 
 class MyWindow :
-	public Window
+	public GLFW::Window
 {
 	public:
 		MyWindow(const string &);
@@ -76,19 +76,18 @@ int main(int, char *ArgV[])
 }
 
 MyWindow::MyWindow(const string &name)
-	: Window(name, 640, 360), _program(), _vbo(Buffer::Vertex), _vao()
+	: GLFW::Window(name, 640, 360), _program(), _vbo(Buffer::Vertex), _vao()
 {
 	Shader vert(Shader::Vertex, vert_code);
 	Shader frag(Shader::Fragment, frag_code);
 
 	_program.Attach(vert);
 	_program.Attach(frag);
-	_program.FragmentOut("color"s, 0);
 	_program.Link();
 
 	_vbo.Data(vertices, Buffer::Static);
 
-	_vao.Bind(_program, _vbo, "position"s, 2, GL_FLOAT);
+	_vao.Bind(_program, _vbo, "in_position"s, 2, GL_FLOAT);
 }
 
 void MyWindow::Draw(const chrono::duration<double> &)

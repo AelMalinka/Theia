@@ -34,10 +34,10 @@ libtheia_la_SOURCES = \
 	src/Texture.cc
 
 check_PROGRAMS = \
-	hand-basic
+	hand-window
 
-hand_basic_SOURCES = test/hand/basic.cc
-hand_basic_LDADD = -ltheia
+hand_window_SOURCES = test/hand/window.cc
+hand_window_LDADD = -ltheia
 
 TESTSUITE = $(srcdir)/test/testsuite
 
