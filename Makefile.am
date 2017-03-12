@@ -14,7 +14,8 @@ theiaheaders_HEADERS = \
 	src/Buffer.impl.hh \
 	src/Program.hh \
 	src/Shader.hh \
-	src/Texture.hh
+	src/Texture.hh \
+	src/Object.hh
 
 glfwheadersdir = Entropy/Theia/GLFW
 glfwheaders_HEADERS = \
@@ -31,13 +32,18 @@ libtheia_la_SOURCES = \
 	src/Buffer.cc \
 	src/Program.cc \
 	src/Shader.cc \
-	src/Texture.cc
+	src/Texture.cc \
+	src/Object.cc
 
 check_PROGRAMS = \
-	hand-window
+	hand-window \
+	hand-object
 
 hand_window_SOURCES = test/hand/window.cc
 hand_window_LDADD = -ltheia
+
+hand_object_SOURCES = test/hand/object.cc
+hand_object_LDADD = -ltheia
 
 TESTSUITE = $(srcdir)/test/testsuite
 
