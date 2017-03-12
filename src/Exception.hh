@@ -8,7 +8,7 @@
 #	include <Entropy/Exception.hh>
 
 #	include <epoxy/gl.h>
-//#	include <GL/glu.h>	// 2017-03-10 AMR TODO: including GL/glu.h on windows is causing compilation errors in GL/glu.h
+#	include <GL/glu.h>
 #	include <GLFW/glfw3.h>
 
 	namespace Entropy
@@ -28,7 +28,7 @@
 			::boost::throw_function(BOOST_CURRENT_FUNCTION) << \
 			::boost::throw_file(__FILE__) << \
 			::boost::throw_line((int)__LINE__) << \
-			::Entropy::Theia::GlErrorCode(status) /*<< \
-			::Entropy::Theia::GlError(gluErrorString(status))*/); }
+			::Entropy::Theia::GlErrorCode(status) << \
+			::Entropy::Theia::GlError(gluErrorString(status))); }
 
 #endif
