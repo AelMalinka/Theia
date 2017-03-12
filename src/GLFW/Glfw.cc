@@ -16,6 +16,10 @@ Glfw::Glfw()
 
 	glfwSetErrorCallback(error_cb);
 
+#	ifdef DEBUG
+		glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+#	endif
+
 	// 2017-03-09 AMR TODO: allow user to override, possibly move to window?
 	glfwWindowHint(GLFW_AUTO_ICONIFY, GLFW_FALSE);
 	glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
