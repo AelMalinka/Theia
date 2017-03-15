@@ -74,11 +74,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;..\..\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Entropy.lib;Theia.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\..\..\boost_1_63_0\bin.v2\libs\log\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\system\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\filesystem\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\date_time\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\thread\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\atomic\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\chrono\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\libpng\build\Debug;..\..\..\..\zlib123\;..\..\..\..\glfw\build\src\Debug;..\..\..\..\libepoxy\_build\src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Entropy.lib;libpng16d.lib;zlib.lib;Theia.lib;glfw3.lib;epoxy.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -86,11 +86,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;..\..\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Entropy.lib;Theia.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\..\..\boost_1_63_0\bin.v2\libs\log\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\system\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\filesystem\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\date_time\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\thread\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\atomic\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\chrono\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\glfw\build\src\Debug;..\..\..\..\libepoxy\_build\src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Entropy.lib;libpng16d.lib;Theia.lib;glfw3.lib;epoxy.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -100,13 +100,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;..\..\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Entropy.lib;Theia.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\..\..\boost_1_63_0\bin.v2\libs\log\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\system\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\filesystem\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\date_time\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\thread\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\atomic\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\chrono\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\libpng\build\Debug;..\..\..\..\zlib123\;..\..\..\..\glfw\build\src\Debug;..\..\..\..\libepoxy\_build\src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Entropy.lib;libpng16d.lib;zlib.lib;Theia.lib;glfw3.lib;epoxy.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -116,13 +116,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;..\..\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Entropy.lib;Theia.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\..\..\boost_1_63_0\bin.v2\libs\log\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\system\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\filesystem\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\date_time\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\thread\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\atomic\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\chrono\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\glfw\build\src\Debug;..\..\..\..\libepoxy\_build\src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Entropy.lib;libpng16d.lib;Theia.lib;glfw3.lib;epoxy.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
