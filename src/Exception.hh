@@ -7,6 +7,10 @@
 
 #	include <Entropy/Exception.hh>
 
+#	if defined(_WIN32) || defined(_WIN64)
+#		include <windows.h>
+#	endif
+
 #	include <epoxy/gl.h>
 #	include <GL/glu.h>
 #	include <GLFW/glfw3.h>
