@@ -42,7 +42,7 @@
 						virtual const GLFWvidmode *_get_mode() const;
 					private:
 						GLFWwindow *_handle;
-						std::tuple<int, int , int, int> _size_pos;
+						std::tuple<int, int, int, int> _size_pos;
 						std::chrono::high_resolution_clock::time_point _last;
 					private:
 						static Glfw _glfw;
