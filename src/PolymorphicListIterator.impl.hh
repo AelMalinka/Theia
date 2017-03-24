@@ -18,13 +18,6 @@
 				: _me(i)
 			{}
 
-			template<typename T>
-			PolymorphicListIterator<T>::PolymorphicListIterator(const typename std::list<std::shared_ptr<T>>::iterator &begin, const typename std::list<std::shared_ptr<T>>::const_iterator &i)
-				: _me(begin)
-			{
-				std::advance(_me, std::distance<typename std::list<std::shared_ptr<T>>::const_iterator>(_me, i));
-			}
-
 			template<typename T> PolymorphicListIterator<T>::~PolymorphicListIterator() = default;
 
 			template<typename T>
@@ -40,63 +33,39 @@
 			}
 
 			template<typename T>
-			const T &PolymorphicListIterator<T>::operator * () const
-			{
-				return *_me->get();
-			}
-
-			template<typename T>
-			const T *PolymorphicListIterator<T>::operator -> () const
-			{
-				return _me->get();
-			}
-
-			template<typename T>
 			PolymorphicListIterator<T> &PolymorphicListIterator<T>::operator ++ ()
 			{
-				return ++_me;
+				++_me;
+
+				return *this;
 			}
 
 			template<typename T>
 			PolymorphicListIterator<T> &PolymorphicListIterator<T>::operator -- ()
 			{
-				return --_me;
+				--_me;
+
+				return *this;
 			}
 
 			template<typename T>
-			PolymorphicListIterator<T> &PolymorphicListIterator<T>::operator ++ (int)
+			PolymorphicListIterator<T> PolymorphicListIterator<T>::operator ++ (int)
 			{
-				return _me++;
+				auto ret = _me;
+
+				++(*this);
+
+				return ret;
 			}
 
 			template<typename T>
-			PolymorphicListIterator<T> &PolymorphicListIterator<T>::operator -- (int)
+			PolymorphicListIterator<T> PolymorphicListIterator<T>::operator -- (int)
 			{
-				return _me--;
-			}
+				auto ret = _me;
 
-			template<typename T>
-			const PolymorphicListIterator<T> &PolymorphicListIterator<T>::operator ++ () const
-			{
-				return ++_me;
-			}
+				--(*this);
 
-			template<typename T>
-			const PolymorphicListIterator<T> &PolymorphicListIterator<T>::operator -- () const
-			{
-				return --_me;
-			}
-
-			template<typename T>
-			const PolymorphicListIterator<T> &PolymorphicListIterator<T>::operator ++ (int) const
-			{
-				return _me++;
-			}
-
-			template<typename T>
-			const PolymorphicListIterator<T> &PolymorphicListIterator<T>::operator -- (int) const
-			{
-				return _me--;
+				return ret;
 			}
 
 			template<typename T>
@@ -107,6 +76,73 @@
 
 			template<typename T>
 			bool PolymorphicListIterator<T>::operator != (const PolymorphicListIterator<T> &o) const
+			{
+				return _me != o._me;
+			}
+
+			template<typename T>
+			PolymorphicListConstIterator<T>::PolymorphicListConstIterator(const typename std::list<std::shared_ptr<T>>::const_iterator &i)
+				: _me(i)
+			{}
+
+			template<typename T> PolymorphicListConstIterator<T>::~PolymorphicListConstIterator() = default;
+
+			template<typename T>
+			const T &PolymorphicListConstIterator<T>::operator * ()
+			{
+				return *_me->get();
+			}
+
+			template<typename T>
+			const T *PolymorphicListConstIterator<T>::operator -> ()
+			{
+				return _me->get();
+			}
+
+			template<typename T>
+			PolymorphicListConstIterator<T> &PolymorphicListConstIterator<T>::operator ++ ()
+			{
+				++_me;
+
+				return *this;
+			}
+
+			template<typename T>
+			PolymorphicListConstIterator<T> &PolymorphicListConstIterator<T>::operator -- ()
+			{
+				--_me;
+
+				return *this;
+			}
+
+			template<typename T>
+			PolymorphicListConstIterator<T> PolymorphicListConstIterator<T>::operator ++ (int)
+			{
+				auto ret = _me;
+
+				++(*this);
+
+				return ret;
+			}
+
+			template<typename T>
+			PolymorphicListConstIterator<T> PolymorphicListConstIterator<T>::operator -- (int)
+			{
+				auto ret = _me;
+
+				--(*this);
+
+				return ret;
+			}
+
+			template<typename T>
+			bool PolymorphicListConstIterator<T>::operator == (const PolymorphicListConstIterator<T> &o) const
+			{
+				return _me == o._me;
+			}
+
+			template<typename T>
+			bool PolymorphicListConstIterator<T>::operator != (const PolymorphicListConstIterator<T> &o) const
 			{
 				return _me != o._me;
 			}

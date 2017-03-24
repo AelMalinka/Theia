@@ -45,32 +45,14 @@ namespace {
 		EXPECT_EQ(b, ++t.begin());
 		EXPECT_EQ(c, t.end());
 
-		PolymorphicListIterator<A> d(t.begin(), t.cbegin());
-		PolymorphicListIterator<A> e(t.begin(), ++t.cbegin());
-		PolymorphicListIterator<A> f(t.begin(), t.cend());
-
-		EXPECT_EQ(d, t.begin());
-		EXPECT_EQ(e, ++t.begin());
-		EXPECT_EQ(f, t.end());
-
-		EXPECT_EQ(a, d);
-		EXPECT_EQ(b, e);
-		EXPECT_EQ(c, f);
-
 		EXPECT_NE(a, b);
 		EXPECT_NE(a, c);
-		EXPECT_NE(a, e);
-		EXPECT_NE(a, f);
 
 		EXPECT_NE(b, a);
 		EXPECT_NE(b, c);
-		EXPECT_NE(b, d);
-		EXPECT_NE(b, f);
 
 		EXPECT_NE(c, a);
 		EXPECT_NE(c, b);
-		EXPECT_NE(c, d);
-		EXPECT_NE(c, e);
 	}
 
 	TEST(PolymorphicListIterator, Accessors) {
@@ -94,8 +76,8 @@ namespace {
 		EXPECT_NE((*b).Value(), 10);
 		EXPECT_NE(b->Value(), 10);
 
-		const PolymorphicListIterator<A> c = t.begin();
-		const PolymorphicListIterator<A> d = ++t.begin();
+		PolymorphicListConstIterator<A> c = t.cbegin();
+		PolymorphicListConstIterator<A> d = ++t.cbegin();
 
 		EXPECT_EQ((*c).Value(), 15);
 		EXPECT_EQ(c->Value(), 15);
@@ -108,6 +90,33 @@ namespace {
 
 		EXPECT_NE((*d).Value(), 15);
 		EXPECT_NE(d->Value(), 15);
+	}
+
+	TEST(PolymorphicIterator, Iterate) {
+		list<shared_ptr<A>> t;
+
+		t.push_back(make_shared<B>());
+		t.push_back(make_shared<B>());
+
+		for(PolymorphicListIterator<A> a = t.begin(); a != t.end(); a++) {
+			EXPECT_EQ(a->Value(), 10);
+		}
+
+		for(PolymorphicListConstIterator<A> a = t.cbegin(); a != t.cend(); a++) {
+			EXPECT_EQ(a->Value(), 15);
+		}
+
+		t.clear();
+		t.push_back(make_shared<C>());
+		t.push_back(make_shared<C>());
+
+		for(PolymorphicListIterator<A> a = t.begin(); a != t.end(); a++) {
+			EXPECT_EQ(a->Value(), 20);
+		}
+
+		for(PolymorphicListConstIterator<A> a = t.cbegin(); a != t.cend(); a++) {
+			EXPECT_EQ(a->Value(), 25);
+		}
 	}
 
 	int B::Value()
