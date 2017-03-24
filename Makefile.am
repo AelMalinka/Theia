@@ -20,7 +20,9 @@ theiaheaders_HEADERS = \
 	src/DefaultedList.impl.hh \
 	src/Camera.hh \
 	src/PolymorphicListIterator.hh \
-	src/PolymorphicListIterator.impl.hh
+	src/PolymorphicListIterator.impl.hh \
+	src/PolymorphicList.hh \
+	src/PolymorphicList.impl.hh
 
 glfwheadersdir = Entropy/Theia/GLFW
 glfwheaders_HEADERS = \
@@ -59,10 +61,14 @@ hand_camera_LDADD = libtheia.la
 if GTEST
 check_PROGRAMS += \
 	utility-defaulted-list \
-	utility-polymorphic-list-iterator
+	utility-polymorphic-list-iterator \
+	utility-polymorphic-list
 
 utility_defaulted_list_SOURCES = test/utility/defaulted-list.cc
 utility_defaulted_list_LDADD = $(GTEST_LIBS) libtheia.la
+
+utility_polymorphic_list_SOURCES = test/utility/polymorphic-list.cc
+utility_polymorphic_list_LDADD = $(GTEST_LIBS) libtheia.la
 
 utility_polymorphic_list_iterator_SOURCES = test/utility/polymorphic-list-iterator.cc
 utility_polymorphic_list_iterator_LDADD = $(GTEST_LIBS) libtheia.la
