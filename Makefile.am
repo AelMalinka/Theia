@@ -45,13 +45,13 @@ check_PROGRAMS = \
 	hand-camera
 
 hand_window_SOURCES = test/hand/window.cc
-hand_window_LDADD = -ltheia
+hand_window_LDADD = libtheia.la
 
 hand_object_SOURCES = test/hand/object.cc
-hand_object_LDADD = -ltheia
+hand_object_LDADD = libtheia.la
 
 hand_camera_SOURCES = test/hand/camera.cc
-hand_camera_LDADD = -ltheia
+hand_camera_LDADD = libtheia.la
 
 if GTEST
 check_PROGRAMS += \
