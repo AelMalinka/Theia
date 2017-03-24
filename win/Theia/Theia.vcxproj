@@ -75,6 +75,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -83,6 +84,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,6 +95,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -107,6 +110,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -119,6 +123,7 @@
     <ClCompile Include="..\..\src\Buffer.cc" />
     <ClCompile Include="..\..\src\GLFW\Glfw.cc" />
     <ClCompile Include="..\..\src\GLFW\Window.cc" />
+    <ClCompile Include="..\..\src\Object.cc" />
     <ClCompile Include="..\..\src\Program.cc" />
     <ClCompile Include="..\..\src\Shader.cc" />
     <ClCompile Include="..\..\src\Texture.cc" />
@@ -131,6 +136,7 @@
     <ClInclude Include="..\..\src\Exception.hh" />
     <ClInclude Include="..\..\src\GLFW\Glfw.hh" />
     <ClInclude Include="..\..\src\GLFW\Window.hh" />
+    <ClInclude Include="..\..\src\Object.hh" />
     <ClInclude Include="..\..\src\Program.hh" />
     <ClInclude Include="..\..\src\Program.impl.hh" />
     <ClInclude Include="..\..\src\Shader.hh" />

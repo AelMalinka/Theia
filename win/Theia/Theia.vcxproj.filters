@@ -44,6 +44,9 @@
     <ClCompile Include="..\..\src\GLFW\Window.cc">
       <Filter>Source Files\GLFW</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\Object.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Array.hh">
@@ -81,6 +84,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\GLFW\Window.hh">
       <Filter>Header Files\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Object.hh">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

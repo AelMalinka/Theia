@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <vector>
 
-#include "Window.hh"
+#include "GLFW/Window.hh"
 #include "Object.hh"
 #include "Program.hh"
 #include "Array.hh"
