@@ -7,3 +7,8 @@ AT_SETUP([DefaultedList Tests])
 AT_SKIP_IF([test -z $GTEST])
 AT_CHECK([utility-defaulted-list], [], [ignore], [ignore])
 AT_CLEANUP
+
+AT_SETUP([PolymorphicListIterator Tests])
+AT_SKIP_IF([test -z $GTEST])
+AT_CHECK([utility-polymorphic-list-iterator], [], [ignore], [ignore])
+AT_CLEANUP
