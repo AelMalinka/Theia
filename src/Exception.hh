@@ -7,7 +7,7 @@
 
 #	include <Entropy/Exception.hh>
 
-#	if defined(_WIN32) || defined(_WIN64)
+#	ifdef _WIN32
 #		include <windows.h>
 #	endif
 
