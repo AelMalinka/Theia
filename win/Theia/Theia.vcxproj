@@ -133,6 +133,8 @@
     <ClInclude Include="..\..\src\Bind.hh" />
     <ClInclude Include="..\..\src\Buffer.hh" />
     <ClInclude Include="..\..\src\Buffer.impl.hh" />
+    <ClInclude Include="..\..\src\DefaultedList.hh" />
+    <ClInclude Include="..\..\src\DefaultedList.impl.hh" />
     <ClInclude Include="..\..\src\Exception.hh" />
     <ClInclude Include="..\..\src\GLFW\Glfw.hh" />
     <ClInclude Include="..\..\src\GLFW\Window.hh" />

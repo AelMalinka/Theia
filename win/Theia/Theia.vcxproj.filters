@@ -88,5 +88,11 @@
     <ClInclude Include="..\..\src\Object.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\DefaultedList.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DefaultedList.impl.hh">
+      <Filter>Implementation Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
