@@ -15,7 +15,9 @@ theiaheaders_HEADERS = \
 	src/Program.hh \
 	src/Shader.hh \
 	src/Texture.hh \
-	src/Object.hh
+	src/Object.hh \
+	src/DefaultedList.hh \
+	src/DefaultedList.impl.hh
 
 glfwheadersdir = Entropy/Theia/GLFW
 glfwheaders_HEADERS = \
@@ -45,9 +47,18 @@ hand_window_LDADD = -ltheia
 hand_object_SOURCES = test/hand/object.cc
 hand_object_LDADD = -ltheia
 
+if GTEST
+check_PROGRAMS += \
+	utility-defaulted-list
+
+utility_defaulted_list_SOURCES = test/utility/defaulted-list.cc
+utility_defaulted_list_LDADD = $(GTEST_LIBS) libtheia.la
+endif
+
 TESTSUITE = $(srcdir)/test/testsuite
 
-TESTSUITE_FILES =
+TESTSUITE_FILES = \
+	$(srcdir)/test/utility.at
 
 EXTRA_DIST = $(TESTSUITE_FILES) \
 	$(srcdir)/test/testsuite.at \
