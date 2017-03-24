@@ -1,7 +1,7 @@
 # Copyright 2017 (c) Michael Thomas (malinka) <malinka@entropy-development.com>
 # Distributed under the terms of the GNU Affero General Public License v3
 
-AT_BANNERT([Utility Tests])
+AT_BANNER([Utility Tests])
 
 AT_SETUP([DefaultedList Tests])
 AT_SKIP_IF([test -z $GTEST])
