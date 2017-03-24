@@ -4,6 +4,8 @@
 
 #include "Window.hh"
 
+#include "../Camera.hh"
+
 using namespace Entropy::Theia;
 using namespace Entropy::Theia::GLFW;
 using namespace std;
@@ -101,6 +103,7 @@ void Window::operator () ()
 void Window::Resize(const int width, const int height)
 {
 	glViewport(0, 0, width, height);
+	Camera::setAspect(width, height);
 }
 
 void Window::_create_window(const string &name)
