@@ -29,47 +29,35 @@ Camera::~Camera()
 	_cameras.erase(this);
 }
 
-void Camera::Position(const Vertex &v)
+void Camera::setPosition(const Vertex &v)
 {
 	_pos = v;
 
 	update_view();
 }
 
-void Camera::LookAt(const Vertex &v)
+void Camera::setLookAt(const Vertex &v)
 {
 	_look_at = v;
 
 	update_view();
 }
 
-void Camera::Up(const Vertex &v)
+void Camera::setUp(const Vertex &v)
 {
 	_up = v;
 
 	update_proj();
 }
 
-const Matrix &Camera::View() const
-{
-	return _view;
-}
-
-void Camera::Fov(const Point &v)
+void Camera::setFov(const Point &v)
 {
 	_fov = glm::radians(v);
 
 	update_proj();
 }
 
-void Camera::Aspect(const Point &v)
-{
-	_aspect = v;
-
-	update_proj();
-}
-
-void Camera::Clipping(const Point &near, const Point &far)
+void Camera::setClipping(const Point &near, const Point &far)
 {
 	_near = near;
 	_far = far;
@@ -77,9 +65,58 @@ void Camera::Clipping(const Point &near, const Point &far)
 	update_proj();
 }
 
+void Camera::setAspect(const int width, const int height)
+{
+	_aspect = width / height;
+
+	for(auto &&i : _cameras) {
+		i->update_proj();
+	}
+}
+
+const Vertex &Camera::Position() const
+{
+	return _pos;
+}
+
+const Vertex &Camera::LookAt() const
+{
+	return _look_at;
+}
+
+const Vertex &Camera::Up() const
+{
+	return _up;
+}
+
+const Point &Camera::Fov() const
+{
+	return _fov;
+}
+
+const Point &Camera::Near() const
+{
+	return _near;
+}
+
+const Point &Camera::Far() const
+{
+	return _far;
+}
+
+const Matrix &Camera::View() const
+{
+	return _view;
+}
+
 const Matrix &Camera::Projection() const
 {
 	return _proj;
+}
+
+const Point &Camera::Aspect()
+{
+	return _aspect;
 }
 
 void Camera::addObject(Drawable &o)
@@ -93,15 +130,6 @@ void Camera::addObject(Drawable &o)
 void Camera::removeObject(Drawable &o)
 {
 	_objs.erase(&o);
-}
-
-void Camera::setAspect(const int width, const int height)
-{
-	_aspect = width / height;
-
-	for(auto &&i : _cameras) {
-		i->update_proj();
-	}
 }
 
 void Camera::update_view()

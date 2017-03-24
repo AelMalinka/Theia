@@ -13,23 +13,31 @@
 	{
 		namespace Theia
 		{
+			// 2017-03-24 AMR FIXME: don't keep aspect global
 			class Camera
 			{
 				public:
 					Camera();
 					~Camera();
-					void Position(const Vertex &);
-					void LookAt(const Vertex &);
-					void Up(const Vertex &);
-					void Fov(const Point &);
-					void Aspect(const Point &);
-					void Clipping(const Point &, const Point &);
+					void setPosition(const Vertex &);
+					void setLookAt(const Vertex &);
+					void setUp(const Vertex &);
+					void setFov(const Point &);
+					void setClipping(const Point &, const Point &);
+				public:
+					const Vertex &Position() const;
+					const Vertex &LookAt() const;
+					const Vertex &Up() const;
+					const Point &Fov() const;
+					const Point &Near() const;
+					const Point &Far() const;
 					const Matrix &View() const;
 					const Matrix &Projection() const;
 				public:
 					void addObject(Drawable &);
 					void removeObject(Drawable &);
 				public:
+					static const Point &Aspect();
 					static void setAspect(const int, const int);
 				private:
 					void update_view();

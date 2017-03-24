@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include <glm/gtx/string_cast.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "GLFW/Window.hh"
 #include "Object.hh"
@@ -115,6 +116,32 @@ void MyWindow::Key(const int key, const int, const int action, const int)
 			case GLFW_KEY_F:
 				toggleFullscreen();
 			break;
+		}
+	}
+	if(action == GLFW_PRESS || action == GLFW_REPEAT) {
+		auto p = _cam.Position();
+		auto l = _cam.LookAt();
+		switch(key) {
+			case GLFW_KEY_RIGHT:
+				++p.x;
+				++l.x;
+			break;
+			case GLFW_KEY_LEFT:
+				--p.x;
+				--l.x;
+			break;
+			case GLFW_KEY_UP:
+				++p.y;
+				++l.y;
+			break;
+			case GLFW_KEY_DOWN:
+				--p.y;
+				--l.y;
+			break;
+		}
+		if(p != _cam.Position() || l != _cam.LookAt()) {
+			_cam.setPosition(p);
+			_cam.setLookAt(l);
 		}
 	}
 }
