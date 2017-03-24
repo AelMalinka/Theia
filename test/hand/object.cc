@@ -48,6 +48,8 @@ class MyObject :
 	public:
 		MyObject();
 		void Draw(const chrono::duration<double> &);
+		void UpdateView(const Camera &);
+		void UpdateProjection(const Camera &);
 	private:
 		Program _program;
 		Buffer _vbo;
@@ -137,4 +139,10 @@ void MyWindow::Mouse(const int, const int, const int)
 {}
 
 void MyWindow::Move(const double, const double)
+{}
+
+void MyObject::UpdateView(const Camera &)
+{}
+
+void MyObject::UpdateProjection(const Camera &)
 {}

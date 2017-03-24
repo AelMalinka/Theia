@@ -14,11 +14,14 @@ Point Camera::_aspect(16.0 / 9.0);
 set<Camera *> Camera::_cameras;
 
 Camera::Camera()
-	: _pos(0.0, 0.0, 10.0), _look_at(0.0, 0.0, 0.0), _up(0.0, 1.0, 0.0), _fov(glm::radians(45.0)), _near(0.0), _far(10.0)
+	: _pos(0.0, 0.0, 10.0), _look_at(0.0, 0.0, 0.0), _up(0.0, 1.0, 0.0),
+	_fov(glm::radians(45.0)), _near(0.0), _far(10.0),
+	_view(), _proj()
 {
 	_cameras.insert(this);
-	_view = glm::lookAt(_pos, _look_at, _up);
-	_proj = glm::perspective(_fov, _aspect, _near, _far);
+
+	update_view();
+	update_proj();
 }
 
 Camera::~Camera()
@@ -29,19 +32,22 @@ Camera::~Camera()
 void Camera::Position(const Vertex &v)
 {
 	_pos = v;
-	_view = glm::lookAt(_pos, _look_at, _up);
+
+	update_view();
 }
 
 void Camera::LookAt(const Vertex &v)
 {
 	_look_at = v;
-	_view = glm::lookAt(_pos, _look_at, _up);
+
+	update_view();
 }
 
 void Camera::Up(const Vertex &v)
 {
 	_up = v;
-	_view = glm::lookAt(_pos, _look_at, _up);
+
+	update_proj();
 }
 
 const Matrix &Camera::View() const
@@ -52,20 +58,23 @@ const Matrix &Camera::View() const
 void Camera::Fov(const Point &v)
 {
 	_fov = glm::radians(v);
-	_proj = glm::perspective(_fov, _aspect, _near, _far);
+
+	update_proj();
 }
 
 void Camera::Aspect(const Point &v)
 {
 	_aspect = v;
-	_proj = glm::perspective(_fov, _aspect, _near, _far);
+
+	update_proj();
 }
 
 void Camera::Clipping(const Point &near, const Point &far)
 {
 	_near = near;
 	_far = far;
-	_proj = glm::perspective(_fov, _aspect, _near, _far);
+
+	update_proj();
 }
 
 const Matrix &Camera::Projection() const
@@ -73,11 +82,42 @@ const Matrix &Camera::Projection() const
 	return _proj;
 }
 
+void Camera::addObject(Drawable &o)
+{
+	_objs.insert(&o);
+
+	o.UpdateView(*this);
+	o.UpdateProjection(*this);
+}
+
+void Camera::removeObject(Drawable &o)
+{
+	_objs.erase(&o);
+}
+
 void Camera::setAspect(const int width, const int height)
 {
 	_aspect = width / height;
 
 	for(auto &&i : _cameras) {
-		i->_proj = glm::perspective(i->_fov, _aspect, i->_near, i->_far);
+		i->update_proj();
+	}
+}
+
+void Camera::update_view()
+{
+	_view = glm::lookAt(_pos, _look_at, _up);
+
+	for(auto &&i : _objs) {
+		i->UpdateView(*this);
+	}
+}
+
+void Camera::update_proj()
+{
+	_proj = glm::perspective(_fov, _aspect, _near, _far);
+
+	for(auto &&i : _objs) {
+		i->UpdateProjection(*this);
 	}
 }

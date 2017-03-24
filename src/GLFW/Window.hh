@@ -15,8 +15,7 @@
 		{
 			namespace GLFW
 			{
-				class Window :
-					public Drawable
+				class Window
 				{
 					public:
 						Window(const std::string &, const int, const int);
@@ -32,6 +31,7 @@
 						virtual bool isDone() const;
 						virtual void operator () ();
 					public:
+						virtual void Draw(const std::chrono::duration<double> &) = 0;
 						virtual void Key(const int key, const int scan, const int action, const int modifiers) = 0;
 						virtual void Mouse(const int button, const int action, const int modifiers) = 0;
 						virtual void Move(const double xpos, const double ypos) = 0;

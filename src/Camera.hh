@@ -5,6 +5,8 @@
 #if !defined ENTROPY_THEIA_CAMERA_INC
 #	define ENTROPY_THEIA_CAMERA_INC
 
+#	include "Drawable.hh"
+
 #	include <glm/glm.hpp>
 #	include <set>
 
@@ -24,22 +26,29 @@
 					void Position(const Vertex &);
 					void LookAt(const Vertex &);
 					void Up(const Vertex &);
-					const Matrix &View() const;
 					void Fov(const Point &);
 					void Aspect(const Point &);
 					void Clipping(const Point &, const Point &);
+					const Matrix &View() const;
 					const Matrix &Projection() const;
 				public:
+					void addObject(Drawable &);
+					void removeObject(Drawable &);
+				public:
 					static void setAspect(const int, const int);
+				private:
+					void update_view();
+					void update_proj();
 				private:
 					Vertex _pos;
 					Vertex _look_at;
 					Vertex _up;
-					Matrix _view;
 					Point _fov;
 					Point _near;
 					Point _far;
+					Matrix _view;
 					Matrix _proj;
+					std::set<Drawable *> _objs;
 				private:
 					static Point _aspect;
 					static std::set<Camera *> _cameras;

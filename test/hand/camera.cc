@@ -52,10 +52,11 @@ class MyObject :
 	public Object
 {
 	public:
-		MyObject(Camera &);
+		MyObject();
 		void Draw(const chrono::duration<double> &);
+		void UpdateView(const Camera &);
+		void UpdateProjection(const Camera &);
 	private:
-		Camera &_cam;
 		Program _program;
 		Buffer _vbo;
 		Array _vao;
@@ -95,8 +96,10 @@ int main(int, char *ArgV[])
 }
 
 MyWindow::MyWindow(const string &name)
-	: GLFW::Window(name, 640, 360), _cam(), _obj(_cam)
-{}
+	: GLFW::Window(name, 640, 360), _cam(), _obj()
+{
+	_cam.addObject(_obj);
+}
 
 void MyWindow::Draw(const chrono::duration<double> &dt)
 {
@@ -117,8 +120,8 @@ void MyWindow::Key(const int key, const int, const int action, const int)
 	}
 }
 
-MyObject::MyObject(Camera &c)
-	: _cam(c), _program(), _vbo(Buffer::Vertex), _vao()
+MyObject::MyObject()
+	: _program(), _vbo(Buffer::Vertex), _vao()
 {
 	Shader vert(Shader::Vertex, vert_code);
 	Shader frag(Shader::Fragment, frag_code);
@@ -134,9 +137,6 @@ MyObject::MyObject(Camera &c)
 
 void MyObject::Draw(const chrono::duration<double> &dt)
 {
-	_program.SetUniform("view"s, _cam.View());
-	_program.SetUniform("projection"s, _cam.Projection());
-
 	Rotate(dt.count() * 10, Vertex(0.0, 0.0, 1.0));
 	_program.SetUniform("model"s, Model());
 
@@ -149,3 +149,13 @@ void MyWindow::Mouse(const int, const int, const int)
 
 void MyWindow::Move(const double, const double)
 {}
+
+void MyObject::UpdateView(const Camera &c)
+{
+	_program.SetUniform("view"s, c.View());
+}
+
+void MyObject::UpdateProjection(const Camera &c)
+{
+	_program.SetUniform("projection"s, c.Projection());
+}

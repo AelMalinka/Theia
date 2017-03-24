@@ -13,12 +13,18 @@
 	{
 		namespace Theia
 		{
+			class Camera;
+
 			class Drawable
 			{
 				public:
 					virtual void Draw(const std::chrono::duration<double> &) = 0;
+					virtual void UpdateView(const Camera &) = 0;
+					virtual void UpdateProjection(const Camera &) = 0;
 			};
 		}
 	}
+
+#	include "Camera.hh"
 
 #endif
