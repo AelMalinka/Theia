@@ -14,6 +14,8 @@
 		namespace Theia
 		{
 			using Vertex = glm::vec3;
+			using Point = Vertex::value_type;
+			using Matrix = glm::mat4;
 
 			class Object :
 				public Drawable
@@ -22,13 +24,13 @@
 					Object();
 					virtual ~Object();
 					virtual void Translate(const Vertex &);
-					virtual void Rotate(const Vertex::value_type &, const Vertex &);
+					virtual void Rotate(const Point &, const Vertex &);
 					virtual void Scale(const Vertex &);
 				protected:
-					glm::mat4 &Model();
-					const glm::mat4 &Model() const;
+					Matrix &Model();
+					const Matrix &Model() const;
 				private:
-					glm::mat4 _model;
+					Matrix _model;
 			};
 		}
 	}
