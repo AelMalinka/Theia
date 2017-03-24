@@ -37,7 +37,8 @@ libtheia_la_SOURCES = \
 	src/Shader.cc \
 	src/Texture.cc \
 	src/Object.cc \
-	src/Camera.cc
+	src/Camera.cc \
+	src/Drawable.cc
 
 check_PROGRAMS = \
 	hand-window \

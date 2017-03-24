@@ -31,7 +31,7 @@
 						virtual bool isDone() const;
 						virtual void operator () ();
 					public:
-						virtual void Draw(const std::chrono::duration<double> &) = 0;
+						virtual void Draw() = 0;
 						virtual void Key(const int key, const int scan, const int action, const int modifiers) = 0;
 						virtual void Mouse(const int button, const int action, const int modifiers) = 0;
 						virtual void Move(const double xpos, const double ypos) = 0;
@@ -43,7 +43,6 @@
 					private:
 						GLFWwindow *_handle;
 						std::tuple<int, int, int, int> _size_pos;
-						std::chrono::high_resolution_clock::time_point _last;
 					private:
 						static Glfw _glfw;
 				};

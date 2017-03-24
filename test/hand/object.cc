@@ -47,7 +47,8 @@ class MyObject :
 {
 	public:
 		MyObject();
-		void Draw(const chrono::duration<double> &);
+		void Draw();
+		void Update(const chrono::duration<double> &);
 		void UpdateView(const Camera &);
 		void UpdateProjection(const Camera &);
 	private:
@@ -62,7 +63,7 @@ class MyWindow :
 	public:
 		MyWindow(const string &);
 	private:
-		void Draw(const chrono::duration<double> &);
+		void Draw();
 		void Key(const int, const int, const int, const int);
 		void Mouse(const int, const int, const int);
 		void Move(const double, const double);
@@ -92,9 +93,9 @@ MyWindow::MyWindow(const string &name)
 	: GLFW::Window(name, 640, 360), _obj()
 {}
 
-void MyWindow::Draw(const chrono::duration<double> &dt)
+void MyWindow::Draw()
 {
-	_obj.Draw(dt);
+	_obj();
 }
 
 void MyWindow::Key(const int key, const int, const int action, const int)
@@ -112,7 +113,7 @@ void MyWindow::Key(const int key, const int, const int action, const int)
 }
 
 MyObject::MyObject()
-	: _program(), _vbo(Buffer::Vertex), _vao()
+	: Object(_program, "model"s, ""s, ""s), _program(), _vbo(Buffer::Vertex), _vao()
 {
 	Shader vert(Shader::Vertex, vert_code);
 	Shader frag(Shader::Fragment, frag_code);
@@ -126,13 +127,15 @@ MyObject::MyObject()
 	_vao.Bind(_program, _vbo, "in_position"s, 2, GL_FLOAT);
 }
 
-void MyObject::Draw(const chrono::duration<double> &dt)
+void MyObject::Draw()
 {
-	Rotate(dt.count() * 10, Vertex(0.0, 0.0, 1.0));
-	_program.SetUniform("model"s, Model());
-
 	Bind p(_program), a(_vao);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
+}
+
+void MyObject::Update(const chrono::duration<double> &dt)
+{
+	Rotate(dt.count() * 10, Vertex(0.0, 0.0, 1.0));
 }
 
 void MyWindow::Mouse(const int, const int, const int)

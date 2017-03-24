@@ -7,17 +7,12 @@
 
 #	include "Drawable.hh"
 
-#	include <glm/glm.hpp>
 #	include <set>
 
 	namespace Entropy
 	{
 		namespace Theia
 		{
-			using Vertex = glm::vec3;
-			using Point = Vertex::value_type;
-			using Matrix = glm::mat4;
-
 			class Camera
 			{
 				public:

@@ -18,7 +18,7 @@ void move_cb(GLFWwindow *, double, double);
 void resize_cb(GLFWwindow *, int, int);
 
 Window::Window(const string &name, const int width, const int height)
-	: _handle(nullptr), _size_pos(width, height, 0, 0), _last(chrono::high_resolution_clock::now())
+	: _handle(nullptr), _size_pos(width, height, 0, 0)
 {
 	_create_window(name);
 }
@@ -84,16 +84,11 @@ bool Window::isDone() const
 
 void Window::operator () ()
 {
-	using chrono::duration_cast;
-	using chrono::duration;
-	using chrono::high_resolution_clock;
-
 	if (isVisible()) {
 		glfwMakeContextCurrent(_handle);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		Draw(duration_cast<duration<double>>(high_resolution_clock::now() - _last));
-		_last = high_resolution_clock::now();
+		Draw();
 
 		glfwSwapBuffers(_handle);
 		glfwPollEvents();
