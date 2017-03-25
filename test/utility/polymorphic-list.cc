@@ -149,6 +149,21 @@ namespace {
 		EXPECT_EQ(t.size(), 0ul);
 	}
 
+	TEST(PolymorphicList, FrontBack) {
+		PolymorphicList<A> t;
+
+		t.emplace_back<B>();
+		t.emplace_back<C>();
+
+		EXPECT_EQ(t.front().Value(), 10);
+		EXPECT_EQ(t.back().Value(), 20);
+
+		const PolymorphicList<A> t2 = t;
+
+		EXPECT_EQ(t2.front().Value(), 15);
+		EXPECT_EQ(t2.back().Value(), 25);
+	}
+
 	int B::Value()
 	{
 		return 10;

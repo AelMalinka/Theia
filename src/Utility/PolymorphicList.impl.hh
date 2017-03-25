@@ -108,37 +108,37 @@
 			template<typename T>
 			T &PolymorphicList<T>::front()
 			{
-				return _list.front();
+				return *_list.front();
 			}
 
 			template<typename T>
 			T &PolymorphicList<T>::back()
 			{
-				return _list.back();
+				return *_list.back();
 			}
 
 			template<typename T>
 			const T &PolymorphicList<T>::front() const
 			{
-				return _list.front();
+				return *_list.front();
 			}
 
 			template<typename T>
 			const T &PolymorphicList<T>::back() const
 			{
-				return _list.back();
+				return *_list.back();
 			}
 
 			template<typename T>
 			T &PolymorphicList<T>::operator [] (const std::size_t &p)
 			{
-				return _list[p];
+				return *_list[p];
 			}
 
 			template<typename T>
 			const T &PolymorphicList<T>::operator [] (const std::size_t &p) const
 			{
-				return _list[p];
+				return *_list[p];
 			}
 		}
 	}
