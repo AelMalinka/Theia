@@ -16,13 +16,16 @@ theiaheaders_HEADERS = \
 	src/Shader.hh \
 	src/Texture.hh \
 	src/Object.hh \
-	src/DefaultedList.hh \
-	src/DefaultedList.impl.hh \
-	src/Camera.hh \
-	src/PolymorphicListIterator.hh \
-	src/PolymorphicListIterator.impl.hh \
-	src/PolymorphicList.hh \
-	src/PolymorphicList.impl.hh
+	src/Camera.hh
+
+utilityheadersdir = Entropy/Theia/Utility
+utilityheaders_HEADERS = \
+	src/Utility/DefaultedList.hh \
+	src/Utility/DefaultedList.impl.hh \
+	src/Utility/PolymorphicListIterator.hh \
+	src/Utility/PolymorphicListIterator.impl.hh \
+	src/Utility/PolymorphicList.hh \
+	src/Utility/PolymorphicList.impl.hh
 
 glfwheadersdir = Entropy/Theia/GLFW
 glfwheaders_HEADERS = \

@@ -18,10 +18,9 @@
 				public:
 					Drawable();
 					virtual ~Drawable();
-					virtual void Draw(const std::chrono::duration<double> &);
+					virtual void operator () ();
 				private:
 					DefaultedList<Camera> _cameras;
-					std::list<std::shared_ptr<Drawable>> _items;
 			};
 		}
 	}

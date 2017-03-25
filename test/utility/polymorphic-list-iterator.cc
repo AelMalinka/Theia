@@ -2,7 +2,7 @@
 	Distributed under the terms of the GNU Affero General Public License v3
 */
 
-#include "PolymorphicListIterator.hh"
+#include "Utility/PolymorphicListIterator.hh"
 #include <gtest/gtest.h>
 
 using namespace Entropy::Theia;
