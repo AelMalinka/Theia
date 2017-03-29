@@ -5,7 +5,7 @@
 #if !defined ENTROPY_THEIA_DEFAULTEDLIST_INC
 #	define ENTROPY_THEIA_DEFAULTEDLIST_INC
 
-#	include "Exception.hh"
+#	include "../Exception.hh"
 
 #	include <list>
 #	include <initializer_list>

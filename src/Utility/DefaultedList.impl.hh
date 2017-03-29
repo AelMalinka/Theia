@@ -215,7 +215,7 @@
 			}
 
 			template<typename T>
-			void DefaultedList<T>::erase(const DefaultedList<T>::iterator &i)
+			void DefaultedList<T>::erase(const typename DefaultedList<T>::iterator &i)
 			{
 				if(i == _default)
 					ENTROPY_THROW(Exception("Trying to erase default"));
