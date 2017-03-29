@@ -16,7 +16,9 @@ theiaheaders_HEADERS = \
 	src/Shader.hh \
 	src/Texture.hh \
 	src/Object.hh \
-	src/Camera.hh
+	src/Camera.hh \
+	src/Scene.hh \
+	src/Scene.impl.hh
 
 utilityheadersdir = Entropy/Theia/Utility
 utilityheaders_HEADERS = \
@@ -45,12 +47,14 @@ libtheia_la_SOURCES = \
 	src/Texture.cc \
 	src/Object.cc \
 	src/Camera.cc \
-	src/Drawable.cc
+	src/Drawable.cc \
+	src/Scene.cc
 
 check_PROGRAMS = \
 	hand-window \
 	hand-object \
-	hand-camera
+	hand-camera \
+	hand-scene
 
 hand_window_SOURCES = test/hand/window.cc
 hand_window_LDADD = libtheia.la
@@ -60,6 +64,9 @@ hand_object_LDADD = libtheia.la
 
 hand_camera_SOURCES = test/hand/camera.cc
 hand_camera_LDADD = libtheia.la
+
+hand_scene_SOURCES = test/hand/scene.cc
+hand_scene_LDADD = libtheia.la
 
 if GTEST
 check_PROGRAMS += \
