@@ -11,7 +11,7 @@
 	{
 		namespace Theia
 		{
-			template<typename U, typename = typename std::enable_if<std::is_base_of<Drawable, U>::value>::type>
+			template<typename U, typename>
 			void Scene::push_front(U &&u)
 			{
 				_draws.push_front(std::move(u));
@@ -31,7 +31,7 @@
 				}
 			}
 
-			template<typename U, typename = typename std::enable_if<std::is_base_of<Drawable, U>::value>::type>
+			template<typename U, typename>
 			void Scene::push_back(U &&u)
 			{
 				_draws.push_back(std::move(u));
