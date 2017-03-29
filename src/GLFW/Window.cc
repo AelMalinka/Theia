@@ -85,7 +85,9 @@ bool Window::isDone() const
 void Window::operator () ()
 {
 	if (isVisible()) {
-		glfwMakeContextCurrent(_handle);
+		if(glfwGetCurrentContext() != _handle)
+			glfwMakeContextCurrent(_handle);
+
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		Draw();
