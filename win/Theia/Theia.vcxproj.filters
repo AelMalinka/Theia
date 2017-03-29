@@ -18,6 +18,12 @@
     <Filter Include="Source Files\GLFW">
       <UniqueIdentifier>{a005a17a-2535-4eb6-97e1-93cc2902eea8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utility">
+      <UniqueIdentifier>{1e67f058-ec12-43a7-a21f-6d5737154979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementation Files\Utility">
+      <UniqueIdentifier>{56e755c3-4ccc-4952-8b03-1dcc38eca5f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Array.cc">
@@ -45,6 +51,15 @@
       <Filter>Source Files\GLFW</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Object.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Camera.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Drawable.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Scene.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -88,10 +103,34 @@
     <ClInclude Include="..\..\src\Object.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\DefaultedList.hh">
+    <ClInclude Include="..\..\src\Utility\DefaultedList.hh">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Utility\PolymorphicList.hh">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Utility\PolymorphicListIterator.hh">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Utility\DefaultedList.impl.hh">
+      <Filter>Implementation Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Utility\PolymorphicList.impl.hh">
+      <Filter>Implementation Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Utility\PolymorphicListIterator.impl.hh">
+      <Filter>Implementation Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Camera.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\DefaultedList.impl.hh">
+    <ClInclude Include="..\..\src\Drawable.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Scene.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Scene.impl.hh">
       <Filter>Implementation Files</Filter>
     </ClInclude>
   </ItemGroup>

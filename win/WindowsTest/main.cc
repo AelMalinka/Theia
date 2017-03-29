@@ -18,7 +18,7 @@ class MyObject :
 {
 	public:
 		MyObject();
-		void Draw(const chrono::duration<double> &);
+		void Draw();
 	private:
 		Vertex _color;
 		Program _program;
@@ -32,7 +32,7 @@ class MyWindow :
 	public:
 		explicit MyWindow(const string &);
 	private:
-		void Draw(const chrono::duration<double> &);
+		void Draw();
 		void Key(const int, const int, const int, const int);
 		void Mouse(const int, const int, const int);
 		void Move(const double, const double);
@@ -67,9 +67,9 @@ MyWindow::MyWindow(const string &name)
 	: GLFW::Window(name, 640, 360), _obj()
 {}
 
-void MyWindow::Draw(const chrono::duration<double> &dt)
+void MyWindow::Draw()
 {
-	_obj.Draw(dt);
+	_obj();
 }
 
 void MyWindow::Key(const int key, const int, const int action, const int)
@@ -92,17 +92,14 @@ void MyWindow::Mouse(const int, const int, const int)
 void MyWindow::Move(const double, const double)
 {}
 
-void MyObject::Draw(const chrono::duration<double> &)
+void MyObject::Draw()
 {
-	_program.SetUniform("model"s, Model());
-	_program.SetUniform("in_color"s, _color);
-
 	Bind p(_program), a(_vao);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 MyObject::MyObject()
-	: _color(1.0, 0.0, 0.0), _program(), _vbo(Buffer::Vertex), _vao()
+	: Object(_program, "model"s, ""s, ""s), _color(1.0, 0.0, 0.0), _program(), _vbo(Buffer::Vertex), _vao()
 {
 	string vert_code =
 		"#version 130\n"
@@ -140,6 +137,8 @@ MyObject::MyObject()
 	_program.Attach(vert);
 	_program.Attach(frag);
 	_program.Link();
+
+	_program.SetUniform("in_color"s, _color);
 
 	_vbo.Data(vertices, Buffer::Static);
 	_vao.Bind(_program, _vbo, "in_position"s, 2, GL_FLOAT);

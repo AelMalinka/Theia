@@ -121,10 +121,13 @@
     <ClCompile Include="..\..\src\Array.cc" />
     <ClCompile Include="..\..\src\Bind.cc" />
     <ClCompile Include="..\..\src\Buffer.cc" />
+    <ClCompile Include="..\..\src\Camera.cc" />
+    <ClCompile Include="..\..\src\Drawable.cc" />
     <ClCompile Include="..\..\src\GLFW\Glfw.cc" />
     <ClCompile Include="..\..\src\GLFW\Window.cc" />
     <ClCompile Include="..\..\src\Object.cc" />
     <ClCompile Include="..\..\src\Program.cc" />
+    <ClCompile Include="..\..\src\Scene.cc" />
     <ClCompile Include="..\..\src\Shader.cc" />
     <ClCompile Include="..\..\src\Texture.cc" />
   </ItemGroup>
@@ -133,16 +136,24 @@
     <ClInclude Include="..\..\src\Bind.hh" />
     <ClInclude Include="..\..\src\Buffer.hh" />
     <ClInclude Include="..\..\src\Buffer.impl.hh" />
-    <ClInclude Include="..\..\src\DefaultedList.hh" />
-    <ClInclude Include="..\..\src\DefaultedList.impl.hh" />
+    <ClInclude Include="..\..\src\Camera.hh" />
+    <ClInclude Include="..\..\src\Drawable.hh" />
     <ClInclude Include="..\..\src\Exception.hh" />
     <ClInclude Include="..\..\src\GLFW\Glfw.hh" />
     <ClInclude Include="..\..\src\GLFW\Window.hh" />
     <ClInclude Include="..\..\src\Object.hh" />
     <ClInclude Include="..\..\src\Program.hh" />
     <ClInclude Include="..\..\src\Program.impl.hh" />
+    <ClInclude Include="..\..\src\Scene.hh" />
+    <ClInclude Include="..\..\src\Scene.impl.hh" />
     <ClInclude Include="..\..\src\Shader.hh" />
     <ClInclude Include="..\..\src\Texture.hh" />
+    <ClInclude Include="..\..\src\Utility\DefaultedList.hh" />
+    <ClInclude Include="..\..\src\Utility\DefaultedList.impl.hh" />
+    <ClInclude Include="..\..\src\Utility\PolymorphicList.hh" />
+    <ClInclude Include="..\..\src\Utility\PolymorphicList.impl.hh" />
+    <ClInclude Include="..\..\src\Utility\PolymorphicListIterator.hh" />
+    <ClInclude Include="..\..\src\Utility\PolymorphicListIterator.impl.hh" />
     <ClInclude Include="..\..\src\Window.hh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
