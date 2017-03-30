@@ -20,8 +20,11 @@
 					virtual void Translate(const Vertex &);
 					virtual void Rotate(const Point &, const Vertex &);
 					virtual void Scale(const Vertex &);
+				protected:
+					virtual void Update(const std::chrono::duration<double> &);
 				private:
 					Matrix _model;
+					bool _needs_update;
 			};
 		}
 	}

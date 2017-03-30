@@ -11,7 +11,7 @@ using namespace std;
 using namespace glm;
 
 Object::Object(Program &prog, const string &m, const string &v, const string &p)
-	: Drawable(prog, m, v, p), _model()
+	: Drawable(prog, m, v, p), _model(), _needs_update(true)
 {}
 
 Object::~Object() = default;
@@ -19,20 +19,26 @@ Object::~Object() = default;
 void Object::Translate(const Vertex &val)
 {
 	_model = translate(_model, val);
-
-	UpdateModel(_model);
+	_needs_update = true;
 }
 
 void Object::Rotate(const Vertex::value_type &angle, const Vertex &dir)
 {
 	_model = rotate(_model, radians(angle), dir);
-
-	UpdateModel(_model);
+	_needs_update = true;
 }
 
 void Object::Scale(const Vertex &val)
 {
 	_model = scale(_model, val);
+	_needs_update = true;
+}
 
-	UpdateModel(_model);
+void Object::Update(const chrono::duration<double> &)
+{
+	if (_needs_update) {
+		UpdateModel(_model);
+
+		_needs_update = false;
+	}
 }
