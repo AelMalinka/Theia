@@ -38,6 +38,7 @@ class MyWindow :
 		void Move(const double, const double);
 	private:
 		MyObject _obj;
+		Camera _cam;
 };
 
 int APIENTRY WinMain(HINSTANCE, HINSTANCE, LPSTR str, int)
@@ -64,8 +65,10 @@ int APIENTRY WinMain(HINSTANCE, HINSTANCE, LPSTR str, int)
 }
 
 MyWindow::MyWindow(const string &name)
-	: GLFW::Window(name, 640, 360), _obj()
-{}
+	: GLFW::Window(name, 640, 360), _obj(), _cam()
+{
+	_cam.addObject(_obj);
+}
 
 void MyWindow::Draw()
 {
@@ -99,17 +102,19 @@ void MyObject::Draw()
 }
 
 MyObject::MyObject()
-	: Object(_program, "model"s, ""s, ""s), _color(1.0, 0.0, 0.0), _program(), _vbo(Buffer::Vertex), _vao()
+	: Object(_program, "model"s, "view"s, "projection"s), _color(1.0, 0.0, 0.0), _program(), _vbo(Buffer::Vertex), _vao()
 {
 	string vert_code =
 		"#version 130\n"
 
 		"uniform mat4 model;"
+		"uniform mat4 view;"
+		"uniform mat4 projection;"
 
 		"in vec2 in_position;"
 
 		"void main() {"
-			"gl_Position = model * vec4(in_position, 0.0, 1.0);"
+			"gl_Position = projection * view * model * vec4(in_position, 0.0, 1.0);"
 		"}"
 	;
 
@@ -142,6 +147,4 @@ MyObject::MyObject()
 
 	_vbo.Data(vertices, Buffer::Static);
 	_vao.Bind(_program, _vbo, "in_position"s, 2, GL_FLOAT);
-
-	Scale(Vertex(.5, .5, 1.0));
 }
