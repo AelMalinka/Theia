@@ -17,3 +17,8 @@ AT_SETUP([PolymorphicList Tests])
 AT_SKIP_IF([test -z $GTEST])
 AT_CHECK([utility-polymorphic-list], [], [ignore], [ignore])
 AT_CLEANUP
+
+AT_SETUP([SharedData Tests])
+AT_SKIP_IF([test -z $GTEST])
+AT_CHECK([utility-shared-data], [], [ignore], [ignore])
+AT_CLEANUP
