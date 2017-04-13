@@ -136,6 +136,8 @@ void MyObject::Draw()
 void MyObject::Update(const chrono::duration<double> &dt)
 {
 	Rotate(dt.count() * 10, Vertex(0.0, 0.0, 1.0));
+
+	Object::Update(dt);
 }
 
 void MyWindow::Mouse(const int, const int, const int)

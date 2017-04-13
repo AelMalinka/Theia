@@ -34,11 +34,13 @@ void Object::Scale(const Vertex &val)
 	_needs_update = true;
 }
 
-void Object::Update(const chrono::duration<double> &)
+void Object::Update(const chrono::duration<double> &dt)
 {
 	if (_needs_update) {
 		UpdateModel(_model);
 
 		_needs_update = false;
 	}
+
+	Drawable::Update(dt);
 }
