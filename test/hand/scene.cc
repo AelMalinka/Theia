@@ -10,24 +10,27 @@
 #include "Object.hh"
 #include "Array.hh"
 #include "Bind.hh"
+#include "Utility/SharedData.hh"
 
 using namespace std;
 using namespace Entropy::Theia;
 
+namespace detail {
+	struct shared_data
+	{
+		shared_data();
+		Program program;
+		Array array;
+	};
+}
+
 class MyObject :
+	private SharedData<detail::shared_data>,
 	public Object
 {
 	public:
 		MyObject();
 		void Draw();
-	private:
-		struct shared_data {
-			shared_data();
-			Program program;
-			Array vao;
-		};
-		static std::shared_ptr<shared_data> shared();
-		static std::shared_ptr<shared_data> _shared;
 };
 
 class MyWindow :
@@ -79,7 +82,7 @@ void MyWindow::Key(const int key, const int, const int action, const int)
 
 void MyObject::Draw()
 {
-	Bind p(shared()->program), a(shared()->vao);
+	Bind p(shared()->program), a(shared()->array);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
@@ -95,13 +98,11 @@ MyWindow::MyWindow(const string &name)
 }
 
 MyObject::MyObject()
-	: Object(shared()->program, "model"s, "view"s, "projection"s)
+	: SharedData<detail::shared_data>(), Object(shared()->program, "model"s, "view"s, "projection"s)
 {}
 
-shared_ptr<MyObject::shared_data> MyObject::_shared;
-
-MyObject::shared_data::shared_data()
-	: program(), vao()
+detail::shared_data::shared_data()
+	: program(), array()
 {
 	string vert_code =
 		"#version 130\n"
@@ -143,16 +144,7 @@ MyObject::shared_data::shared_data()
 
 	Buffer vbo(Buffer::Vertex);
 	vbo.Data(vertices, Buffer::Static);
-	vao.Bind(program, vbo, "in_position"s, 2, GL_FLOAT);
-}
-
-std::shared_ptr<MyObject::shared_data> MyObject::shared()
-{
-	if(!_shared) {
-		_shared = make_shared<MyObject::shared_data>();
-	}
-
-	return _shared;
+	array.Bind(program, vbo, "in_position"s, 2, GL_FLOAT);
 }
 
 void MyWindow::Mouse(const int, const int, const int)
