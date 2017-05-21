@@ -13,8 +13,10 @@ theiaheaders_HEADERS = \
 	src/Buffer.hh \
 	src/Buffer.impl.hh \
 	src/Program.hh \
+	src/Program.impl.hh \
 	src/Shader.hh \
 	src/Texture.hh \
+	src/Drawable.hh \
 	src/Object.hh \
 	src/Camera.hh \
 	src/Scene.hh \
