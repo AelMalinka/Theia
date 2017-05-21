@@ -11,7 +11,14 @@ AC_DEFUN([EX_WITH_GLFW], [
 	AS_IF([test "x$with_glfw" != xno],
 		[
 			test "x$with_glfw" != xyes -a "x$with_glfw" != xcheck && GLFW_LDFLAGS="-L${with_glfw}/lib" && GLFW_CPPFLAGS="-I${with_glfw}/include"
-			EX_CHECK_LIBRARY([GLFW], ["GLFW/glfw3.h"], [glfw3], [], [
+			EX_CHECK_LIBRARY([GLFW], ["GLFW/glfw3.h"], [glfw3], [], [])
+			EX_CHECK_LIBRARY([GLFWno3], ["GLFW/glfw3.h"], [glfw], [], [])
+			AS_IF([test "x$ax_cv_have_GLFWno3" == xyes], [
+				GLFW_CPPFLAGS=$GLFWno3_CPPFLAGS
+				GLFW_LDFLAGS=$GLFWno3_LDFLAGS
+				GLFW_LIBS=$GLFWno3_LIBS
+			])
+			AS_IF([test "x$ax_cv_have_GLFW" != xyes && test "x$ax_cv_have_GLFWno3" != xyes], [
 				AS_IF([test "x$with_glfw" != xcheck], [
 					AC_MSG_FAILURE(["--with-glfw: glfw not found"])
 				])
