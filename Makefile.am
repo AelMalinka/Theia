@@ -7,7 +7,6 @@ AM_CPPFLAGS = -I$(srcdir)/src
 theiaheadersdir = Entropy/Theia
 theiaheaders_HEADERS = \
 	src/Exception.hh \
-	src/Window.hh \
 	src/Array.hh \
 	src/Bind.hh \
 	src/Buffer.hh \
@@ -20,7 +19,10 @@ theiaheaders_HEADERS = \
 	src/Object.hh \
 	src/Camera.hh \
 	src/Scene.hh \
-	src/Scene.impl.hh
+	src/Scene.impl.hh \
+	src/IWindow.hh \
+	src/Window.hh \
+	src/Window.impl.hh
 
 utilityheadersdir = Entropy/Theia/Utility
 utilityheaders_HEADERS = \
@@ -52,13 +54,15 @@ libtheia_la_SOURCES = \
 	src/Object.cc \
 	src/Camera.cc \
 	src/Drawable.cc \
-	src/Scene.cc
+	src/Scene.cc \
+	src/Window.cc
 
 check_PROGRAMS = \
 	hand-glfwwindow \
 	hand-object \
 	hand-camera \
-	hand-scene
+	hand-scene \
+	hand-window
 
 hand_glfwwindow_SOURCES = test/hand/glfwwindow.cc
 hand_glfwwindow_LDADD = libtheia.la
@@ -71,6 +75,9 @@ hand_camera_LDADD = libtheia.la
 
 hand_scene_SOURCES = test/hand/scene.cc
 hand_scene_LDADD = libtheia.la
+
+hand_window_SOURCES = test/hand/window.cc
+hand_window_LDADD = libtheia.la
 
 if GTEST
 check_PROGRAMS += \
