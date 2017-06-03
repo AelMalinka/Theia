@@ -55,13 +55,13 @@ libtheia_la_SOURCES = \
 	src/Scene.cc
 
 check_PROGRAMS = \
-	hand-window \
+	hand-glfwwindow \
 	hand-object \
 	hand-camera \
 	hand-scene
 
-hand_window_SOURCES = test/hand/window.cc
-hand_window_LDADD = libtheia.la
+hand_glfwwindow_SOURCES = test/hand/glfwwindow.cc
+hand_glfwwindow_LDADD = libtheia.la
 
 hand_object_SOURCES = test/hand/object.cc
 hand_object_LDADD = libtheia.la
