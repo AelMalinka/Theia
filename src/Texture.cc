@@ -17,7 +17,9 @@ Texture::Texture(const Type &t, const string &name)
 	Bind b(*this);
 	PNG image(name);
 	glTexImage2D(type(), 0, GL_RGBA8, image.Width(), image.Height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, image.data());
-	CHECK_GL_ERRORS_WITH("failed to load texture to GL", PNGFileName(name));
+	CHECK_GL_ERRORS_WITH("failed to load texture data", PNGFileName(name));
+	glGenerateMipmap(GL_TEXTURE_2D);
+	CHECK_GL_ERRORS_WITH("failed to generate mipmap", PNGFileName(name));
 }
 
 Texture::~Texture()
