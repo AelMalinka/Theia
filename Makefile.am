@@ -66,7 +66,11 @@ check_PROGRAMS = \
 	hand-scene \
 	hand-window \
 	hand-application \
+	hand-texture \
 	hand-application-no-inheritance
+
+all-local:
+	test -d data || $(LN_S) $(top_srcdir)/data $(builddir)/data
 
 hand_glfwwindow_SOURCES = test/hand/glfwwindow.cc
 hand_glfwwindow_LDADD = libtheia.la
@@ -82,6 +86,9 @@ hand_scene_LDADD = libtheia.la
 
 hand_window_SOURCES = test/hand/window.cc
 hand_window_LDADD = libtheia.la
+
+hand_texture_SOURCES = test/hand/texture.cc
+hand_texture_LDADD = libtheia.la
 
 hand_application_SOURCES = test/hand/application.cc
 hand_application_LDADD = libtheia.la
