@@ -27,12 +27,25 @@
 
 #	define CHECK_GL_ERRORS(x) \
 		{ GLenum status = glGetError(); \
-		if(status != GL_NO_ERROR) \
-			::boost::throw_exception(::boost::enable_error_info(Exception(x)) << \
-			::boost::throw_function(BOOST_CURRENT_FUNCTION) << \
-			::boost::throw_file(__FILE__) << \
-			::boost::throw_line((int)__LINE__) << \
-			::Entropy::Theia::GlErrorCode(status) << \
-			::Entropy::Theia::GlError(gluErrorString(status))); }
+			if(status != GL_NO_ERROR) \
+				::boost::throw_exception(::boost::enable_error_info(Exception(x)) << \
+				::boost::throw_function(BOOST_CURRENT_FUNCTION) << \
+				::boost::throw_file(__FILE__) << \
+				::boost::throw_line((int)__LINE__) << \
+				::Entropy::Theia::GlErrorCode(status) << \
+				::Entropy::Theia::GlError(gluErrorString(status))); \
+		}
+
+#	define CHECK_GL_ERRORS_WITH(x, z) \
+		{ GLenum status = glGetError(); \
+			if(status != GL_NO_ERROR) \
+				::boost::throw_exception(::boost::enable_error_info(Exception(x)) << \
+				::boost::throw_function(BOOST_CURRENT_FUNCTION) << \
+				::boost::throw_file(__FILE__) << \
+				::boost::throw_line((int)__LINE__) << \
+				::Entropy::Theia::GlErrorCode(status) << \
+				::Entropy::Theia::GlError(gluErrorString(status)) << \
+				z);\
+		}
 
 #endif
