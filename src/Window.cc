@@ -122,6 +122,9 @@ void Window::Resize(const int width, const int height)
 	}
 }
 
+void Window::setCallbacks()
+{}
+
 void Window::setCallback(const std::function<void(const int, const int, const int, const int)> &f)
 {
 	_key_cbs.push_back(f);

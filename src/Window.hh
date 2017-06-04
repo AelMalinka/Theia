@@ -28,8 +28,9 @@
 					virtual void operator () ();
 					DefaultedList<Scene> &Scenes();
 					const DefaultedList<Scene> &Scenes() const;
-					template<typename ...F>
-					void setCallbacks(F ...);
+					template<typename F, typename ...R>
+					void setCallbacks(F, R ...);
+					void setCallbacks();
 					void setCallback(const std::function<void(const int, const int, const int, const int)> &);
 					void setCallback(const std::function<void(const int, const int, const int)> &);
 					void setCallback(const std::function<void(const double, const double)> &);
