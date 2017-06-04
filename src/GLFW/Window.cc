@@ -113,6 +113,7 @@ void Window::_create_window(const string &name)
 	_handle = glfwCreateWindow(get<0>(_size_pos), get<1>(_size_pos), name.c_str(), nullptr, nullptr);
 
 	glfwMakeContextCurrent(_handle);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	glfwSetWindowUserPointer(_handle, this);
 	glfwSetWindowAspectRatio(_handle, get<0>(_size_pos), get<1>(_size_pos));
