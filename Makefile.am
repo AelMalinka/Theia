@@ -22,7 +22,8 @@ theiaheaders_HEADERS = \
 	src/Scene.impl.hh \
 	src/IWindow.hh \
 	src/Window.hh \
-	src/Window.impl.hh
+	src/Window.impl.hh \
+	src/Application.hh
 
 utilityheadersdir = Entropy/Theia/Utility
 utilityheaders_HEADERS = \
@@ -55,14 +56,16 @@ libtheia_la_SOURCES = \
 	src/Camera.cc \
 	src/Drawable.cc \
 	src/Scene.cc \
-	src/Window.cc
+	src/Window.cc \
+	src/Application.cc
 
 check_PROGRAMS = \
 	hand-glfwwindow \
 	hand-object \
 	hand-camera \
 	hand-scene \
-	hand-window
+	hand-window \
+	hand-application
 
 hand_glfwwindow_SOURCES = test/hand/glfwwindow.cc
 hand_glfwwindow_LDADD = libtheia.la
@@ -78,6 +81,9 @@ hand_scene_LDADD = libtheia.la
 
 hand_window_SOURCES = test/hand/window.cc
 hand_window_LDADD = libtheia.la
+
+hand_application_SOURCES = test/hand/application.cc
+hand_application_LDADD = libtheia.la
 
 if GTEST
 check_PROGRAMS += \
