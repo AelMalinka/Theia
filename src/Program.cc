@@ -30,6 +30,19 @@ void Program::Link()
 {
 	glLinkProgram(_program);
 	CHECK_GL_ERRORS("failed to link program");
+
+	GLint status;
+	glGetProgramiv(_program, GL_LINK_STATUS, &status);
+
+	if(status != GL_TRUE) {
+		GLint len = 0;
+		glGetProgramiv(_program, GL_INFO_LOG_LENGTH, &len);
+		GLchar *buf = new GLchar [len];
+		glGetProgramInfoLog(_program, len, &len, buf);
+		ENTROPY_THROW(Exception("Failed to link program") <<
+			InfoLog(buf)
+		);
+	}
 }
 
 const GLuint &Program::Handle() const

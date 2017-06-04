@@ -13,6 +13,7 @@
 		namespace Theia
 		{
 			ENTROPY_ERROR_INFO(AttributeName, std::string);
+			ENTROPY_ERROR_INFO(InfoLog, GLchar *);
 
 			class Program
 			{
