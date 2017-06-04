@@ -18,7 +18,7 @@
 			class Camera;
 
 			using Vertex = glm::vec3;
-			using Point = Vertex::value_type;
+			using Dimension = Vertex::value_type;
 			using Matrix = glm::mat4;
 
 			// 2017-03-24 AMR FIXME: find out if per object time keeping is too much pain

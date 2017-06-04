@@ -22,7 +22,7 @@ void Object::Translate(const Vertex &val)
 	_needs_update = true;
 }
 
-void Object::Rotate(const Vertex::value_type &angle, const Vertex &dir)
+void Object::Rotate(const Dimension &angle, const Vertex &dir)
 {
 	_model = rotate(_model, radians(angle), dir);
 	_needs_update = true;

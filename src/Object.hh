@@ -18,7 +18,7 @@
 					Object(Program &, const std::string &, const std::string &, const std::string &);
 					virtual ~Object();
 					virtual void Translate(const Vertex &);
-					virtual void Rotate(const Point &, const Vertex &);
+					virtual void Rotate(const Dimension &, const Vertex &);
 					virtual void Scale(const Vertex &);
 				protected:
 					virtual void Update(const std::chrono::duration<double> &);

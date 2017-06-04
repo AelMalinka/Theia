@@ -10,7 +10,7 @@ using namespace Entropy::Theia;
 using namespace std;
 using namespace glm;
 
-Point Camera::_aspect(16.0f / 9.0f);
+Dimension Camera::_aspect(16.0f / 9.0f);
 set<Camera *> Camera::_cameras;
 
 Camera::Camera()
@@ -50,14 +50,14 @@ void Camera::setUp(const Vertex &v)
 	update_proj();
 }
 
-void Camera::setFov(const Point &v)
+void Camera::setFov(const Dimension &v)
 {
 	_fov = glm::radians(v);
 
 	update_proj();
 }
 
-void Camera::setClipping(const Point &n, const Point &f)
+void Camera::setClipping(const Dimension &n, const Dimension &f)
 {
 	_near = n;
 	_far = f;
@@ -89,17 +89,17 @@ const Vertex &Camera::Up() const
 	return _up;
 }
 
-const Point &Camera::Fov() const
+const Dimension &Camera::Fov() const
 {
 	return _fov;
 }
 
-const Point &Camera::Near() const
+const Dimension &Camera::Near() const
 {
 	return _near;
 }
 
-const Point &Camera::Far() const
+const Dimension &Camera::Far() const
 {
 	return _far;
 }
@@ -114,7 +114,7 @@ const Matrix &Camera::Projection() const
 	return _proj;
 }
 
-const Point &Camera::Aspect()
+const Dimension &Camera::Aspect()
 {
 	return _aspect;
 }
