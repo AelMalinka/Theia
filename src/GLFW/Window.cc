@@ -10,15 +10,13 @@ using namespace Entropy::Theia;
 using namespace Entropy::Theia::GLFW;
 using namespace std;
 
-Glfw Window::_glfw;
-
 void key_cb(GLFWwindow *, int, int, int, int);
 void mouse_cb(GLFWwindow *, int, int, int);
 void move_cb(GLFWwindow *, double, double);
 void resize_cb(GLFWwindow *, int, int);
 
 Window::Window(const string &name, const int width, const int height)
-	: _handle(nullptr), _size_pos(width, height, 0, 0)
+	: SharedData<Glfw>(), _handle(nullptr), _size_pos(width, height, 0, 0)
 {
 	_create_window(name);
 }

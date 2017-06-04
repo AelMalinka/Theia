@@ -8,7 +8,7 @@
 #	include "Glfw.hh"
 
 #	include "../IWindow.hh"
-#	include "../Drawable.hh"
+#	include "../Utility/SharedData.hh"
 
 	namespace Entropy
 	{
@@ -17,7 +17,8 @@
 			namespace GLFW
 			{
 				class Window :
-					public Theia::IWindow
+					private SharedData<Glfw>,
+					public IWindow
 				{
 					public:
 						Window(const std::string &, const int, const int);
@@ -41,8 +42,6 @@
 					private:
 						GLFWwindow *_handle;
 						std::tuple<int, int, int, int> _size_pos;
-					private:
-						static Glfw _glfw;
 				};
 			}
 		}
