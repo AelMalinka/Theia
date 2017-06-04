@@ -4,7 +4,7 @@
 ACLOCAL_AMFLAGS = -Im4
 AM_CPPFLAGS = -I$(srcdir)/src
 
-theiaheadersdir = Entropy/Theia
+theiaheadersdir = $(includedir)/Entropy/Theia
 theiaheaders_HEADERS = \
 	src/Exception.hh \
 	src/Array.hh \
@@ -25,7 +25,7 @@ theiaheaders_HEADERS = \
 	src/Window.impl.hh \
 	src/Application.hh
 
-utilityheadersdir = Entropy/Theia/Utility
+utilityheadersdir = $(includedir)/Entropy/Theia/Utility
 utilityheaders_HEADERS = \
 	src/Utility/DefaultedList.hh \
 	src/Utility/DefaultedList.impl.hh \
@@ -36,7 +36,7 @@ utilityheaders_HEADERS = \
 	src/Utility/SharedData.hh \
 	src/Utility/SharedData.impl.hh
 
-glfwheadersdir = Entropy/Theia/GLFW
+glfwheadersdir = $(includedir)/Entropy/Theia/GLFW
 glfwheaders_HEADERS = \
 	src/GLFW/Glfw.hh \
 	src/GLFW/Window.hh
