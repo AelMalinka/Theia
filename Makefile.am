@@ -65,7 +65,8 @@ check_PROGRAMS = \
 	hand-camera \
 	hand-scene \
 	hand-window \
-	hand-application
+	hand-application \
+	hand-application-no-inheritance
 
 hand_glfwwindow_SOURCES = test/hand/glfwwindow.cc
 hand_glfwwindow_LDADD = libtheia.la
@@ -84,6 +85,9 @@ hand_window_LDADD = libtheia.la
 
 hand_application_SOURCES = test/hand/application.cc
 hand_application_LDADD = libtheia.la
+
+hand_application_no_inheritance_SOURCES = test/hand/application-no-inheritance.cc
+hand_application_no_inheritance_LDADD = libtheia.la
 
 if GTEST
 check_PROGRAMS += \
