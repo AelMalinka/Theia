@@ -7,10 +7,11 @@ AM_CPPFLAGS = -I$(srcdir)/src
 theiaheadersdir = $(includedir)/Entropy/Theia
 theiaheaders_HEADERS = \
 	src/Exception.hh \
-	src/Array.hh \
 	src/Bind.hh \
 	src/Buffer.hh \
 	src/Buffer.impl.hh \
+	src/Array.hh \
+	src/Array.impl.hh \
 	src/Program.hh \
 	src/Program.impl.hh \
 	src/Shader.hh \
