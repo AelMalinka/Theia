@@ -22,6 +22,16 @@ void Scene::reset()
 	_cameras.clear();
 }
 
+Camera &Scene::getCamera()
+{
+	return *_cameras;
+}
+
+const Camera &Scene::getCamera() const
+{
+	return *_cameras;
+}
+
 DefaultedList<Camera>::iterator Scene::addCamera()
 {
 	_cameras.emplace_front();

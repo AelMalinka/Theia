@@ -23,6 +23,8 @@
 				public:
 					void reset();
 					DefaultedList<Camera>::iterator addCamera();
+					Camera &getCamera();
+					const Camera &getCamera() const;
 				public:
 					void clear();
 					void push_front(const std::shared_ptr<Drawable> &);
