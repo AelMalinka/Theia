@@ -14,6 +14,24 @@
 			class Buffer
 			{
 				public:
+					class Type;
+					class Usage;
+				public:
+					Buffer(const Type &);
+					Buffer(const Buffer &) = delete;
+					~Buffer();
+					template<typename C>
+					void Data(const C &, const Usage &);
+					const std::size_t &size() const;
+					const GLenum &GlType() const;
+					const GLuint &Handle() const;
+				public:
+					static const Type Vertex;
+					static const Type Element;
+					static const Usage Static;
+					static const Usage Dynamic;
+					static const Usage Stream;
+				public:
 					class Type
 					{
 						public:
@@ -34,20 +52,6 @@
 						private:
 							GLenum _val;
 					};
-					static const Type Vertex;
-					static const Type Element;
-					static const Usage Static;
-					static const Usage Dynamic;
-					static const Usage Stream;
-				public:
-					Buffer(const Type &);
-					Buffer(const Buffer &) = delete;
-					~Buffer();
-					template<typename C>
-					void Data(const C &, const Usage &);
-					const std::size_t &size() const;
-					const GLenum &GlType() const;
-					const GLuint &Handle() const;
 				private:
 					GLuint _buffer;
 					Type _type;

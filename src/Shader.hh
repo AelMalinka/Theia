@@ -17,6 +17,13 @@
 			class Shader
 			{
 				public:
+					class Type;
+				public:
+					Shader(const Type &, const std::string &);
+					Shader(const Shader &) = delete;
+					~Shader();
+					const GLuint &Handle() const;
+				public:
 					class Type
 					{
 						public:
@@ -27,15 +34,11 @@
 						private:
 							GLenum _val;
 					};
+				public:
 					static const Type Vertex;
 					static const Type Fragment;
 					static const Type Geometry;
 					static const Type Compute;
-				public:
-					Shader(const Type &, const std::string &);
-					Shader(const Shader &) = delete;
-					~Shader();
-					const GLuint &Handle() const;
 				private:
 					GLuint _shader;
 			};
