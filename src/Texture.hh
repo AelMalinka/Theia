@@ -38,6 +38,7 @@
 					static const Filter Nearest;
 					static const Format R;
 					static const Format RGBA;
+					static const Internal Red;
 					static const Internal RGBA8;
 				public:
 					class Type

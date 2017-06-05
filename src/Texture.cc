@@ -19,6 +19,7 @@ const Texture::Format Texture::R(GL_RED);
 const Texture::Format Texture::RGBA(GL_RGBA);
 
 const Texture::Internal Texture::RGBA8(GL_RGBA8);
+const Texture::Internal Texture::Red(GL_RED);
 
 const Texture::Size Texture::UnsignedByte(GL_UNSIGNED_BYTE);
 
