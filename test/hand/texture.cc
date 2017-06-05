@@ -127,6 +127,8 @@ detail::shared_data::shared_data()
 	Buffer vbo(Buffer::Vertex);
 	vbo.Data(vertices, Buffer::Static);
 	array.Bind(program, vbo, "in_position"s, 2, GL_FLOAT);
+
+	texture.generateMipmaps();
 }
 
 ::Application::Application(const int ArgC, char *ArgV[])
