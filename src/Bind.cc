@@ -8,7 +8,6 @@
 #include "Program.hh"
 #include "Texture.hh"
 
-
 using namespace Entropy::Theia;
 
 GLenum buffer(const GLenum &t)
