@@ -15,7 +15,7 @@
 				public Drawable
 			{
 				public:
-					Object(Program &, const std::string &, const std::string &, const std::string &);
+					Object(GL::Program &, const std::string &, const std::string &, const std::string &);
 					virtual ~Object();
 					virtual void Translate(const Vertex &);
 					virtual void Rotate(const Dimension &, const Vertex &);

@@ -4,8 +4,8 @@
 
 #include "Program.hh"
 
+using namespace Entropy::Theia::GL;
 using namespace std;
-using namespace Entropy::Theia;
 
 Program::Program()
 	: _program(0)

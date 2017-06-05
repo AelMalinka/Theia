@@ -6,12 +6,13 @@
 #include <vector>
 
 #include "GLFW/Window.hh"
-#include "Program.hh"
-#include "Array.hh"
-#include "Bind.hh"
+#include "GL/Program.hh"
+#include "GL/Array.hh"
+#include "GL/Bind.hh"
 
 using namespace std;
 using namespace Entropy::Theia;
+using namespace Entropy::Theia::GL;
 
 string vert_code =
 	"#version 130\n"

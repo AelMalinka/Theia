@@ -7,15 +7,6 @@ AM_CPPFLAGS = -I$(srcdir)/src
 theiaheadersdir = $(includedir)/Entropy/Theia
 theiaheaders_HEADERS = \
 	src/Exception.hh \
-	src/Bind.hh \
-	src/Buffer.hh \
-	src/Buffer.impl.hh \
-	src/Array.hh \
-	src/Array.impl.hh \
-	src/Program.hh \
-	src/Program.impl.hh \
-	src/Shader.hh \
-	src/Texture.hh \
 	src/Drawable.hh \
 	src/Object.hh \
 	src/Camera.hh \
@@ -37,6 +28,18 @@ utilityheaders_HEADERS = \
 	src/Utility/SharedData.hh \
 	src/Utility/SharedData.impl.hh
 
+glheadersdir = $(includedir)/Entropy/GL
+glheaders_HEADERS = \
+	src/Bind.hh \
+	src/Buffer.hh \
+	src/Buffer.impl.hh \
+	src/Array.hh \
+	src/Array.impl.hh \
+	src/Program.hh \
+	src/Program.impl.hh \
+	src/Shader.hh \
+	src/Texture.hh
+
 glfwheadersdir = $(includedir)/Entropy/Theia/GLFW
 glfwheaders_HEADERS = \
 	src/GLFW/Glfw.hh \
@@ -47,12 +50,12 @@ lib_LTLIBRARIES = libtheia.la
 libtheia_la_SOURCES = \
 	src/GLFW/Glfw.cc \
 	src/GLFW/Window.cc \
-	src/Array.cc \
-	src/Bind.cc \
-	src/Buffer.cc \
-	src/Program.cc \
-	src/Shader.cc \
-	src/Texture.cc \
+	src/GL/Array.cc \
+	src/GL/Bind.cc \
+	src/GL/Buffer.cc \
+	src/GL/Program.cc \
+	src/GL/Shader.cc \
+	src/GL/Texture.cc \
 	src/Object.cc \
 	src/Camera.cc \
 	src/Drawable.cc \

@@ -6,8 +6,8 @@
 
 #include "Bind.hh"
 
+using namespace Entropy::Theia::GL;
 using namespace std;
-using namespace Entropy::Theia;
 
 Array::Array()
 {
@@ -21,7 +21,7 @@ Array::~Array()
 
 void Array::Bind(const Program &prog, const Buffer &buff, const string &name, const size_t count, const GLenum type, const size_t stride, const size_t offset)
 {
-	Theia::Bind a(*this), b(buff);
+	GL::Bind a(*this), b(buff);
 
 	GLint attrib = glGetAttribLocation(prog.Handle(), name.c_str());
 	CHECK_GL_ERRORS_WITH("Failed to get Attribute Location", AttributeName(name));

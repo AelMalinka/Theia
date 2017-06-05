@@ -4,7 +4,7 @@
 
 #include "Shader.hh"
 
-using namespace Entropy::Theia;
+using namespace Entropy::Theia::GL;
 using namespace std;
 
 const Shader::Type Shader::Vertex(GL_VERTEX_SHADER);

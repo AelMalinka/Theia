@@ -10,7 +10,7 @@ using namespace Entropy::Theia;
 using namespace std;
 using namespace glm;
 
-Object::Object(Program &prog, const string &m, const string &v, const string &p)
+Object::Object(GL::Program &prog, const string &m, const string &v, const string &p)
 	: Drawable(prog, m, v, p), _model(), _needs_update(true)
 {}
 

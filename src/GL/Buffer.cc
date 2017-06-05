@@ -4,7 +4,7 @@
 
 #include "Buffer.hh"
 
-using namespace Entropy::Theia;
+using namespace Entropy::Theia::GL;
 
 const Buffer::Type Buffer::Vertex(GL_ARRAY_BUFFER);
 const Buffer::Type Buffer::Element(GL_ELEMENT_ARRAY_BUFFER);

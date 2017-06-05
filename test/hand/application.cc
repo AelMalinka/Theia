@@ -7,19 +7,19 @@
 #include <vector>
 #include "Application.hh"
 #include "Object.hh"
-#include "Array.hh"
-#include "Bind.hh"
+#include "GL/Array.hh"
+#include "GL/Bind.hh"
 #include "Utility/SharedData.hh"
 
 using namespace std;
 
 using Entropy::Theia::Object;
 using Entropy::Theia::SharedData;
-using Entropy::Theia::Program;
-using Entropy::Theia::Array;
-using Entropy::Theia::Bind;
-using Entropy::Theia::Shader;
-using Entropy::Theia::Buffer;
+using Entropy::Theia::GL::Program;
+using Entropy::Theia::GL::Array;
+using Entropy::Theia::GL::Bind;
+using Entropy::Theia::GL::Shader;
+using Entropy::Theia::GL::Buffer;
 
 namespace detail
 {

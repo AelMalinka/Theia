@@ -7,7 +7,7 @@
 using namespace Entropy::Theia;
 using namespace std;
 
-Drawable::Drawable(Program &prog, const string &m, const string &v, const string  &p)
+Drawable::Drawable(GL::Program &prog, const string &m, const string &v, const string  &p)
 	: _program(prog), _model(m), _view(v), _proj(p), _last(chrono::high_resolution_clock::now())
 {}
 

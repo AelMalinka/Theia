@@ -7,7 +7,7 @@
 
 #	include "Exception.hh"
 
-#	include "Program.hh"
+#	include "GL/Program.hh"
 #	include <chrono>
 #	include <glm/glm.hpp>
 
@@ -25,7 +25,7 @@
 			class Drawable
 			{
 				public:
-					Drawable(Program &, const std::string &, const std::string &, const std::string &);
+					Drawable(GL::Program &, const std::string &, const std::string &, const std::string &);
 					virtual ~Drawable();
 					virtual void operator () ();
 				protected:
@@ -36,7 +36,7 @@
 					virtual void UpdateView(const Camera &);
 					virtual void UpdateProjection(const Camera &);
 				private:
-					Program &_program;
+					GL::Program &_program;
 					std::string _model;
 					std::string _view;
 					std::string _proj;

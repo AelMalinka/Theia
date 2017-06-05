@@ -7,8 +7,8 @@
 #include <Entropy/PNG.hh>
 #include "Bind.hh"
 
+using namespace Entropy::Theia::GL;
 using namespace std;
-using namespace Entropy::Theia;
 
 const Texture::Type Texture::Texture2D(GL_TEXTURE_2D);
 

@@ -7,12 +7,13 @@
 #include <vector>
 #include "Window.hh"
 #include "Object.hh"
-#include "Array.hh"
-#include "Bind.hh"
+#include "GL/Array.hh"
+#include "GL/Bind.hh"
 #include "Utility/SharedData.hh"
 
 using namespace std;
 using namespace Entropy::Theia;
+using namespace Entropy::Theia::GL;
 
 struct shared_data
 {
