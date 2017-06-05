@@ -43,8 +43,8 @@
 					Buffer(const Type &);
 					Buffer(const Buffer &) = delete;
 					~Buffer();
-					template<typename Array>
-					void Data(const Array &, const Usage &);
+					template<typename C>
+					void Data(const C &, const Usage &);
 					const std::size_t &size() const;
 					const GLenum &GlType() const;
 					const GLuint &Handle() const;

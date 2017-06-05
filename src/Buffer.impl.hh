@@ -12,12 +12,12 @@
 	{
 		namespace Theia
 		{
-			template<typename Array>
-			void Buffer::Data(const Array &a, const Usage &u)
+			template<typename C>
+			void Buffer::Data(const C &a, const Usage &u)
 			{
 				Bind b(*this);
 				_count = a.size();
-				glBufferData(_type.Value(), sizeof(typename Array::value_type) * a.size(), a.data(), u.Value());
+				glBufferData(_type.Value(), sizeof(typename C::value_type) * a.size(), a.data(), u.Value());
 			}
 		}
 	}
