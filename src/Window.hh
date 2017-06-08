@@ -7,6 +7,7 @@
 
 #	include <vector>
 #	include <functional>
+#	include <chrono>
 
 #	include "IWindow.hh"
 #	include "Utility/DefaultedList.hh"
@@ -16,50 +17,41 @@
 	{
 		namespace Theia
 		{
-			class Window :
-				public IWindow
+			class Window
 			{
 				public:
 					template<typename ...F>
-					Window(const std::string &, const std::size_t, const std::size_t, F ...);
+					Window(const std::string &, const std::size_t, const std::size_t, F && ...);
 					template<typename ...F>
-					explicit Window(const std::shared_ptr<IWindow> &, F ...);
+					explicit Window(const std::shared_ptr<IWindow> &, F && ...);
 					virtual ~Window();
-					virtual void operator () ();
-					DefaultedList<Scene> &Scenes();
-					const DefaultedList<Scene> &Scenes() const;
-					template<typename F, typename ...R>
-					void setCallbacks(F, R ...);
-					void setCallbacks();
-					void setCallback(const std::function<void(const int, const int, const int, const int)> &);
-					void setCallback(const std::function<void(const int, const int, const int)> &);
-					void setCallback(const std::function<void(const double, const double)> &);
-					void setCallback(const std::function<void(const int, const int)> &);
 				public:
+					virtual void operator () ();
+					virtual void Draw();
 					virtual void Show();
 					virtual void Hide();
 					virtual void Close();
-					virtual void toggleFullscreen();
-					virtual void disableCursor();
-					virtual void enableCursor();
+					virtual void Fullscreen();
+					virtual bool isDone() const;
 					virtual bool isFullscreen() const;
 					virtual bool isVisible() const;
-					virtual bool isDone() const;
+					virtual void onEvent(const Event &);
 				public:
-					virtual void Draw();
-					virtual void Key(const int, const int, const int, const int);
-					virtual void Mouse(const int, const int, const int);
-					virtual void Move(const double, const double);
-					virtual void Resize(const int, const int);
+					virtual void setFoV(const Dimension &);
+					virtual void setNearClipping(const Dimension &);
+					virtual void setFarClipping(const Dimension &);
+				public:
+					DefaultedList<Scene> &Scenes();
+					const DefaultedList<Scene> &Scenes() const;
+					template<typename ...F>
+					void addCallbacks(F && ...);
 				private:
-					virtual void make_window(const std::string &, const std::size_t, const std::size_t);
+					void make_window(const std::string &, const std::size_t, const std::size_t);
 				private:
 					std::shared_ptr<IWindow> _window;
-					DefaultedList<Scene> _scene;
-					std::vector<std::function<void(const int, const int, const int, const int)>> _key_cbs;
-					std::vector<std::function<void(const int, const int, const int)>> _mouse_cbs;
-					std::vector<std::function<void(const double, const double)>> _move_cbs;
-					std::vector<std::function<void(const int, const int)>> _resize_cbs;
+					std::shared_ptr<DefaultedList<Scene>> _scene;
+					std::vector<std::function<void(const Event &)>> _cbs;
+					std::chrono::high_resolution_clock::time_point _last;
 			};
 		}
 	}

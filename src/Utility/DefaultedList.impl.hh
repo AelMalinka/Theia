@@ -12,14 +12,6 @@
 		namespace Theia
 		{
 			template<typename T>
-			DefaultedList<T>::DefaultedList()
-				: _list(), _default(_list.end())
-			{
-				_list.emplace_back();
-				_default = _list.begin();
-			}
-
-			template<typename T>
 			template<typename ...Args>
 			DefaultedList<T>::DefaultedList(Args && ...args)
 				: _list(), _default(_list.end())
@@ -207,10 +199,12 @@
 			}
 
 			template<typename T>
-			void DefaultedList<T>::clear()
+			template<typename ...Args>
+			void DefaultedList<T>::clear(Args && ...args)
 			{
 				_list.clear();
-				_list.emplace_back();
+
+				_list.emplace_back(std::forward<Args>(args)...);
 				_default = _list.begin();
 			}
 

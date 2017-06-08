@@ -10,68 +10,46 @@ using namespace Entropy::Theia;
 using namespace std;
 using namespace glm;
 
-Dimension Camera::_aspect(16.0f / 9.0f);
-set<Camera *> Camera::_cameras;
+Camera::Camera(Screen &s)
+	: _screen(s), _view(), _pos(), _look_at(), _up(), _cbs()
+{}
 
-Camera::Camera()
-	: _pos(0.0f, 0.0f, 10.0f), _look_at(0.0f, 0.0f, 0.0f), _up(0.0f, 1.0f, 0.0f),
-	_fov(glm::radians(45.0f)), _near(0.0f), _far(10.0f),
-	_view(), _proj()
-{
-	_cameras.insert(this);
-
-	update_view();
-	update_proj();
-}
-
-Camera::~Camera()
-{
-	_cameras.erase(this);
-}
+Camera::~Camera() = default;
 
 void Camera::setPosition(const Vertex &v)
 {
-	_pos = v;
+	Position() = v;
 
-	update_view();
+	Update();
 }
 
 void Camera::setLookAt(const Vertex &v)
 {
-	_look_at = v;
+	LookAt() = v;
 
-	update_view();
+	Update();
 }
 
 void Camera::setUp(const Vertex &v)
 {
-	_up = v;
+	Up() = v;
 
-	update_proj();
+	Update();
 }
 
-void Camera::setFov(const Dimension &v)
+void Camera::addCallback(const function<void(Camera &)> &cb)
 {
-	_fov = glm::radians(v);
-
-	update_proj();
+	_cbs.push_back(cb);
 }
 
-void Camera::setClipping(const Dimension &n, const Dimension &f)
+void Camera::clearCallbacks()
 {
-	_near = n;
-	_far = f;
-
-	update_proj();
+	_cbs.clear();
 }
 
-void Camera::setAspect(const int width, const int height)
+const Matrix &Camera::View() const
 {
-	_aspect = static_cast<float>(width) / static_cast<float>(height);
-
-	for(auto &&i : _cameras) {
-		i->update_proj();
-	}
+	return _view;
 }
 
 const Vertex &Camera::Position() const
@@ -89,63 +67,41 @@ const Vertex &Camera::Up() const
 	return _up;
 }
 
-const Dimension &Camera::Fov() const
+void Camera::Update()
 {
-	return _fov;
+	View() = glm::lookAt(Position(), LookAt(), Up());
+
+	RunCallbacks();
 }
 
-const Dimension &Camera::Near() const
+void Camera::RunCallbacks()
 {
-	return _near;
+	for(auto &&f : _cbs) {
+		f(*this);
+	}
 }
 
-const Dimension &Camera::Far() const
-{
-	return _far;
-}
-
-const Matrix &Camera::View() const
+Matrix &Camera::View()
 {
 	return _view;
 }
 
-const Matrix &Camera::Projection() const
+Vertex &Camera::Position()
 {
-	return _proj;
+	return _pos;
 }
 
-const Dimension &Camera::Aspect()
+Vertex &Camera::LookAt()
 {
-	return _aspect;
+	return _look_at;
 }
 
-void Camera::addObject(Drawable &o)
+Vertex &Camera::Up()
 {
-	_objs.insert(&o);
-
-	o.UpdateView(*this);
-	o.UpdateProjection(*this);
+	return _up;
 }
 
-void Camera::removeObject(Drawable &o)
+Screen &Camera::getScreen()
 {
-	_objs.erase(&o);
-}
-
-void Camera::update_view()
-{
-	_view = glm::lookAt(_pos, _look_at, _up);
-
-	for(auto &&i : _objs) {
-		i->UpdateView(*this);
-	}
-}
-
-void Camera::update_proj()
-{
-	_proj = glm::perspective(_fov, _aspect, _near, _far);
-
-	for(auto &&i : _objs) {
-		i->UpdateProjection(*this);
-	}
+	return _screen;
 }

@@ -13,6 +13,8 @@
 
 #	include <epoxy/gl.h>
 #	include <GL/glu.h>
+
+//	2017-06-06 AMR TODO: move to GLFW/Glfw.hh?
 #	include <GLFW/glfw3.h>
 
 	namespace Entropy

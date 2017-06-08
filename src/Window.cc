@@ -8,16 +8,14 @@
 
 using namespace Entropy::Theia;
 using namespace std;
+using namespace std::chrono;
 
 struct GlfwWindow :
 	public GLFW::Window
 {
 	GlfwWindow(Entropy::Theia::Window *, const std::string, const std::size_t, const std::size_t);
 	void Draw();
-	void Key(const int, const int, const int, const int);
-	void Mouse(const int, const int, const int);
-	void Move(const double, const double);
-	void Resize(const int, const int);
+	void onEvent(const Event &);
 	private:
 		Entropy::Theia::Window *_win;
 };
@@ -31,22 +29,28 @@ void Window::operator () ()
 
 DefaultedList<Scene> &Window::Scenes()
 {
-	return _scene;
+	return *_scene;
 }
 
 const DefaultedList<Scene> &Window::Scenes() const
 {
-	return _scene;
+	return *_scene;
 }
 
 void Window::make_window(const string &name, const size_t width, const size_t height)
 {
 	_window = make_shared<GlfwWindow>(this, name, width, height);
+	_scene = make_shared<DefaultedList<Scene>>(*_window);
 }
 
 void Window::Draw()
 {
-	(*Scenes())();
+	auto tp = high_resolution_clock::now();
+	auto dt = duration_cast<duration<double>>(tp - _last);
+	_last = tp;
+
+	Scenes()->Update(dt);
+	Scenes()->Draw();
 }
 
 void Window::Show()
@@ -64,19 +68,9 @@ void Window::Close()
 	_window->Close();
 }
 
-void Window::toggleFullscreen()
+void Window::Fullscreen()
 {
-	_window->toggleFullscreen();
-}
-
-void Window::disableCursor()
-{
-	_window->disableCursor();
-}
-
-void Window::enableCursor()
-{
-	 _window->enableCursor();
+	_window->Fullscreen();
 }
 
 bool Window::isFullscreen() const
@@ -94,55 +88,26 @@ bool Window::isDone() const
 	return _window->isDone();
 }
 
-void Window::Key(const int key, const int scan, const int action, const int modifiers)
+void Window::onEvent(const Event &ev)
 {
-	for(auto &&f : _key_cbs) {
-		f(key, scan, action, modifiers);
+	for(auto &&f : _cbs) {
+		f(ev);
 	}
 }
 
-void Window::Mouse(const int button, const int action, const int modifiers)
+void Window::setFoV(const Dimension &v)
 {
-	for(auto &&f : _mouse_cbs) {
-		f(button, action, modifiers);
-	}
+	_window->setFoV(v);
 }
 
-void Window::Move(const double x, const double y)
+void Window::setNearClipping(const Dimension &v)
 {
-	for(auto &&f : _move_cbs) {
-		f(x, y);
-	}
+	_window->setNearClipping(v);
 }
 
-void Window::Resize(const int width, const int height)
+void Window::setFarClipping(const Dimension &v)
 {
-	for(auto &&f : _resize_cbs) {
-		f(width, height);
-	}
-}
-
-void Window::setCallbacks()
-{}
-
-void Window::setCallback(const std::function<void(const int, const int, const int, const int)> &f)
-{
-	_key_cbs.push_back(f);
-}
-
-void Window::setCallback(const std::function<void(const int, const int, const int)> &f)
-{
-	_mouse_cbs.push_back(f);
-}
-
-void Window::setCallback(const std::function<void(const double, const double)> &f)
-{
-	_move_cbs.push_back(f);
-}
-
-void Window::setCallback(const std::function<void(const int, const int)> &f)
-{
-	_resize_cbs.push_back(f);
+	_window->setFarClipping(v);
 }
 
 GlfwWindow::GlfwWindow(Entropy::Theia::Window *win, const std::string name, const std::size_t width, const std::size_t height)
@@ -154,23 +119,8 @@ void GlfwWindow::Draw()
 	_win->Draw();
 }
 
-void GlfwWindow::Key(const int key, const int code, const int action, const int modifiers)
+void GlfwWindow::onEvent(const Event &ev)
 {
-	_win->Key(key, code, action, modifiers);
-}
-
-void GlfwWindow::Mouse(const int key, const int action, const int modifiers)
-{
-	_win->Mouse(key, action, modifiers);
-}
-
-void GlfwWindow::Move(const double x, const double y)
-{
-	_win->Move(x, y);
-}
-
-void GlfwWindow::Resize(const int width, const int height)
-{
-	GLFW::Window::Resize(width, height);
-	_win->Resize(width, height);
+	_win->onEvent(ev);
+	GLFW::Window::onEvent(ev);
 }

@@ -6,39 +6,44 @@ AM_CPPFLAGS = -I$(srcdir)/src
 
 theiaheadersdir = $(includedir)/Entropy/Theia
 theiaheaders_HEADERS = \
-	src/Exception.hh \
-	src/Drawable.hh \
-	src/Object.hh \
+	src/Application.hh \
 	src/Camera.hh \
-	src/Scene.hh \
-	src/Scene.impl.hh \
+	src/Drawable.hh \
+	src/Drawables.hh \
+	src/Drawables.impl.hh \
+	src/Event.hh \
+	src/Events.hh \
+	src/Exception.hh \
 	src/IWindow.hh \
+	src/Object.hh \
+	src/Scene.hh \
+	src/Screen.hh \
+	src/Types.hh \
 	src/Window.hh \
-	src/Window.impl.hh \
-	src/Application.hh
+	src/Window.impl.hh
 
 utilityheadersdir = $(includedir)/Entropy/Theia/Utility
 utilityheaders_HEADERS = \
 	src/Utility/DefaultedList.hh \
 	src/Utility/DefaultedList.impl.hh \
-	src/Utility/PolymorphicListIterator.hh \
-	src/Utility/PolymorphicListIterator.impl.hh \
 	src/Utility/PolymorphicList.hh \
 	src/Utility/PolymorphicList.impl.hh \
+	src/Utility/PolymorphicListIterator.hh \
+	src/Utility/PolymorphicListIterator.impl.hh \
 	src/Utility/SharedData.hh \
 	src/Utility/SharedData.impl.hh
 
-glheadersdir = $(includedir)/Entropy/GL
+glheadersdir = $(includedir)/Entropy/Theia/GL
 glheaders_HEADERS = \
-	src/Bind.hh \
-	src/Buffer.hh \
-	src/Buffer.impl.hh \
-	src/Array.hh \
-	src/Array.impl.hh \
-	src/Program.hh \
-	src/Program.impl.hh \
-	src/Shader.hh \
-	src/Texture.hh
+	src/GL/Array.hh \
+	src/GL/Array.impl.hh \
+	src/GL/Bind.hh \
+	src/GL/Buffer.hh \
+	src/GL/Buffer.impl.hh \
+	src/GL/Program.hh \
+	src/GL/Program.impl.hh \
+	src/GL/Shader.hh \
+	src/GL/Texture.hh
 
 glfwheadersdir = $(includedir)/Entropy/Theia/GLFW
 glfwheaders_HEADERS = \
@@ -48,30 +53,28 @@ glfwheaders_HEADERS = \
 lib_LTLIBRARIES = libtheia.la
 
 libtheia_la_SOURCES = \
-	src/GLFW/Glfw.cc \
-	src/GLFW/Window.cc \
 	src/GL/Array.cc \
 	src/GL/Bind.cc \
 	src/GL/Buffer.cc \
 	src/GL/Program.cc \
 	src/GL/Shader.cc \
 	src/GL/Texture.cc \
-	src/Object.cc \
+	src/GLFW/Glfw.cc \
+	src/GLFW/Window.cc \
+	src/Application.cc \
 	src/Camera.cc \
-	src/Drawable.cc \
+	src/Drawables.cc \
+	src/Event.cc \
+	src/Events.cc \
+	src/Object.cc \
 	src/Scene.cc \
-	src/Window.cc \
-	src/Application.cc
+	src/Screen.cc \
+	src/Window.cc
 
 check_PROGRAMS = \
 	hand-glfwwindow \
 	hand-object \
-	hand-camera \
-	hand-scene \
-	hand-window \
-	hand-application \
-	hand-texture \
-	hand-application-no-inheritance
+	hand-application
 
 all-local:
 	test -d data || $(LN_S) $(top_srcdir)/data $(builddir)/data
@@ -82,23 +85,8 @@ hand_glfwwindow_LDADD = libtheia.la
 hand_object_SOURCES = test/hand/object.cc
 hand_object_LDADD = libtheia.la
 
-hand_camera_SOURCES = test/hand/camera.cc
-hand_camera_LDADD = libtheia.la
-
-hand_scene_SOURCES = test/hand/scene.cc
-hand_scene_LDADD = libtheia.la
-
-hand_window_SOURCES = test/hand/window.cc
-hand_window_LDADD = libtheia.la
-
-hand_texture_SOURCES = test/hand/texture.cc
-hand_texture_LDADD = libtheia.la
-
 hand_application_SOURCES = test/hand/application.cc
 hand_application_LDADD = libtheia.la
-
-hand_application_no_inheritance_SOURCES = test/hand/application-no-inheritance.cc
-hand_application_no_inheritance_LDADD = libtheia.la
 
 if GTEST
 check_PROGRAMS += \

@@ -8,6 +8,7 @@
 #	include <Entropy/Application.hh>
 
 #	include "Window.hh"
+#	include "Events.hh"
 
 	namespace Entropy
 	{
@@ -24,10 +25,7 @@
 					DefaultedList<Window> &Windows();
 					const DefaultedList<Window> &Windows() const;
 				protected:
-					virtual void Key(const int, const int, const int, const int) {}
-					virtual void Mouse(const int, const int, const int) {}
-					virtual void Move(const double, const double) {}
-					virtual void Resize(const int, const int) {}
+					virtual void onEvent(const Event &) {}
 				private:
 					DefaultedList<Window> _window;
 			};

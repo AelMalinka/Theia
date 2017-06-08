@@ -7,19 +7,18 @@
 using namespace Entropy::Theia;
 using namespace std;
 
-Scene::Scene() = default;
-Scene::~Scene() = default;
-
-void Scene::operator () ()
+Scene::Scene(Screen &s)
+	: Drawables(s), _cameras(s)
 {
-	for(auto &&d : _draws) {
-		d();
-	}
+	_cameras->addCallback(bind(&Scene::UpdateCamera, this, placeholders::_1));
 }
 
-void Scene::reset()
+Scene::~Scene() = default;
+
+void Scene::NewDrawable(const shared_ptr<Drawable> &d)
 {
-	_cameras.clear();
+	d->UpdateCamera(*_cameras);
+	Drawables::NewDrawable(d);
 }
 
 Camera &Scene::getCamera()
@@ -34,40 +33,40 @@ const Camera &Scene::getCamera() const
 
 DefaultedList<Camera>::iterator Scene::addCamera()
 {
-	_cameras.emplace_front();
+	_cameras.emplace_front(getScreen());
+	auto i = _cameras.begin();
 
-	for(auto &&i : _draws) {
-		_cameras.front().addObject(i);
-	}
+	i->addCallback([this](const Camera &c) {
+		this->UpdateCamera(c);
+	});
 
-	return _cameras.begin();
+	return i;
 }
 
-void Scene::clear()
+void Scene::changeCamera(const DefaultedList<Camera>::iterator &i)
 {
-	for(auto &&c : _cameras) {
-		for(auto &&i : _draws) {
-			c.removeObject(i);
-		}
-	}
-
-	_draws.clear();
+	_cameras.setDefault(i);
+	ChangedCamera();
 }
 
-void Scene::push_front(const shared_ptr<Drawable> &o)
+void Scene::removeCamera(const DefaultedList<Camera>::iterator &i)
 {
-	_draws.push_front(o);
-
-	for(auto &&c : _cameras) {
-		c.addObject(_draws.front());
-	}
+	_cameras.erase(i);
+	// 2017-06-06 AMR TODO: only call when actually changed
+	ChangedCamera();
 }
 
-void Scene::push_back(const shared_ptr<Drawable> &o)
+void Scene::clearCameras()
 {
-	_draws.push_back(o);
+	_cameras.clear(getScreen());
+	_cameras->addCallback([this](const Camera &c) {
+		this->UpdateCamera(c);
+	});
 
-	for(auto &&c : _cameras) {
-		c.addObject(_draws.back());
-	}
+	ChangedCamera();
+}
+
+void Scene::ChangedCamera()
+{
+	UpdateCamera(*_cameras);
 }

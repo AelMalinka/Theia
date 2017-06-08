@@ -12,25 +12,27 @@
 		namespace Theia
 		{
 			template<typename ...F>
-			Window::Window(const std::string &name, const std::size_t width, const std::size_t height, F ...f)
-				: _window(), _scene(), _key_cbs(), _mouse_cbs(), _move_cbs(), _resize_cbs()
+			Window::Window(const std::string &name, const std::size_t width, const std::size_t height, F && ...f)
+				: _window(), _scene(), _cbs(), _last(std::chrono::high_resolution_clock::now())
 			{
 				make_window(name, width, height);
-				setCallbacks(f...);
+				addCallbacks(std::forward(f)...);
 			}
 
 			template<typename ...F>
-			Window::Window(const std::shared_ptr<IWindow> &win, F ...f)
-				: _window(win), _scene(), _key_cbs(), _mouse_cbs(), _move_cbs(), _resize_cbs()
+			Window::Window(const std::shared_ptr<IWindow> &win, F && ...f)
+				: _window(win), _scene(std::make_shared<DefaultedList<Scene>>(*_window)), _cbs(), _last(std::chrono::high_resolution_clock::now())
 			{
-				setCallbacks(f...);
+				addCallbacks(std::forward(f)...);
 			}
 
-			template<typename F, typename ...R>
-			void Window::setCallbacks(F f, R ...r)
+			template<typename ...F>
+			void Window::addCallbacks(F && ...r)
 			{
-				this->setCallback(f);
-				this->setCallbacks(r...);
+				std::vector<std::function<void(const Event &)>> cbs = { r... };
+				for(auto &&f : cbs) {
+					_cbs.push_back(f);
+				}
 			}
 		}
 	}

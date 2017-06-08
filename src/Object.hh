@@ -15,13 +15,16 @@
 				public Drawable
 			{
 				public:
-					Object(GL::Program &, const std::string &, const std::string &, const std::string &);
+					Object();
 					virtual ~Object();
 					virtual void Translate(const Vertex &);
 					virtual void Rotate(const Dimension &, const Vertex &);
 					virtual void Scale(const Vertex &);
 				protected:
 					virtual void Update(const std::chrono::duration<double> &);
+				protected:
+					Matrix &Model();
+					const Matrix &Model() const;
 				private:
 					Matrix _model;
 					bool _needs_update;

@@ -5,56 +5,44 @@
 #if !defined ENTROPY_THEIA_CAMERA_INC
 #	define ENTROPY_THEIA_CAMERA_INC
 
-#	include "Drawable.hh"
-
-#	include <set>
+#	include "Screen.hh"
 
 	namespace Entropy
 	{
 		namespace Theia
 		{
-			// 2017-03-24 AMR FIXME: don't keep aspect global
 			class Camera
 			{
 				public:
-					Camera();
-					~Camera();
-					void setPosition(const Vertex &);
-					void setLookAt(const Vertex &);
-					void setUp(const Vertex &);
-					void setFov(const Dimension &);
-					void setClipping(const Dimension &, const Dimension &);
+					Camera(Screen &);
+					virtual ~Camera();
 				public:
+					virtual void setPosition(const Vertex &);
+					virtual void setLookAt(const Vertex &);
+					virtual void setUp(const Vertex &);
+					virtual void addCallback(const std::function<void(Camera &)> &);
+					virtual void clearCallbacks();
+				public:
+					const Matrix &View() const;
 					const Vertex &Position() const;
 					const Vertex &LookAt() const;
 					const Vertex &Up() const;
-					const Dimension &Fov() const;
-					const Dimension &Near() const;
-					const Dimension &Far() const;
-					const Matrix &View() const;
-					const Matrix &Projection() const;
-				public:
-					void addObject(Drawable &);
-					void removeObject(Drawable &);
-				public:
-					static const Dimension &Aspect();
-					static void setAspect(const int, const int);
+				protected:
+					void Update();
+					void RunCallbacks();
+				protected:
+					Matrix &View();
+					Vertex &Position();
+					Vertex &LookAt();
+					Vertex &Up();
+					Screen &getScreen();
 				private:
-					void update_view();
-					void update_proj();
-				private:
+					Screen &_screen;
+					Matrix _view;
 					Vertex _pos;
 					Vertex _look_at;
 					Vertex _up;
-					Dimension _fov;
-					Dimension _near;
-					Dimension _far;
-					Matrix _view;
-					Matrix _proj;
-					std::set<Drawable *> _objs;
-				private:
-					static Dimension _aspect;
-					static std::set<Camera *> _cameras;
+					std::vector<std::function<void(Camera &)>> _cbs;
 			};
 		}
 	}

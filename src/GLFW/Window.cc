@@ -5,6 +5,7 @@
 #include "Window.hh"
 
 #include "../Camera.hh"
+#include "../Events.hh"
 
 using namespace Entropy::Theia;
 using namespace Entropy::Theia::GLFW;
@@ -41,7 +42,7 @@ void Window::Close()
 	glfwSetWindowShouldClose(_handle, GLFW_TRUE);
 }
 
-void Window::toggleFullscreen()
+void Window::Fullscreen()
 {
 	if (!isFullscreen()) {
 		glfwGetWindowSize(_handle, &get<0>(_size_pos), &get<1>(_size_pos));
@@ -95,10 +96,11 @@ void Window::operator () ()
 	}
 }
 
-void Window::Resize(const int width, const int height)
+void Window::onEvent(const Event &ev)
 {
-	glViewport(0, 0, width, height);
-	Camera::setAspect(width, height);
+	if(ev.Id() == Events::Resize::Id) {
+		Resize(dynamic_cast<const Events::Resize &>(ev).Width(), dynamic_cast<const Events::Resize &>(ev).Height());
+	}
 }
 
 void Window::_create_window(const string &name)
@@ -113,7 +115,7 @@ void Window::_create_window(const string &name)
 	_handle = glfwCreateWindow(get<0>(_size_pos), get<1>(_size_pos), name.c_str(), nullptr, nullptr);
 
 	glfwMakeContextCurrent(_handle);
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0.0, 0.0, 0.0, 1.0);
 
 	glfwSetWindowUserPointer(_handle, this);
 	glfwSetWindowAspectRatio(_handle, get<0>(_size_pos), get<1>(_size_pos));
@@ -134,22 +136,26 @@ const GLFWvidmode *Window::_get_mode() const
 	return glfwGetVideoMode(_get_monitor());
 }
 
-void key_cb(GLFWwindow *handle, int key, int scan, int action, int modifiers)
+void key_cb(GLFWwindow *handle, int key, int, int action, int modifiers)
 {
-	reinterpret_cast<Window *>(glfwGetWindowUserPointer(handle))->Key(key, scan, action, modifiers);
+	Events::Key ev(key, action, modifiers);
+	reinterpret_cast<Window *>(glfwGetWindowUserPointer(handle))->onEvent(ev);
 }
 
 void mouse_cb(GLFWwindow *handle, int button, int action, int modifiers)
 {
-	reinterpret_cast<Window *>(glfwGetWindowUserPointer(handle))->Mouse(button, action, modifiers);
+	Events::Key ev(GLFW_KEY_LAST + 1 + button, action, modifiers);
+	reinterpret_cast<Window *>(glfwGetWindowUserPointer(handle))->onEvent(ev);
 }
 
 void move_cb(GLFWwindow *handle, const double x, const double y)
 {
-	reinterpret_cast<Window *>(glfwGetWindowUserPointer(handle))->Move(x, y);
+	Events::Mouse ev(x, y);
+	reinterpret_cast<Window *>(glfwGetWindowUserPointer(handle))->onEvent(ev);
 }
 
 void resize_cb(GLFWwindow *handle, int width, int height)
 {
-	reinterpret_cast<Window *>(glfwGetWindowUserPointer(handle))->Resize(width, height);
+	Events::Resize ev(width, height);
+	reinterpret_cast<Window *>(glfwGetWindowUserPointer(handle))->onEvent(ev);
 }

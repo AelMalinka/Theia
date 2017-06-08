@@ -20,7 +20,6 @@
 			class DefaultedList
 			{
 				public:
-					DefaultedList();
 					template<typename ...Args>
 					explicit DefaultedList(Args && ...);
 					explicit DefaultedList(const T &);
@@ -62,7 +61,8 @@
 					void push_back(T &&);
 					template<typename ...Args>
 					void emplace_back(Args && ...);
-					void clear();
+					template<typename ...Args>
+					void clear(Args && ...);
 					void erase(const iterator &);
 				private:
 					std::list<T> _list;

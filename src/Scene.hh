@@ -5,45 +5,35 @@
 #if !defined ENTROPY_THEIA_SCENE_INC
 #	define ENTROPY_THEIA_SCENE_INC
 
-#	include "Drawable.hh"
+#	include "Drawables.hh"
 #	include "Camera.hh"
 #	include "Utility/DefaultedList.hh"
-#	include "Utility/PolymorphicList.hh"
 
 	namespace Entropy
 	{
 		namespace Theia
 		{
-			class Scene
+			class Scene :
+				public Drawables
 			{
 				public:
-					Scene();
+					Scene(Screen &);
 					virtual ~Scene();
-					virtual void operator () ();
+				protected:
+					virtual void NewDrawable(const std::shared_ptr<Drawable> &);
 				public:
-					void reset();
-					DefaultedList<Camera>::iterator addCamera();
 					Camera &getCamera();
 					const Camera &getCamera() const;
-				public:
-					void clear();
-					void push_front(const std::shared_ptr<Drawable> &);
-					template<typename U, typename = typename std::enable_if<std::is_base_of<Drawable, U>::value>::type>
-					void push_front(U &&);
-					template<typename U, typename ...Args>
-					void emplace_front(Args && ...);
-					void push_back(const std::shared_ptr<Drawable> &);
-					template<typename U, typename = typename std::enable_if<std::is_base_of<Drawable, U>::value>::type>
-					void push_back(U &&);
-					template<typename U, typename ...Args>
-					void emplace_back(Args && ...);
+					DefaultedList<Camera>::iterator addCamera();
+					void changeCamera(const DefaultedList<Camera>::iterator &);
+					void removeCamera(const DefaultedList<Camera>::iterator &);
+					void clearCameras();
+				protected:
+					virtual void ChangedCamera();
 				private:
 					DefaultedList<Camera> _cameras;
-					PolymorphicList<Drawable> _draws;
 			};
 		}
 	}
-
-#	include "Scene.impl.hh"
 
 #endif

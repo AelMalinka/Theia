@@ -23,18 +23,18 @@
 					public:
 						Window(const std::string &, const int, const int);
 						virtual ~Window();
+						virtual void operator () ();
 						virtual void Show();
 						virtual void Hide();
 						virtual void Close();
-						virtual void toggleFullscreen();
+						virtual void Fullscreen();
+						virtual bool isDone() const;
+						virtual bool isVisible() const;
+						virtual bool isFullscreen() const;
+						// 2017-06-06 AMR TODO: decide on interface for cursor
 						virtual void disableCursor();
 						virtual void enableCursor();
-						virtual bool isFullscreen() const;
-						virtual bool isVisible() const;
-						virtual bool isDone() const;
-						virtual void operator () ();
-					public:
-						virtual void Resize(const int width, const int height);
+						virtual void onEvent(const Event &);
 					protected:
 						virtual void _create_window(const std::string &);
 						virtual GLFWmonitor *_get_monitor() const;

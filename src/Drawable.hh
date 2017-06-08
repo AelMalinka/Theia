@@ -5,46 +5,24 @@
 #if !defined ENTROPY_THEIA_DRAWABLE_INC
 #	define ENTROPY_THEIA_DRAWABLE_INC
 
-#	include "Exception.hh"
+#	include "Camera.hh"
 
-#	include "GL/Program.hh"
 #	include <chrono>
-#	include <glm/glm.hpp>
 
 	namespace Entropy
 	{
 		namespace Theia
 		{
-			class Camera;
-
-			using Vertex = glm::vec3;
-			using Dimension = Vertex::value_type;
-			using Matrix = glm::mat4;
-
-			// 2017-03-24 AMR FIXME: find out if per object time keeping is too much pain
 			class Drawable
 			{
 				public:
-					Drawable(GL::Program &, const std::string &, const std::string &, const std::string &);
-					virtual ~Drawable();
-					virtual void operator () ();
-				protected:
 					virtual void Draw() = 0;
-					virtual void Update(const std::chrono::duration<double> &);
-					virtual void UpdateModel(const Matrix &);
-				public:
-					virtual void UpdateView(const Camera &);
-					virtual void UpdateProjection(const Camera &);
-				private:
-					GL::Program &_program;
-					std::string _model;
-					std::string _view;
-					std::string _proj;
-					std::chrono::high_resolution_clock::time_point _last;
+					virtual void Update(const std::chrono::duration<double> &) = 0;
+					virtual void UpdateModel() = 0;
+					virtual void UpdateScreen(const Screen &) = 0;
+					virtual void UpdateCamera(const Camera &) = 0;
 			};
 		}
 	}
-
-#	include "Camera.hh"
 
 #endif
