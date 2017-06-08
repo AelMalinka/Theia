@@ -4,7 +4,7 @@
 
 #include <cstdlib>
 #include <vector>
-
+#include "Events.hh"
 #include "GLFW/Window.hh"
 #include "GL/Program.hh"
 #include "GL/Array.hh"
@@ -47,9 +47,7 @@ class MyWindow :
 		MyWindow(const string &);
 	private:
 		void Draw();
-		void Key(const int, const int, const int, const int);
-		void Mouse(const int, const int, const int);
-		void Move(const double, const double);
+		void onEvent(const Event &);
 	private:
 		Program _program;
 		Buffer _vbo;
@@ -97,28 +95,28 @@ void MyWindow::Draw()
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
-void MyWindow::Key(const int key, const int, const int action, const int)
+void MyWindow::onEvent(const Event &ev)
 {
-	if(action == GLFW_PRESS) {
-		switch(key) {
-			case GLFW_KEY_ESCAPE:
-				Close();
-			break;
-			case GLFW_KEY_F:
-				toggleFullscreen();
-			break;
-			case GLFW_KEY_J:
-				disableCursor();
-			break;
-			case GLFW_KEY_K:
-				enableCursor();
-			break;
+	if(ev.Id() == Events::Key::Id) {
+		auto k = dynamic_cast<const Events::Key &>(ev);
+
+		if(k.Action() == GLFW_PRESS) {
+			switch(k.Code()) {
+				case GLFW_KEY_ESCAPE:
+					Close();
+				break;
+				case GLFW_KEY_F:
+					Fullscreen();
+				break;
+				case GLFW_KEY_J:
+					disableCursor();
+				break;
+				case GLFW_KEY_K:
+					enableCursor();
+				break;
+			}
 		}
 	}
+
+	GLFW::Window::onEvent(ev);
 }
-
-void MyWindow::Mouse(const int, const int, const int)
-{}
-
-void MyWindow::Move(double, double)
-{}

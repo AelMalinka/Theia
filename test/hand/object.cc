@@ -7,6 +7,7 @@
 
 #include "GLFW/Window.hh"
 #include "Object.hh"
+#include "Events.hh"
 #include "GL/Program.hh"
 #include "GL/Array.hh"
 #include "GL/Bind.hh"
@@ -50,8 +51,10 @@ class MyObject :
 		MyObject();
 		void Draw();
 		void Update(const chrono::duration<double> &);
-		void UpdateView(const Camera &);
-		void UpdateProjection(const Camera &);
+	protected:
+		void UpdateModel();
+		void UpdateCamera(const Camera &);
+		void UpdateScreen(const Screen &);
 	private:
 		Program _program;
 		Buffer _vbo;
@@ -65,11 +68,10 @@ class MyWindow :
 		MyWindow(const string &);
 	private:
 		void Draw();
-		void Key(const int, const int, const int, const int);
-		void Mouse(const int, const int, const int);
-		void Move(const double, const double);
+		void onEvent(const Event &);
 	private:
 		MyObject _obj;
+		chrono::high_resolution_clock::time_point _last;
 };
 
 int main(int, char *ArgV[])
@@ -91,30 +93,43 @@ int main(int, char *ArgV[])
 }
 
 MyWindow::MyWindow(const string &name)
-	: GLFW::Window(name, 640, 360), _obj()
+	: GLFW::Window(name, 640, 360), _obj(), _last(chrono::high_resolution_clock::now())
 {}
 
 void MyWindow::Draw()
 {
-	_obj();
+	using namespace std::chrono;
+
+	auto t = high_resolution_clock::now();
+
+	_obj.Update(duration_cast<duration<double>>(t - _last));
+	_obj.Draw();
+
+	_last = t;
 }
 
-void MyWindow::Key(const int key, const int, const int action, const int)
+void MyWindow::onEvent(const Event &ev)
 {
-	if(action == GLFW_PRESS) {
-		switch(key) {
-			case GLFW_KEY_ESCAPE:
-				Close();
-			break;
-			case GLFW_KEY_F:
-				toggleFullscreen();
-			break;
+	if(ev.Id() == Events::Key::Id) {
+		const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
+
+		if(k.Action() == GLFW_PRESS) {
+			switch(k.Code()) {
+				case GLFW_KEY_ESCAPE:
+					Close();
+				break;
+				case GLFW_KEY_F:
+					Fullscreen();
+				break;
+			}
 		}
 	}
+
+	GLFW::Window::onEvent(ev);
 }
 
 MyObject::MyObject()
-	: Object(_program, "model"s, ""s, ""s), _program(), _vbo(Buffer::Vertex), _vao()
+	: Object(), _program(), _vbo(Buffer::Vertex), _vao()
 {
 	Shader vert(Shader::Vertex, vert_code);
 	Shader frag(Shader::Fragment, frag_code);
@@ -141,14 +156,13 @@ void MyObject::Update(const chrono::duration<double> &dt)
 	Object::Update(dt);
 }
 
-void MyWindow::Mouse(const int, const int, const int)
+void MyObject::UpdateModel()
+{
+	_program.SetUniform("model"s, Model());
+}
+
+void MyObject::UpdateCamera(const Camera &)
 {}
 
-void MyWindow::Move(const double, const double)
-{}
-
-void MyObject::UpdateView(const Camera &)
-{}
-
-void MyObject::UpdateProjection(const Camera &)
+void MyObject::UpdateScreen(const Screen &)
 {}

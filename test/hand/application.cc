@@ -12,14 +12,8 @@
 #include "Utility/SharedData.hh"
 
 using namespace std;
-
-using Entropy::Theia::Object;
-using Entropy::Theia::SharedData;
-using Entropy::Theia::GL::Program;
-using Entropy::Theia::GL::Array;
-using Entropy::Theia::GL::Bind;
-using Entropy::Theia::GL::Shader;
-using Entropy::Theia::GL::Buffer;
+using namespace Entropy::Theia;
+using namespace Entropy::Theia::GL;
 
 namespace detail
 {
@@ -38,6 +32,10 @@ class MyObject :
 	public:
 		MyObject();
 		void Draw();
+	private:
+		void UpdateModel();
+		void UpdateCamera(const Camera &);
+		void UpdateScreen(const Screen &);
 };
 
 class Application :
@@ -46,14 +44,14 @@ class Application :
 	public:
 		Application(const int, char *[]);
 	private:
-		void Key(const int, const int, const int, const int);
+		void onEvent(const Event &e);
 };
 
 int main(int ArgC, char *ArgV[])
 {
 	try
 	{
-		Application app(ArgC, ArgV);
+		::Application app(ArgC, ArgV);
 		app();
 
 		return EXIT_SUCCESS;
@@ -72,29 +70,56 @@ void MyObject::Draw()
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-void Application::Key(const int key, const int, const int action, const int)
+void ::Application::onEvent(const Event &ev)
 {
-	if(action == GLFW_PRESS) {
-		switch(key) {
-			case GLFW_KEY_ESCAPE:
-				Windows()->Close();
-			break;
-			case GLFW_KEY_F:
-				Windows()->toggleFullscreen();
-			break;
+	if(ev.Id() == Events::Key::Id) {
+		const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
+
+		if(k.Action() == GLFW_PRESS) {
+			switch(k.Code()) {
+				case GLFW_KEY_ESCAPE:
+					Windows()->Close();
+				break;
+				case GLFW_KEY_F:
+					Windows()->Fullscreen();
+				break;
+			}
 		}
 	}
 }
 
-Application::Application(const int ArgC, char *ArgV[])
+::Application::Application(const int ArgC, char *ArgV[])
 	: Entropy::Theia::Application(ArgC, ArgV)
 {
-	Windows()->Scenes()->emplace_back<MyObject>();
+	Windows()->setFoV(90.0);
+	Windows()->setNearClipping(0.0);
+	Windows()->setFarClipping(10.0);
+
+	Windows()->Scenes()->getCamera().setPosition(Vertex(0.0, 0.0, 10.0));
+	Windows()->Scenes()->getCamera().setLookAt(Vertex(0.0, 0.0, 0.0));
+	Windows()->Scenes()->getCamera().setUp(Vertex(0.0, 1.0, 0.0));
+
+	Windows()->Scenes()->emplaceDrawable<MyObject>();
 }
 
 MyObject::MyObject()
-	: SharedData<detail::shared_data>(), Object(shared()->program, "model"s, "view"s, "projection"s)
+	: SharedData<detail::shared_data>(), Object()
 {}
+
+void MyObject::UpdateModel()
+{
+	shared()->program.SetUniform("model"s, Model());
+}
+
+void MyObject::UpdateCamera(const Camera &c)
+{
+	shared()->program.SetUniform("view"s, c.View());
+}
+
+void MyObject::UpdateScreen(const Screen &s)
+{
+	shared()->program.SetUniform("projection"s, s.Perspective());
+}
 
 detail::shared_data::shared_data()
 	: program(), array()
@@ -109,7 +134,7 @@ detail::shared_data::shared_data()
 		"in vec2 in_position;"
 
 		"void main() {"
-			"gl_Position = projection * model * view * vec4(in_position, 0.0, 1.0);"
+			"gl_Position = projection * view * model * vec4(in_position, 0.0, 1.0);"
 		"}"
 	;
 
