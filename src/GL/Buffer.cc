@@ -14,7 +14,7 @@ const Buffer::Usage Buffer::Dynamic(GL_DYNAMIC_DRAW);
 const Buffer::Usage Buffer::Stream(GL_STREAM_DRAW);
 
 Buffer::Buffer(const Type &t)
-	: _buffer(0), _type(t), _count(0)
+	: _buffer(0), _type(t)
 {
 	glGenBuffers(1, &_buffer);
 }
@@ -22,11 +22,6 @@ Buffer::Buffer(const Type &t)
 Buffer::~Buffer()
 {
 	glDeleteBuffers(1, &_buffer);
-}
-
-const size_t &Buffer::size() const
-{
-	return _count;
 }
 
 const GLenum &Buffer::GlType() const

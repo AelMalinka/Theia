@@ -18,7 +18,6 @@
 				void Buffer::Data(const C &a, const Usage &u)
 				{
 					Bind b(*this);
-					_count = a.size();
 					glBufferData(_type.Value(), sizeof(typename C::value_type) * a.size(), a.data(), u.Value());
 				}
 			}

@@ -24,7 +24,6 @@
 						~Buffer();
 						template<typename C>
 						void Data(const C &, const Usage &);
-						const std::size_t &size() const;
 						const GLenum &GlType() const;
 						const GLuint &Handle() const;
 					public:
@@ -57,7 +56,6 @@
 					private:
 						GLuint _buffer;
 						Type _type;
-						std::size_t _count;
 				};
 
 				ENTROPY_ERROR_INFO(UsageInfo, Buffer::Usage);
