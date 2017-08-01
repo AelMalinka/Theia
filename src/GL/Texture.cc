@@ -15,6 +15,8 @@ const Texture::Type Texture::Texture2D(GL_TEXTURE_2D);
 const Texture::Filter Texture::Linear(GL_LINEAR);
 const Texture::Filter Texture::Nearest(GL_NEAREST);
 
+const Texture::Repeat Texture::ClampEdge(GL_CLAMP_TO_EDGE);
+
 const Texture::Format Texture::R(GL_RED);
 const Texture::Format Texture::RGBA(GL_RGBA);
 

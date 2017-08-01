@@ -38,6 +38,7 @@
 						static const Type Texture2D;
 						static const Filter Linear;
 						static const Filter Nearest;
+						static const Repeat ClampEdge;
 						static const Format R;
 						static const Format RGBA;
 						static const Internal Red;
