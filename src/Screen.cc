@@ -59,12 +59,14 @@ const Matrix &Screen::Orthogonal() const
 
 Dimension Screen::Width() const
 {
-	return static_cast<Dimension>(get<0>(_size));
+	Dimension ret = get<0>(_size);
+	return ret;
 }
 
 Dimension Screen::Height() const
 {
-	return static_cast<Dimension>(get<1>(_size));
+	Dimension ret = get<1>(_size);
+	return ret;
 }
 
 Dimension Screen::Aspect() const
@@ -89,8 +91,12 @@ const Dimension &Screen::FoV() const
 
 void Screen::Update()
 {
+	Dimension z = 0.0f;
+	Dimension h = Height();
+	Dimension w = Width();
+
 	Perspective() = glm::perspective(FoV(), Aspect(), NearClipping(), FarClipping());
-	Orthogonal() = glm::ortho(0, Width(), 0, Height());
+	Orthogonal() = glm::ortho(z, w, z, h);
 
 	RunCallbacks();
 }
