@@ -12,16 +12,24 @@
 		namespace Theia
 		{
 			template<typename ...F>
-			Window::Window(const std::string &name, const std::size_t width, const std::size_t height, F && ...f)
-				: _window(), _scene(), _cbs(), _last(std::chrono::high_resolution_clock::now())
+			Window::Window(const std::string &name, const std::size_t width, const std::size_t height, F && ...f) :
+				Asio::UV::Timer(std::chrono::milliseconds(1)),
+				_window(),
+				_scene(),
+				_cbs(),
+				_last(std::chrono::high_resolution_clock::now())
 			{
 				make_window(name, width, height);
 				addCallbacks(std::forward(f)...);
 			}
 
 			template<typename ...F>
-			Window::Window(const std::shared_ptr<IWindow> &win, F && ...f)
-				: _window(win), _scene(std::make_shared<DefaultedList<Scene>>(*_window)), _cbs(), _last(std::chrono::high_resolution_clock::now())
+			Window::Window(const std::shared_ptr<IWindow> &win, F && ...f) :
+				Asio::UV::Timer(std::chrono::milliseconds(1)),
+				_window(win),
+				_scene(std::make_shared<DefaultedList<Scene>>(*_window)),
+				_cbs(),
+				_last(std::chrono::high_resolution_clock::now())
 			{
 				addCallbacks(std::forward(f)...);
 			}

@@ -24,7 +24,10 @@ Window::~Window() = default;
 
 void Window::operator () ()
 {
-	(*_window)();
+	if(!_window->isDone())
+		(*_window)();
+	else
+		Stop();
 }
 
 DefaultedList<Scene> &Window::Scenes()

@@ -10,7 +10,7 @@ using namespace Entropy::Theia;
 using namespace std;
 
 Application::Application()
-	: Entropy::Application(), _window("Theia Application", 640, 360)
+	: Entropy::Asio::Application(), _window("Theia Application", 640, 360)
 {
 	_window->addCallbacks([this](const Event &ev) {
 		this->onEvent(ev);
@@ -18,7 +18,7 @@ Application::Application()
 }
 
 Application::Application(int ArgC, char *ArgV[])
-	: Entropy::Application(ArgC, ArgV), _window(ArgV[0], 640, 360)
+	: Entropy::Asio::Application(ArgC, ArgV), _window(ArgV[0], 640, 360)
 {
 	_window->addCallbacks([this](const Event &ev) {
 		this->onEvent(ev);
@@ -29,18 +29,10 @@ Application::~Application() = default;
 
 void Application::operator () ()
 {
-	bool done = false;
-
 	_window->Show();
-	while(!done) {
-		(*_window)();
+	Add(*_window);
 
-		done = true;
-		for(auto &&w : _window) {
-			if(!w.isDone())
-				done = false;
-		}
-	}
+	Entropy::Asio::Application::operator () ();
 }
 
 DefaultedList<Window> &Application::Windows()

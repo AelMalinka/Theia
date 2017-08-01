@@ -8,6 +8,7 @@
 #	include <vector>
 #	include <functional>
 #	include <chrono>
+#	include <Entropy/Asio/UV/Timer.hh>
 
 #	include "IWindow.hh"
 #	include "Utility/DefaultedList.hh"
@@ -17,7 +18,8 @@
 	{
 		namespace Theia
 		{
-			class Window
+			class Window :
+				public Asio::UV::Timer
 			{
 				public:
 					template<typename ...F>
