@@ -22,12 +22,13 @@
 					virtual void Scale(const Vertex &);
 				protected:
 					virtual void Update(const std::chrono::duration<double> &);
+					virtual void Draw() = 0;
+					virtual void UpdateModel() = 0;
 				protected:
 					Matrix &Model();
 					const Matrix &Model() const;
 				private:
 					Matrix _model;
-					bool _needs_update;
 			};
 		}
 	}

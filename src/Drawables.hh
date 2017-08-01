@@ -18,7 +18,6 @@
 				public:
 					Drawables(Screen &);
 					virtual ~Drawables();
-					virtual void Draw();
 					virtual void Update(const std::chrono::duration<double> &);
 				protected:
 					virtual void UpdateModel() {}

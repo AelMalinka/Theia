@@ -15,13 +15,6 @@ Drawables::Drawables(Screen &s)
 
 Drawables::~Drawables() = default;
 
-void Drawables::Draw()
-{
-	for(auto &&d : _draws) {
-		d.Draw();
-	}
-}
-
 void Drawables::Update(const chrono::duration<double> &dt)
 {
 	for(auto &&d : _draws) {

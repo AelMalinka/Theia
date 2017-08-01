@@ -16,9 +16,7 @@
 			class Drawable
 			{
 				public:
-					virtual void Draw() = 0;
 					virtual void Update(const std::chrono::duration<double> &) = 0;
-					virtual void UpdateModel() = 0;
 					virtual void UpdateScreen(const Screen &) = 0;
 					virtual void UpdateCamera(const Camera &) = 0;
 			};

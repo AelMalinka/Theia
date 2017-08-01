@@ -11,7 +11,7 @@ using namespace std;
 using namespace glm;
 
 Object::Object()
-	: _model(), _needs_update(true)
+	: _model()
 {}
 
 Object::~Object() = default;
@@ -19,28 +19,22 @@ Object::~Object() = default;
 void Object::Translate(const Vertex &val)
 {
 	Model() = translate(Model(), val);
-	_needs_update = true;
 }
 
 void Object::Rotate(const Dimension &angle, const Vertex &dir)
 {
 	Model() = rotate(Model(), radians(angle), dir);
-	_needs_update = true;
 }
 
 void Object::Scale(const Vertex &val)
 {
 	Model() = scale(Model(), val);
-	_needs_update = true;
 }
 
 void Object::Update(const chrono::duration<double> &)
 {
-	if (_needs_update) {
-		UpdateModel();
-
-		_needs_update = false;
-	}
+	UpdateModel();
+	Draw();
 }
 
 Matrix &Object::Model()

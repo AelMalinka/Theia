@@ -53,7 +53,6 @@ void Window::Draw()
 	_last = tp;
 
 	Scenes()->Update(dt);
-	Scenes()->Draw();
 }
 
 void Window::Show()
