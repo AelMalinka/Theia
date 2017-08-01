@@ -45,6 +45,7 @@
 				public:
 					DefaultedList<Scene> &Scenes();
 					const DefaultedList<Scene> &Scenes() const;
+					DefaultedList<Scene>::iterator addScene();
 					template<typename ...F>
 					void addCallbacks(F && ...);
 				private:

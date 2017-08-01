@@ -40,6 +40,12 @@ const DefaultedList<Scene> &Window::Scenes() const
 	return *_scene;
 }
 
+DefaultedList<Scene>::iterator Window::addScene()
+{
+	_scene->emplace_back(*_window);
+	return --_scene->end();
+}
+
 void Window::make_window(const string &name, const size_t width, const size_t height)
 {
 	_window = make_shared<GlfwWindow>(this, name, width, height);
