@@ -13,7 +13,7 @@
 		{
 			template<typename ...F>
 			Window::Window(const std::string &name, const std::size_t width, const std::size_t height, F && ...f) :
-				Asio::UV::Timer(std::chrono::milliseconds(1)),
+				Tethys::UV::Timer(std::chrono::milliseconds(1)),
 				_window(),
 				_scene(),
 				_cbs(),
@@ -25,7 +25,7 @@
 
 			template<typename ...F>
 			Window::Window(const std::shared_ptr<IWindow> &win, F && ...f) :
-				Asio::UV::Timer(std::chrono::milliseconds(1)),
+				Tethys::UV::Timer(std::chrono::milliseconds(1)),
 				_window(win),
 				_scene(std::make_shared<DefaultedList<Scene>>(*_window)),
 				_cbs(),

@@ -5,7 +5,7 @@
 #if !defined ENTROPY_THEIA_APPLICATION_INC
 #	define ENTROPY_THEIA_APPLICATION_INC
 
-#	include <Entropy/Asio/Application.hh>
+#	include <Entropy/Tethys/Application.hh>
 
 #	include "Window.hh"
 #	include "Events.hh"
@@ -15,7 +15,7 @@
 		namespace Theia
 		{
 			class Application :
-				public Entropy::Asio::Application
+				public Entropy::Tethys::Application
 			{
 				public:
 					Application();
