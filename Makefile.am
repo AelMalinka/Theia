@@ -76,6 +76,9 @@ check_PROGRAMS = \
 	hand-object \
 	hand-application
 
+dist_noinst_DATA = \
+	data/purple-stars.png
+
 all-local:
 	test -d data || $(LN_S) $(top_srcdir)/data $(builddir)/data
 
