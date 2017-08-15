@@ -15,7 +15,7 @@
 		namespace Theia
 		{
 			class Application :
-				public Entropy::Tethys::Application
+				public virtual Entropy::Tethys::Application
 			{
 				public:
 					Application();
