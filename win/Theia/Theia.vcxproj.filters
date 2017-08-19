@@ -24,26 +24,17 @@
     <Filter Include="Implementation Files\Utility">
       <UniqueIdentifier>{56e755c3-4ccc-4952-8b03-1dcc38eca5f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GL">
+      <UniqueIdentifier>{178bcd81-9beb-433d-ba41-d0b324e171de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementation Files\GL">
+      <UniqueIdentifier>{4adfb45e-fe22-45e7-9523-670f5772f022}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GL">
+      <UniqueIdentifier>{60770566-3848-41bf-bb02-0562887eb443}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\Array.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Bind.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Buffer.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Program.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Shader.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Texture.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\GLFW\Glfw.cc">
       <Filter>Source Files\GLFW</Filter>
     </ClCompile>
@@ -56,43 +47,52 @@
     <ClCompile Include="..\..\src\Camera.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Drawable.cc">
+    <ClCompile Include="..\..\src\Scene.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Scene.cc">
+    <ClCompile Include="..\..\src\GL\Array.cc">
+      <Filter>Source Files\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GL\Bind.cc">
+      <Filter>Source Files\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GL\Buffer.cc">
+      <Filter>Source Files\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GL\Program.cc">
+      <Filter>Source Files\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GL\Shader.cc">
+      <Filter>Source Files\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GL\Texture.cc">
+      <Filter>Source Files\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Drawables.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Event.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Events.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Screen.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Window.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\Array.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Bind.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Buffer.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Exception.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Program.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Shader.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Texture.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Window.hh">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Program.impl.hh">
-      <Filter>Implementation Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Buffer.impl.hh">
-      <Filter>Implementation Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\GLFW\Glfw.hh">
       <Filter>Header Files\GLFW</Filter>
@@ -130,8 +130,65 @@
     <ClInclude Include="..\..\src\Scene.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Scene.impl.hh">
+    <ClInclude Include="..\..\src\Utility\SharedData.impl.hh">
+      <Filter>Implementation Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Utility\SharedData.hh">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Drawables.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Event.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Events.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\IWindow.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screen.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Types.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Drawables.impl.hh">
       <Filter>Implementation Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Window.impl.hh">
+      <Filter>Implementation Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GL\Array.hh">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GL\Bind.hh">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GL\Buffer.hh">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GL\Program.hh">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GL\Shader.hh">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GL\Texture.hh">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GL\Array.impl.hh">
+      <Filter>Implementation Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GL\Buffer.impl.hh">
+      <Filter>Implementation Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GL\Program.impl.hh">
+      <Filter>Implementation Files\GL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

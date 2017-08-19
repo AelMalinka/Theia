@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -21,32 +21,32 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{54CED1F7-4C0E-4BB5-931E-ECCC4CC7A4CF}</ProjectGuid>
     <RootNamespace>Theia</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
@@ -74,7 +74,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Source\boost;F:\Source\libpng;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug;F:\Source\Repos\Entropy\win\include;F:\Source\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\libepoxy\include;F:\Source\libepoxy\_build\include;F:\Source\glfw\include;F:\Source\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -83,7 +83,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Source\boost;F:\Source\libpng;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug;F:\Source\Repos\Entropy\win\include;F:\Source\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\libepoxy\include;F:\Source\libepoxy\_build\include;F:\Source\glfw\include;F:\Source\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -94,7 +94,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Source\boost;F:\Source\libpng;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug;F:\Source\Repos\Entropy\win\include;F:\Source\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\libepoxy\include;F:\Source\libepoxy\_build\include;F:\Source\glfw\include;F:\Source\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
@@ -109,7 +109,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Source\boost;F:\Source\libpng;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug;F:\Source\Repos\Entropy\win\include;F:\Source\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\libepoxy\include;F:\Source\libepoxy\_build\include;F:\Source\glfw\include;F:\Source\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
@@ -118,43 +118,59 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\Array.cc" />
-    <ClCompile Include="..\..\src\Bind.cc" />
-    <ClCompile Include="..\..\src\Buffer.cc" />
+    <ClCompile Include="..\..\src\Application.cc" />
     <ClCompile Include="..\..\src\Camera.cc" />
-    <ClCompile Include="..\..\src\Drawable.cc" />
+    <ClCompile Include="..\..\src\Drawables.cc" />
+    <ClCompile Include="..\..\src\Event.cc" />
+    <ClCompile Include="..\..\src\Events.cc" />
     <ClCompile Include="..\..\src\GLFW\Glfw.cc" />
     <ClCompile Include="..\..\src\GLFW\Window.cc" />
+    <ClCompile Include="..\..\src\GL\Array.cc" />
+    <ClCompile Include="..\..\src\GL\Bind.cc" />
+    <ClCompile Include="..\..\src\GL\Buffer.cc" />
+    <ClCompile Include="..\..\src\GL\Program.cc" />
+    <ClCompile Include="..\..\src\GL\Shader.cc" />
+    <ClCompile Include="..\..\src\GL\Texture.cc" />
     <ClCompile Include="..\..\src\Object.cc" />
-    <ClCompile Include="..\..\src\Program.cc" />
     <ClCompile Include="..\..\src\Scene.cc" />
-    <ClCompile Include="..\..\src\Shader.cc" />
-    <ClCompile Include="..\..\src\Texture.cc" />
+    <ClCompile Include="..\..\src\Screen.cc" />
+    <ClCompile Include="..\..\src\Window.cc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\Array.hh" />
-    <ClInclude Include="..\..\src\Bind.hh" />
-    <ClInclude Include="..\..\src\Buffer.hh" />
-    <ClInclude Include="..\..\src\Buffer.impl.hh" />
+    <ClInclude Include="..\..\src\Application.hh" />
     <ClInclude Include="..\..\src\Camera.hh" />
     <ClInclude Include="..\..\src\Drawable.hh" />
+    <ClInclude Include="..\..\src\Drawables.hh" />
+    <ClInclude Include="..\..\src\Drawables.impl.hh" />
+    <ClInclude Include="..\..\src\Event.hh" />
+    <ClInclude Include="..\..\src\Events.hh" />
     <ClInclude Include="..\..\src\Exception.hh" />
     <ClInclude Include="..\..\src\GLFW\Glfw.hh" />
     <ClInclude Include="..\..\src\GLFW\Window.hh" />
+    <ClInclude Include="..\..\src\GL\Array.hh" />
+    <ClInclude Include="..\..\src\GL\Array.impl.hh" />
+    <ClInclude Include="..\..\src\GL\Bind.hh" />
+    <ClInclude Include="..\..\src\GL\Buffer.hh" />
+    <ClInclude Include="..\..\src\GL\Buffer.impl.hh" />
+    <ClInclude Include="..\..\src\GL\Program.hh" />
+    <ClInclude Include="..\..\src\GL\Program.impl.hh" />
+    <ClInclude Include="..\..\src\GL\Shader.hh" />
+    <ClInclude Include="..\..\src\GL\Texture.hh" />
+    <ClInclude Include="..\..\src\IWindow.hh" />
     <ClInclude Include="..\..\src\Object.hh" />
-    <ClInclude Include="..\..\src\Program.hh" />
-    <ClInclude Include="..\..\src\Program.impl.hh" />
     <ClInclude Include="..\..\src\Scene.hh" />
-    <ClInclude Include="..\..\src\Scene.impl.hh" />
-    <ClInclude Include="..\..\src\Shader.hh" />
-    <ClInclude Include="..\..\src\Texture.hh" />
+    <ClInclude Include="..\..\src\Screen.hh" />
+    <ClInclude Include="..\..\src\Types.hh" />
     <ClInclude Include="..\..\src\Utility\DefaultedList.hh" />
     <ClInclude Include="..\..\src\Utility\DefaultedList.impl.hh" />
     <ClInclude Include="..\..\src\Utility\PolymorphicList.hh" />
     <ClInclude Include="..\..\src\Utility\PolymorphicList.impl.hh" />
     <ClInclude Include="..\..\src\Utility\PolymorphicListIterator.hh" />
     <ClInclude Include="..\..\src\Utility\PolymorphicListIterator.impl.hh" />
+    <ClInclude Include="..\..\src\Utility\SharedData.hh" />
+    <ClInclude Include="..\..\src\Utility\SharedData.impl.hh" />
     <ClInclude Include="..\..\src\Window.hh" />
+    <ClInclude Include="..\..\src\Window.impl.hh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

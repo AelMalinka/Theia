@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -21,32 +21,32 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4A39233F-4A95-4223-AA99-0DE85FBFD6CD}</ProjectGuid>
     <RootNamespace>WindowsTest</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
@@ -74,11 +74,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;..\..\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Source\boost;F:\Source\libpng;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug;F:\Source\Repos\Entropy\win\include;F:\Source\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\libepoxy\include;F:\Source\libepoxy\_build\include;F:\Source\glfw\include;F:\Source\glm;F:\Source\Repos\Theia\win\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\..\..\boost_1_63_0\bin.v2\libs\log\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\system\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\filesystem\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\date_time\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\thread\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\atomic\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\chrono\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\libpng\build\Debug;..\..\..\..\zlib123\;..\..\..\..\glfw\build\src\Debug;..\..\..\..\libepoxy\_build\src</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Entropy.lib;libpng16d.lib;zlib.lib;Theia.lib;glfw3.lib;epoxy.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);F:\Source\boost\stage\lib;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug\;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug\ZLib;F:\Source\libuv\Debug\lib;F:\Source\libepoxy\_build\src;F:\Source\glfw\build\src\Debug</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Entropy.lib;libpng.lib;zlib.lib;Tethys.lib;libuv.lib;ws2_32.lib;iphlpapi.lib;psapi.lib;userenv.lib;Theia.lib;epoxy.lib;glfw3.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -86,11 +90,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;..\..\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Source\boost;F:\Source\libpng;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug;F:\Source\Repos\Entropy\win\include;F:\Source\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\libepoxy\include;F:\Source\libepoxy\_build\include;F:\Source\glfw\include;F:\Source\glm;F:\Source\Repos\Theia\win\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\..\..\boost_1_63_0\bin.v2\libs\log\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\system\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\filesystem\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\date_time\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\thread\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\atomic\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\chrono\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\glfw\build\src\Debug;..\..\..\..\libepoxy\_build\src</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Entropy.lib;libpng16d.lib;Theia.lib;glfw3.lib;epoxy.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);F:\Source\boost\stage\lib;F:\Source\libepoxy\_build\src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Entropy.lib;libpng.lib;zlib.lib;Tethys.lib;libuv.lib;ws2_32.lib;iphlpapi.lib;psapi.lib;userenv.lib;Theia.lib;epoxy.lib;glfw3.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -100,13 +104,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;..\..\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Source\boost;F:\Source\libpng;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug;F:\Source\Repos\Entropy\win\include;F:\Source\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\libepoxy\include;F:\Source\libepoxy\_build\include;F:\Source\glfw\include;F:\Source\glm;F:\Source\Repos\Theia\win\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\..\..\boost_1_63_0\bin.v2\libs\log\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\system\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\filesystem\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\date_time\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\thread\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\atomic\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\chrono\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\libpng\build\Debug;..\..\..\..\zlib123\;..\..\..\..\glfw\build\src\Debug;..\..\..\..\libepoxy\_build\src</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Entropy.lib;libpng16d.lib;zlib.lib;Theia.lib;glfw3.lib;epoxy.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);F:\Source\boost\stage\lib;F:\Source\libepoxy\_build\src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Entropy.lib;libpng.lib;zlib.lib;Tethys.lib;libuv.lib;ws2_32.lib;iphlpapi.lib;psapi.lib;userenv.lib;Theia.lib;epoxy.lib;glfw3.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -116,13 +120,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\..\..\libepoxy\include;..\..\..\..\libepoxy\_build\include;..\..\..\..\glfw\include;..\..\..\..\glm;..\..\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Source\boost;F:\Source\libpng;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug;F:\Source\Repos\Entropy\win\include;F:\Source\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\libepoxy\include;F:\Source\libepoxy\_build\include;F:\Source\glfw\include;F:\Source\glm;F:\Source\Repos\Theia\win\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\..\..\boost_1_63_0\bin.v2\libs\log\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\system\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\filesystem\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\date_time\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\thread\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\atomic\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\boost_1_63_0\bin.v2\libs\chrono\build\msvc-14.0\debug\link-static\threading-multi;..\..\..\..\glfw\build\src\Debug;..\..\..\..\libepoxy\_build\src</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Entropy.lib;libpng16d.lib;Theia.lib;glfw3.lib;epoxy.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);F:\Source\boost\stage\lib;F:\Source\libepoxy\_build\src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Entropy.lib;libpng.lib;zlib.lib;Tethys.lib;libuv.lib;ws2_32.lib;iphlpapi.lib;psapi.lib;userenv.lib;Theia.lib;epoxy.lib;glfw3.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -17,6 +17,14 @@ Application::Application()
 	});
 }
 
+Application::Application(const string &name)
+	: Entropy::Tethys::Application(), _window(name, 640, 360)
+{
+	_window->addCallbacks([this](const Event &ev) {
+		this->onEvent(ev);
+	});
+}
+
 Application::Application(int ArgC, char *ArgV[])
 	: Entropy::Tethys::Application(ArgC, ArgV), _window(ArgV[0], 640, 360)
 {

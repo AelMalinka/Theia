@@ -19,6 +19,7 @@
 			{
 				public:
 					Application();
+					explicit Application(const std::string &);
 					Application(const int, char *[]);
 					virtual ~Application();
 					virtual void operator () ();
