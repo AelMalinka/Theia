@@ -81,8 +81,7 @@
     <Link>
       <AdditionalLibraryDirectories>$(OutDir);F:\Source\boost\stage\lib;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug\;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug\ZLib;F:\Source\libuv\Debug\lib;F:\Source\libepoxy\_build\src;F:\Source\glfw\build\src\Debug</AdditionalLibraryDirectories>
       <AdditionalDependencies>Entropy.lib;libpng.lib;zlib.lib;Tethys.lib;libuv.lib;ws2_32.lib;iphlpapi.lib;psapi.lib;userenv.lib;Theia.lib;epoxy.lib;glfw3.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <IgnoreSpecificDefaultLibraries>
-      </IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>libcmtd.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
