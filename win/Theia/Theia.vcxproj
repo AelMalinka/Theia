@@ -133,6 +133,7 @@
     <ClCompile Include="..\..\src\GL\Program.cc" />
     <ClCompile Include="..\..\src\GL\Shader.cc" />
     <ClCompile Include="..\..\src\GL\Texture.cc" />
+    <ClCompile Include="..\..\src\Logger.cc" />
     <ClCompile Include="..\..\src\Object.cc" />
     <ClCompile Include="..\..\src\Scene.cc" />
     <ClCompile Include="..\..\src\Screen.cc" />
