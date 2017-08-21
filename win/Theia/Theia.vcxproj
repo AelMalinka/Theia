@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>F:\Source\boost;F:\Source\libpng;F:\Source\libpng\projects\visualc71\Win32_DLL_Debug;F:\Source\Repos\Entropy\win\include;F:\Source\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\libepoxy\include;F:\Source\libepoxy\_build\include;F:\Source\glfw\include;F:\Source\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
-      <PreprocessorDefinitions>DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG;HAVE_OPENGL_CORE</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
