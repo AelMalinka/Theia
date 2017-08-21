@@ -5,7 +5,7 @@
 #if !defined ENTROPY_THEIA_GLFW_GLFW_INC
 #	define ENTROPY_THEIA_GLFW_GLFW_INC
 
-#	include "../Exception.hh"
+#	include "../Context.hh"
 
 	namespace Entropy
 	{
@@ -14,11 +14,14 @@
 			ENTROPY_EXCEPTION(GlfwException, "GLFW Exception", Exception);
 			ENTROPY_ERROR_INFO(GlfwErrorCode, int);
 
-			class Glfw
+			class Glfw :
+				public Context
 			{
 				public:
 					Glfw();
 					~Glfw();
+					bool isDebug() const;
+					void setDebug(const std::function<void(const Events::Debug &)> &);
 			};
 		}
 	}
