@@ -15,6 +15,13 @@ Application::Application()
 	_window->addCallbacks([this](const Event &ev) {
 		this->onEvent(ev);
 	});
+
+#	ifdef DEBUG
+		auto &w = *_window;
+		_window->getContext().setDebug([&w](const Events::Debug &ev) {
+			w.onEvent(ev);
+		});
+#	endif
 }
 
 Application::Application(const string &name)
@@ -23,6 +30,13 @@ Application::Application(const string &name)
 	_window->addCallbacks([this](const Event &ev) {
 		this->onEvent(ev);
 	});
+
+#	ifdef DEBUG
+		auto &w = *_window;
+		_window->getContext().setDebug([&w](const Events::Debug &ev) {
+			w.onEvent(ev);
+		});
+#	endif
 }
 
 Application::Application(int ArgC, char *ArgV[])
@@ -31,6 +45,13 @@ Application::Application(int ArgC, char *ArgV[])
 	_window->addCallbacks([this](const Event &ev) {
 		this->onEvent(ev);
 	});
+
+#	ifdef DEBUG
+		auto &w = *_window;
+		_window->getContext().setDebug([&w](const Events::Debug &ev) {
+			w.onEvent(ev);
+		});
+#	endif
 }
 
 Application::~Application() = default;
