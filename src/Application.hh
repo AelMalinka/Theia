@@ -29,6 +29,8 @@
 					virtual void onEvent(const Event &);
 					virtual void onDebug(const Events::Debug &);
 				private:
+					void _init();
+				private:
 					DefaultedList<Window> _window;
 			};
 		}

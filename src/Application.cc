@@ -12,49 +12,44 @@ using namespace std;
 Application::Application()
 	: Entropy::Tethys::Application(), _window("Theia Application", 640, 360)
 {
-	_window->addCallbacks([this](const Event &ev) {
-		this->onEvent(ev);
-	});
-
-#	ifdef DEBUG
-		auto &w = *_window;
-		_window->getContext().setDebug([&w](const Events::Debug &ev) {
-			w.onEvent(ev);
-		});
-#	endif
+	_init();
 }
 
 Application::Application(const string &name)
 	: Entropy::Tethys::Application(), _window(name, 640, 360)
 {
-	_window->addCallbacks([this](const Event &ev) {
-		this->onEvent(ev);
-	});
-
-#	ifdef DEBUG
-		auto &w = *_window;
-		_window->getContext().setDebug([&w](const Events::Debug &ev) {
-			w.onEvent(ev);
-		});
-#	endif
+	_init();
 }
 
 Application::Application(int ArgC, char *ArgV[])
 	: Entropy::Tethys::Application(ArgC, ArgV), _window(ArgV[0], 640, 360)
 {
+	_init();
+}
+
+Application::~Application() = default;
+
+void Application::_init()
+{
+	#ifdef DEBUG
+		if (ArgC() >= 0)
+			addFileLog(ArgV()[0] + "-%Y-%m-%d-%H-%M-%S.%N.log"s);
+		else
+			addFileLog(Windows()->Name() + "-%Y-%m-%d-%H-%M-%S.%N.log"s);
+	#endif
+
 	_window->addCallbacks([this](const Event &ev) {
 		this->onEvent(ev);
 	});
 
-#	ifdef DEBUG
+	#ifdef DEBUG
 		auto &w = *_window;
+
 		_window->getContext().setDebug([&w](const Events::Debug &ev) {
 			w.onEvent(ev);
 		});
-#	endif
+	#endif
 }
-
-Application::~Application() = default;
 
 void Application::operator () ()
 {
