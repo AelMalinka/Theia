@@ -13,12 +13,65 @@
 		{
 			namespace Events
 			{
+				class Debug :
+					public Event
+				{
+					public:
+						static constexpr std::size_t Id = 10;
+						enum class Source;
+						enum class Severity;
+						enum class Type;
+					public:
+						Debug(const Source &, const Type &, const unsigned int, const Severity &, const std::string &);
+						virtual ~Debug();
+						const Source &getSource() const;
+						const Type &getType() const;
+						const unsigned int &getId() const;
+						const Severity &getSeverity() const;
+						const std::string &getMessage() const;
+					private:
+						Severity _severity;
+						Source _source;
+						Type _type;
+						unsigned int _id;
+						const std::string _message;
+					public:
+						enum class Source
+						{
+							Api = GL_DEBUG_SOURCE_API,
+							WindowSystem = GL_DEBUG_SOURCE_WINDOW_SYSTEM,
+							ShaderCompiler = GL_DEBUG_SOURCE_SHADER_COMPILER,
+							ThirdParty = GL_DEBUG_SOURCE_THIRD_PARTY,
+							Application = GL_DEBUG_SOURCE_APPLICATION,
+							Other = GL_DEBUG_SOURCE_OTHER
+						};
+						enum class Severity
+						{
+							High = GL_DEBUG_SEVERITY_HIGH,
+							Medium = GL_DEBUG_SEVERITY_MEDIUM,
+							Low = GL_DEBUG_SEVERITY_LOW,
+							Notification = GL_DEBUG_SEVERITY_NOTIFICATION
+						};
+						enum class Type
+						{
+							Error = GL_DEBUG_TYPE_ERROR,
+							UndefinedBehavior = GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR,
+							Performance = GL_DEBUG_TYPE_PERFORMANCE,
+							Marker = GL_DEBUG_TYPE_MARKER,
+							PushGroup = GL_DEBUG_TYPE_PUSH_GROUP,
+							PopGroup = GL_DEBUG_TYPE_POP_GROUP,
+							Other = GL_DEBUG_TYPE_OTHER,
+							DeprecatedBehavior = GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR,
+							Portability = GL_DEBUG_TYPE_PORTABILITY
+						};
+				};
+
 				// 2017-06-06 AMR TODO: typing?
 				class Key :
 					public Event
 				{
 					public:
-						static constexpr std::size_t Id = 10;
+						static constexpr std::size_t Id = 11;
 						Key(const int, const int, const int);
 						virtual ~Key();
 						const int &Code() const;
@@ -37,7 +90,7 @@
 					public Event
 				{
 					public:
-						static constexpr std::size_t Id = 11;
+						static constexpr std::size_t Id = 12;
 						Mouse(const Dimension, const Dimension);
 						virtual ~Mouse();
 						const Dimension &X() const;
@@ -51,7 +104,7 @@
 					public Event
 				{
 					public:
-						static constexpr std::size_t Id = 12;
+						static constexpr std::size_t Id = 13;
 						Resize(const ScreenDimension, const ScreenDimension);
 						const ScreenDimension &Width() const;
 						const ScreenDimension &Height() const;

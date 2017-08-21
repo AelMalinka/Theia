@@ -6,10 +6,43 @@
 
 using namespace Entropy::Theia;
 using namespace Entropy::Theia::Events;
+using namespace std;
 
+constexpr std::size_t Debug::Id;
 constexpr std::size_t Key::Id;
 constexpr std::size_t Mouse::Id;
 constexpr std::size_t Resize::Id;
+
+Debug::Debug(const Debug::Source &s, const Debug::Type &t, const unsigned int i, const Debug::Severity &v, const string &m)
+	: Event(Id), _severity(v), _source(s), _type(t), _id(i), _message(m)
+{}
+
+Debug::~Debug() = default;
+
+const Debug::Source &Debug::getSource() const
+{
+	return _source;
+}
+
+const Debug::Type &Debug::getType() const
+{
+	return _type;
+}
+
+const unsigned int &Debug::getId() const
+{
+	return _id;
+}
+
+const Debug::Severity &Debug::getSeverity() const
+{
+	return _severity;
+}
+
+const string &Debug::getMessage() const
+{
+	return _message;
+}
 
 Key::Key(const int k, const int a, const int m)
 	: Event(Id), _key(k), _action(a), _mods(m)
