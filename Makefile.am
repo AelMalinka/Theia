@@ -66,6 +66,7 @@ libtheia_la_SOURCES = \
 	src/Drawables.cc \
 	src/Event.cc \
 	src/Events.cc \
+	src/Logger.cc \
 	src/Object.cc \
 	src/Scene.cc \
 	src/Screen.cc \

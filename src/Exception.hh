@@ -6,6 +6,7 @@
 #	define ENTROPY_THEIA_EXCEPTION_INC
 
 #	include <Entropy/Exception.hh>
+#	include <Entropy/Log.hh>
 
 #	ifdef _WIN32
 #		include <windows.h>
@@ -24,6 +25,8 @@
 			ENTROPY_EXCEPTION_BASE(Exception, "Theia Exception");
 			ENTROPY_ERROR_INFO(GlError, const GLubyte *);
 			ENTROPY_ERROR_INFO(GlErrorCode, GLenum);
+
+			extern Log::Logger Log;
 		}
 	}
 
