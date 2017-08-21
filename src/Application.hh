@@ -26,7 +26,8 @@
 					DefaultedList<Window> &Windows();
 					const DefaultedList<Window> &Windows() const;
 				protected:
-					virtual void onEvent(const Event &) {}
+					virtual void onEvent(const Event &);
+					virtual void onDebug(const Events::Debug &);
 				private:
 					DefaultedList<Window> _window;
 			};
