@@ -28,6 +28,7 @@
 						virtual void Hide();
 						virtual void Close();
 						virtual void Fullscreen();
+						virtual std::string Name() const;
 						virtual bool isDone() const;
 						virtual bool isVisible() const;
 						virtual bool isFullscreen() const;
@@ -43,6 +44,7 @@
 						virtual const GLFWvidmode *_get_mode() const;
 					private:
 						GLFWwindow *_handle;
+						std::string _name;
 						std::tuple<int, int, int, int> _size_pos;
 				};
 			}

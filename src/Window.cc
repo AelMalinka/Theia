@@ -81,6 +81,11 @@ void Window::Fullscreen()
 	_window->Fullscreen();
 }
 
+string Window::Name() const
+{
+	return _window->Name();
+}
+
 bool Window::isFullscreen() const
 {
 	return _window->isFullscreen();

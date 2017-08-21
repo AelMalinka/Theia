@@ -22,6 +22,7 @@
 					virtual void Hide() = 0;
 					virtual void Close() = 0;
 					virtual void Fullscreen() = 0;
+					virtual std::string Name() const = 0;
 					virtual bool isDone() const = 0;
 					virtual bool isVisible() const = 0;
 					virtual bool isFullscreen() const = 0;

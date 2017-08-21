@@ -17,9 +17,9 @@ void move_cb(GLFWwindow *, double, double);
 void resize_cb(GLFWwindow *, int, int);
 
 Window::Window(const string &name, const int width, const int height)
-	: SharedData<Glfw>(), _handle(nullptr), _size_pos(width, height, 0, 0)
+	: SharedData<Glfw>(), _handle(nullptr), _name(name), _size_pos(width, height, 0, 0)
 {
-	_create_window(name);
+	_create_window(_name);
 }
 
 Window::~Window()
@@ -64,6 +64,11 @@ void Window::disableCursor()
 void Window::enableCursor()
 {
 	glfwSetInputMode(_handle, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+}
+
+string Window::Name() const
+{
+	return _name;
 }
 
 bool Window::isFullscreen() const
