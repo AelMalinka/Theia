@@ -6,6 +6,10 @@
 
 #include "../Events.hh"
 
+#ifdef HAVE_CONFIG_H
+#	include "config.h"
+#endif
+
 using namespace Entropy::Theia;
 using namespace std;
 
@@ -23,10 +27,11 @@ Glfw::Glfw()
 		glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
 #	endif
 
-	// 2017-03-09 AMR TODO: allow user to override, possibly move to window?
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#	ifdef HAVE_OPENGL_CORE
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#	endif
 
 	glfwWindowHint(GLFW_AUTO_ICONIFY, GLFW_FALSE);
 	glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
@@ -52,6 +57,9 @@ void Glfw::setDebug(const function<void(const Events::Debug &)> &cb)
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 		glDebugMessageCallback(debug_cb, &cb);
 		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
+#		ifdef DEBUG
+			glDebugMessageInsert(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_OTHER, 10, GL_DEBUG_SEVERITY_NOTIFICATION, -1, "OpenGL Logging Initialized");
+#		endif
 		CHECK_GL_ERRORS("Failed to set debug callback");
 	}
 }
