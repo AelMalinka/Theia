@@ -81,6 +81,16 @@ bool Window::isDone() const
 	return glfwWindowShouldClose(_handle) == GLFW_TRUE;
 }
 
+Context &Window::getContext()
+{
+	return *shared();
+}
+
+const Context &Window::getContext() const
+{
+	return *shared();
+}
+
 void Window::operator () ()
 {
 	if (isVisible()) {

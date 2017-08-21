@@ -37,6 +37,8 @@
 					virtual bool isDone() const;
 					virtual bool isFullscreen() const;
 					virtual bool isVisible() const;
+					virtual Context &getContext();
+					virtual const Context &getContext() const;
 					virtual void onEvent(const Event &);
 				public:
 					virtual void setFoV(const Dimension &);

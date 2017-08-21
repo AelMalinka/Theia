@@ -8,6 +8,7 @@ theiaheadersdir = $(includedir)/Entropy/Theia
 theiaheaders_HEADERS = \
 	src/Application.hh \
 	src/Camera.hh \
+	src/Context.hh \
 	src/Drawable.hh \
 	src/Drawables.hh \
 	src/Drawables.impl.hh \

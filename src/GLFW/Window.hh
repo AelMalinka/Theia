@@ -31,6 +31,8 @@
 						virtual bool isDone() const;
 						virtual bool isVisible() const;
 						virtual bool isFullscreen() const;
+						virtual Context &getContext();
+						virtual const Context &getContext() const;
 						// 2017-06-06 AMR TODO: decide on interface for cursor
 						virtual void disableCursor();
 						virtual void enableCursor();

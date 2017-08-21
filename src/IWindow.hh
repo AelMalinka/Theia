@@ -6,7 +6,7 @@
 #	define ENTROPY_THEIA_IWINDOW_INC
 
 #	include "Screen.hh"
-#	include "Event.hh"
+#	include "Context.hh"
 
 	namespace Entropy
 	{
@@ -25,6 +25,8 @@
 					virtual bool isDone() const = 0;
 					virtual bool isVisible() const = 0;
 					virtual bool isFullscreen() const = 0;
+					virtual Context &getContext() = 0;
+					virtual const Context &getContext() const = 0;
 					// 2017-06-06 AMR TODO: cursor
 				protected:
 					virtual void onEvent(const Event &) = 0;

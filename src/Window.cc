@@ -96,6 +96,16 @@ bool Window::isDone() const
 	return _window->isDone();
 }
 
+Context &Window::getContext()
+{
+	return _window->getContext();
+}
+
+const Context &Window::getContext() const
+{
+	return _window->getContext();
+}
+
 void Window::onEvent(const Event &ev)
 {
 	for(auto &&f : _cbs) {
