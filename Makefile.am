@@ -37,7 +37,6 @@ utilityheaders_HEADERS = \
 glheadersdir = $(includedir)/Entropy/Theia/GL
 glheaders_HEADERS = \
 	src/GL/Array.hh \
-	src/GL/Array.impl.hh \
 	src/GL/Bind.hh \
 	src/GL/Buffer.hh \
 	src/GL/Buffer.impl.hh \
