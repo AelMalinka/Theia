@@ -9,15 +9,16 @@ using namespace Entropy::Theia::Events;
 using namespace std;
 
 constexpr std::size_t Debug::Id;
+constexpr std::size_t Show::Id;
+constexpr std::size_t Hide::Id;
+constexpr std::size_t Close::Id;
+constexpr std::size_t Resize::Id;
 constexpr std::size_t Key::Id;
 constexpr std::size_t Mouse::Id;
-constexpr std::size_t Resize::Id;
 
 Debug::Debug(const Debug::Source &s, const Debug::Type &t, const unsigned int i, const Debug::Severity &v, const string &m)
 	: Event(Id), _severity(v), _source(s), _type(t), _id(i), _message(m)
 {}
-
-Debug::~Debug() = default;
 
 const Debug::Source &Debug::getSource() const
 {
@@ -44,11 +45,50 @@ const string &Debug::getMessage() const
 	return _message;
 }
 
+Show::Show(IWindow &win)
+	: Event(Id), _win(win)
+{}
+
+IWindow &Show::Window() const
+{
+	return _win;
+}
+
+Hide::Hide(IWindow &win)
+	: Event(Id), _win(win)
+{}
+
+IWindow &Hide::Window() const
+{
+	return _win;
+}
+
+Close::Close(IWindow &win)
+	: Event(Id), _win(win)
+{}
+
+const IWindow &Close::Window() const
+{
+	return _win;
+}
+
+Resize::Resize(const ScreenDimension w, const ScreenDimension h)
+	: Event(Id), _width(w), _height(h)
+{}
+
+const ScreenDimension &Resize::Width() const
+{
+	return _width;
+}
+
+const ScreenDimension &Resize::Height() const
+{
+	return _height;
+}
+
 Key::Key(const int k, const int a, const int m)
 	: Event(Id), _key(k), _action(a), _mods(m)
 {}
-
-Key::~Key() = default;
 
 const int &Key::Code() const
 {
@@ -84,8 +124,6 @@ Mouse::Mouse(const Dimension x, const Dimension y)
 	: Event(Id), _x(x), _y(y)
 {}
 
-Mouse::~Mouse() = default;
-
 const Dimension &Mouse::X() const
 {
 	return _x;
@@ -94,18 +132,4 @@ const Dimension &Mouse::X() const
 const Dimension &Mouse::Y() const
 {
 	return _y;
-}
-
-Resize::Resize(const ScreenDimension w, const ScreenDimension h)
-	: Event(Id), _width(w), _height(h)
-{}
-
-const ScreenDimension &Resize::Width() const
-{
-	return _width;
-}
-
-const ScreenDimension &Resize::Height() const
-{
-	return _height;
 }

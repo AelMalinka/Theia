@@ -30,16 +30,25 @@ Window::~Window()
 void Window::Show()
 {
 	glfwShowWindow(_handle);
+
+	Events::Show ev(*this);
+	onEvent(ev);
 }
 
 void Window::Hide()
 {
 	glfwHideWindow(_handle);
+
+	Events::Hide ev(*this);
+	onEvent(ev);
 }
 
 void Window::Close()
 {
 	glfwSetWindowShouldClose(_handle, GLFW_TRUE);
+
+	Events::Close ev(*this);
+	onEvent(ev);
 }
 
 void Window::Fullscreen()

@@ -5,12 +5,14 @@
 #if !defined ENTROPY_THEIA_EVENTS_INC
 #	define ENTROPY_THEIA_EVENTS_INC
 
-#	include "Event.hh"
+#	include "IWindow.hh"
 
 	namespace Entropy
 	{
 		namespace Theia
 		{
+			class IWindow;
+
 			namespace Events
 			{
 				class Debug :
@@ -23,7 +25,6 @@
 						enum class Type;
 					public:
 						Debug(const Source &, const Type &, const unsigned int, const Severity &, const std::string &);
-						virtual ~Debug();
 						const Source &getSource() const;
 						const Type &getType() const;
 						const unsigned int &getId() const;
@@ -66,14 +67,59 @@
 						};
 				};
 
+				class Show :
+					public Event
+				{
+					public:
+						static constexpr std::size_t Id = 11;
+						Show(IWindow &);
+						IWindow &Window() const;
+					private:
+						IWindow &_win;
+				};
+
+				class Hide :
+					public Event
+				{
+					public:
+						static constexpr std::size_t Id = 12;
+						Hide(IWindow &);
+						IWindow &Window() const;
+					private:
+						IWindow &_win;
+				};
+
+				class Close :
+					public Event
+				{
+					public:
+						static constexpr std::size_t Id = 13;
+						Close(IWindow &);
+						const IWindow &Window() const;
+					private:
+						IWindow &_win;
+				};
+
+				class Resize :
+					public Event
+				{
+					public:
+						static constexpr std::size_t Id = 14;
+						Resize(const ScreenDimension, const ScreenDimension);
+						const ScreenDimension &Width() const;
+						const ScreenDimension &Height() const;
+					private:
+						ScreenDimension _width;
+						ScreenDimension _height;
+				};
+
 				// 2017-06-06 AMR TODO: typing?
 				class Key :
 					public Event
 				{
 					public:
-						static constexpr std::size_t Id = 11;
+						static constexpr std::size_t Id = 20;
 						Key(const int, const int, const int);
-						virtual ~Key();
 						const int &Code() const;
 						const int &Action() const;
 						const int &Modifiers() const;
@@ -90,27 +136,13 @@
 					public Event
 				{
 					public:
-						static constexpr std::size_t Id = 12;
+						static constexpr std::size_t Id = 21;
 						Mouse(const Dimension, const Dimension);
-						virtual ~Mouse();
 						const Dimension &X() const;
 						const Dimension &Y() const;
 					private:
 						 Dimension _x;
 						 Dimension _y;
-				};
-
-				class Resize :
-					public Event
-				{
-					public:
-						static constexpr std::size_t Id = 13;
-						Resize(const ScreenDimension, const ScreenDimension);
-						const ScreenDimension &Width() const;
-						const ScreenDimension &Height() const;
-					private:
-						ScreenDimension _width;
-						ScreenDimension _height;
 				};
 			}
 		}
