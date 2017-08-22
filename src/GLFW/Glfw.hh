@@ -6,6 +6,7 @@
 #	define ENTROPY_THEIA_GLFW_GLFW_INC
 
 #	include "../Context.hh"
+#	include "../Events.hh"
 
 	namespace Entropy
 	{

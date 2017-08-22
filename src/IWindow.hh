@@ -5,6 +5,7 @@
 #if !defined ENTROPY_THEIA_IWINDOW_INC
 #	define ENTROPY_THEIA_IWINDOW_INC
 
+#	include "Event.hh"
 #	include "Screen.hh"
 #	include "Context.hh"
 

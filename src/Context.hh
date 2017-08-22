@@ -5,13 +5,17 @@
 #if !defined ENTROPY_THEIA_CONTEXT_INC
 #	define ENTROPY_THEIA_CONTEXT_INC
 
-#	include "Events.hh"
 #	include <functional>
 
 	namespace Entropy
 	{
 		namespace Theia
 		{
+			namespace Events
+			{
+				class Debug;
+			}
+
 			class Context
 			{
 				public:
