@@ -184,9 +184,6 @@
     <ClInclude Include="..\..\src\GL\Texture.hh">
       <Filter>Header Files\GL</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\GL\Array.impl.hh">
-      <Filter>Implementation Files\GL</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\GL\Buffer.impl.hh">
       <Filter>Implementation Files\GL</Filter>
     </ClInclude>

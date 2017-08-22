@@ -151,7 +151,6 @@
     <ClInclude Include="..\..\src\GLFW\Glfw.hh" />
     <ClInclude Include="..\..\src\GLFW\Window.hh" />
     <ClInclude Include="..\..\src\GL\Array.hh" />
-    <ClInclude Include="..\..\src\GL\Array.impl.hh" />
     <ClInclude Include="..\..\src\GL\Bind.hh" />
     <ClInclude Include="..\..\src\GL\Buffer.hh" />
     <ClInclude Include="..\..\src\GL\Buffer.impl.hh" />
