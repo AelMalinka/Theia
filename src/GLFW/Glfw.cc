@@ -44,10 +44,15 @@ Glfw::~Glfw()
 
 bool Glfw::isDebug() const
 {
-	GLint flags;
-	glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
+#	ifdef HAVE_OPENGL_CORE
+		GLint flags;
+		glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
+		CHECK_GL_ERRORS("Failed to get Context Flags");
 
-	return flags & GL_CONTEXT_FLAG_DEBUG_BIT;
+		return flags & GL_CONTEXT_FLAG_DEBUG_BIT;
+#	else
+		return false;
+#	endif
 }
 
 void Glfw::setDebug(const function<void(const Events::Debug &)> &cb)
