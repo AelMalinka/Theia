@@ -26,6 +26,7 @@
 					public:
 						Texture(const Type &, const Format &, const Internal &, const GLuint, const GLuint, void *, const Size & = UnsignedByte);
 						Texture(const Type &, const std::string &);
+						Texture(Texture &&);
 						~Texture();
 						GLenum GlType() const;
 						const GLuint &Handle() const;

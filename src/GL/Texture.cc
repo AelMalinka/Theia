@@ -44,6 +44,14 @@ Texture::Texture(const Type &t, const Texture::Format &f, const Texture::Interna
 	CHECK_GL_ERRORS("failed to load texture data");
 }
 
+Texture::Texture(Texture &&o)
+	: _tex(0), _type(o._type)
+{
+	glGenTextures(1, &_tex);
+
+	swap(_tex, o._tex);
+}
+
 Texture::~Texture()
 {
 	glDeleteTextures(1, &_tex);
