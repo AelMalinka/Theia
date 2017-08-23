@@ -6,19 +6,19 @@
 #	define ENTROPY_THEIA_EVENT_INC
 
 #	include "Types.hh"
+#	include <Entropy/Event.hh>
 
 	namespace Entropy
 	{
 		namespace Theia
 		{
-			class Event
+			class Event :
+				public Entropy::Event
 			{
 				public:
 					Event(const std::size_t &);
 					virtual ~Event();
-					const std::size_t &Id() const;
-				private:
-					const std::size_t &_id;
+					static constexpr std::size_t Last = 21;
 			};
 		}
 	}
