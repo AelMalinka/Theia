@@ -1,7 +1,7 @@
 dnl Copyright 2017 (c) Michael Thomas (malinka) <malinka@entropy-development.com>
 dnl Distributed under the terms of the GNU Affero General Public License v3
 
-AC_DEFUN([EX_WITH_GL_CORE]), [
+AC_DEFUN([EX_WITH_GL_CORE], [
 	AC_ARG_WITH([gl-core],
 		[AS_HELP_STRING([--with-gl-core],
 			[enable opengl 3.3 core profile]
