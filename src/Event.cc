@@ -8,12 +8,7 @@ using namespace Entropy::Theia;
 using namespace std;
 
 Event::Event(const size_t &id)
-	: _id(id)
+	: Entropy::Event(id)
 {}
 
 Event::~Event() = default;
-
-const size_t &Event::Id() const
-{
-	return _id;
-}
