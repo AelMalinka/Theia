@@ -75,7 +75,8 @@ libtheia_la_SOURCES = \
 check_PROGRAMS = \
 	hand-glfwwindow \
 	hand-object \
-	hand-application
+	hand-application \
+	hand-ortho
 
 dist_noinst_DATA = \
 	data/purple-stars.png
@@ -91,6 +92,9 @@ hand_object_LDADD = libtheia.la
 
 hand_application_SOURCES = test/hand/application.cc
 hand_application_LDADD = libtheia.la
+
+hand_ortho_SOURCES = test/hand/ortho.cc
+hand_ortho_LDADD = libtheia.la
 
 if GTEST
 check_PROGRAMS += \
