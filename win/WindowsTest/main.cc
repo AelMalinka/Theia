@@ -106,7 +106,7 @@ detail::shared_data::shared_data()
 		"in vec2 in_position;"
 
 		"void main() {"
-		"gl_Position = projection * view * model * vec4(in_position, 0.0, 1.0);"
+			"gl_Position = projection * view * model * vec4(in_position, 0.0, 1.0);"
 		"}"
 		;
 
@@ -116,7 +116,7 @@ detail::shared_data::shared_data()
 		"out vec4 out_color;"
 
 		"void main() {"
-		"out_color = vec4(1.0, 1.0, 1.0, 1.0);"
+			"out_color = vec4(1.0, 1.0, 1.0, 1.0);"
 		"}"
 		;
 
