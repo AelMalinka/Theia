@@ -69,7 +69,7 @@ const DefaultedList<Window> &Application::Windows() const
 	return _window;
 }
 
-void Application::onEvent(const Event &ev)
+void Application::onEvent(const Entropy::Event &ev)
 {
 	if(ev.Id() == Events::Debug::Id) {
 		onDebug(dynamic_cast<const Events::Debug &>(ev));
