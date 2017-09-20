@@ -108,7 +108,7 @@ detail::shared_data::shared_data()
 		"void main() {"
 			"gl_Position = projection * view * model * vec4(in_position, 0.0, 1.0);"
 		"}"
-		;
+	;
 
 	string frag_code =
 		"#version 130\n"
@@ -118,7 +118,7 @@ detail::shared_data::shared_data()
 		"void main() {"
 			"out_color = vec4(1.0, 1.0, 1.0, 1.0);"
 		"}"
-		;
+	;
 
 	vector<float> vertices = {
 		-1.0, 1.0f,
