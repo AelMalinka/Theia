@@ -33,6 +33,18 @@
     <Filter Include="Source Files\GL">
       <UniqueIdentifier>{60770566-3848-41bf-bb02-0562887eb443}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{8abd27a3-d00e-45dc-a67d-acebd64e77e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{80b0a93e-1895-487f-b276-1b3592fb17c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI\FT">
+      <UniqueIdentifier>{9010090e-6c87-46de-8b65-a0691ff6354d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\FT">
+      <UniqueIdentifier>{c6c9cf8c-d12a-460d-853a-c4e6d9b79292}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\GLFW\Glfw.cc">
@@ -88,6 +100,21 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Logger.cc">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\UI\FT\Face.cc">
+      <Filter>Source Files\UI\FT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\UI\FT\Font.cc">
+      <Filter>Source Files\UI\FT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\UI\FT\Library.cc">
+      <Filter>Source Files\UI\FT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\UI\Element.cc">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\UI\Text.cc">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +216,24 @@
     </ClInclude>
     <ClInclude Include="..\..\src\GL\Program.impl.hh">
       <Filter>Implementation Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\UI\FT\Face.hh">
+      <Filter>Header Files\UI\FT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\UI\FT\Font.hh">
+      <Filter>Header Files\UI\FT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\UI\FT\Library.hh">
+      <Filter>Header Files\UI\FT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\UI\Element.hh">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\UI\Exception.hh">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\UI\Text.hh">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

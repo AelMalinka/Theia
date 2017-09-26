@@ -11,6 +11,7 @@
 #include <Entropy/Theia/GL/Array.hh>
 #include <Entropy/Theia/GL/Bind.hh>
 #include <Entropy/Theia/Utility/SharedData.hh>
+#include <Entropy/Theia/UI/Text.hh>
 
 using namespace std;
 using namespace Entropy::Theia;
@@ -47,7 +48,7 @@ class Application :
 	public:
 		explicit Application(const string &);
 	protected:
-		void onEvent(const Event &);
+		void onEvent(const Entropy::Event &);
 };
 
 int APIENTRY WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
@@ -69,7 +70,7 @@ int APIENTRY WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	}
 }
 
-void ::Application::onEvent(const Event &ev)
+void ::Application::onEvent(const Entropy::Event &ev)
 {
 	if (ev.Id() == Events::Key::Id) {
 		const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
@@ -142,13 +143,17 @@ detail::shared_data::shared_data()
 ::Application::Application(const string &name)
 	: Entropy::Theia::Application(name)
 {
-	Windows()->setFoV(90.0);
-	Windows()->setNearClipping(0.0);
-	Windows()->setFarClipping(10.0);
+	auto a = make_shared<UI::Text>("Hello Theia!"s, UI::FT::Font("data/NotoSansUI-Regular.ttf"s));
+	auto b = make_shared<UI::Text>("This is made with OpenGL!"s, UI::FT::Font("data/NotoSansUI-Regular.ttf"s));
 
-	Windows()->Scenes()->getCamera().setPosition(Vertex(0.0, 0.0, 10.0));
-	Windows()->Scenes()->getCamera().setLookAt(Vertex(0.0, 0.0, 0.0));
-	Windows()->Scenes()->getCamera().setUp(Vertex(0.0, 1.0, 0.0));
+	a->setPosition(ScreenVertex(300, 150));
+	b->setPosition(ScreenVertex(20, 20));
+
+	a->setColor(Vertex(1.0, 0.5, 0.5));
+	b->setColor(Vertex(0.5, 0.5, 1.0));
+	
+	Windows()->Scenes()->addDrawable(a);
+	Windows()->Scenes()->addDrawable(b);
 
 	Windows()->Scenes()->emplaceDrawable<MyObject>();
 }

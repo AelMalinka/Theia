@@ -74,7 +74,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\libepoxy\build\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\freetype2\include;F:\Source\External\libepoxy\build\include;F:\Source\External\freetype2\build\include</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
       <PreprocessorDefinitions>DEBUG;HAVE_OPENGL_CORE</PreprocessorDefinitions>
     </ClCompile>
@@ -87,7 +87,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\freetype2\include;</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
       <PreprocessorDefinitions>DEBUG;HAVE_OPENGL_CORE</PreprocessorDefinitions>
     </ClCompile>
@@ -102,7 +102,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\libepoxy\build\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\freetype2\include;F:\Source\External\libepoxy\build\include;F:\Source\External\freetype2\build\include</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
       <PreprocessorDefinitions>HAVE_OPENGL_CORE</PreprocessorDefinitions>
     </ClCompile>
@@ -121,7 +121,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\freetype2\include;</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
       <PreprocessorDefinitions>HAVE_OPENGL_CORE</PreprocessorDefinitions>
     </ClCompile>
@@ -151,6 +151,11 @@
     <ClCompile Include="..\..\src\Object.cc" />
     <ClCompile Include="..\..\src\Scene.cc" />
     <ClCompile Include="..\..\src\Screen.cc" />
+    <ClCompile Include="..\..\src\UI\Element.cc" />
+    <ClCompile Include="..\..\src\UI\FT\Face.cc" />
+    <ClCompile Include="..\..\src\UI\FT\Font.cc" />
+    <ClCompile Include="..\..\src\UI\FT\Library.cc" />
+    <ClCompile Include="..\..\src\UI\Text.cc" />
     <ClCompile Include="..\..\src\Window.cc" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +182,12 @@
     <ClInclude Include="..\..\src\Scene.hh" />
     <ClInclude Include="..\..\src\Screen.hh" />
     <ClInclude Include="..\..\src\Types.hh" />
+    <ClInclude Include="..\..\src\UI\Element.hh" />
+    <ClInclude Include="..\..\src\UI\Exception.hh" />
+    <ClInclude Include="..\..\src\UI\FT\Face.hh" />
+    <ClInclude Include="..\..\src\UI\FT\Font.hh" />
+    <ClInclude Include="..\..\src\UI\FT\Library.hh" />
+    <ClInclude Include="..\..\src\UI\Text.hh" />
     <ClInclude Include="..\..\src\Utility\DefaultedList.hh" />
     <ClInclude Include="..\..\src\Utility\DefaultedList.impl.hh" />
     <ClInclude Include="..\..\src\Utility\PolymorphicList.hh" />
