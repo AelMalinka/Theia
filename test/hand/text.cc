@@ -22,14 +22,6 @@ int main(int ArgC, char *ArgV[])
 		text->setPosition(ScreenVertex(10, 10));
 		text->setColor(Vertex(1.0, 1.0, 1.0));
 
-		app.Windows()->setFoV(90.0);
-		app.Windows()->setNearClipping(0.0);
-		app.Windows()->setFarClipping(10.0);
-
-		app.Windows()->Scenes()->getCamera().setPosition(Vertex(0.0, 0.0, 10.0));
-		app.Windows()->Scenes()->getCamera().setLookAt(Vertex(0.0, 0.0, 0.0));
-		app.Windows()->Scenes()->getCamera().setUp(Vertex(0.0, 1.0, 0.0));
-
 		app.Windows()->Scenes()->addDrawable(text);
 
 		app();
