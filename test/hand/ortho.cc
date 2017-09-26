@@ -145,14 +145,10 @@ detail::shared_data::shared_data()
 	;
 
 	vector<float> vertices = {
-		/*100, 300,
+		100, 300,
 		300, 300,
 		100, 100,
-		300, 100,*/
-		-1.0, 1.0f,
-		1.0f, 1.0f,
-		-1.0f, -1.0f,
-		1.0f, -1.0f,
+		300, 100,
 	};
 
 	Shader vert(Shader::Vertex, vert_code);
