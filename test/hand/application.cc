@@ -91,6 +91,14 @@ void ::Application::onEvent(const Entropy::Event &ev)
 ::Application::Application(const int ArgC, char *ArgV[])
 	: Entropy::Theia::Application(ArgC, ArgV)
 {
+	auto a = make_shared<MyObject>();
+	auto b = make_shared<MyObject>();
+
+	a->Translate(Vertex(2, 2, 0));
+	b->Translate(Vertex(-2, -2, 0));
+
+	Windows()->Scenes()->addDrawable(a);
+	Windows()->Scenes()->addDrawable(b);
 	Windows()->Scenes()->emplaceDrawable<MyObject>();
 }
 
