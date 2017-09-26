@@ -79,7 +79,7 @@
       <PreprocessorDefinitions>DEBUG;HAVE_OPENGL_CORE</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy /Y "$(SolutionDir)..\..\..\External\libepoxy\build\src\epoxy-0.dll" "$(OutDir)"</Command>
+      <Command>copy /Y "F:\Source\External\libepoxy\build\src\epoxy-0.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -111,7 +111,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(SolutionDir)..\..\..\External\libepoxy\build\src\epoxy-0.dll" "$(OutDir)"</Command>
+      <Command>copy /Y "F:\Source\External\libepoxy\build\src\epoxy-0.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
