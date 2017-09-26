@@ -82,10 +82,12 @@ check_PROGRAMS = \
 	hand-glfwwindow \
 	hand-object \
 	hand-application \
-	hand-ortho
+	hand-ortho \
+	hand-text
 
 dist_noinst_DATA = \
-	data/purple-stars.png
+	data/purple-stars.png \
+	data/NotoSansUI-Regular.ttf
 
 all-local:
 	test -d data || $(LN_S) $(top_srcdir)/data $(builddir)/data
@@ -101,6 +103,9 @@ hand_application_LDADD = libtheia.la
 
 hand_ortho_SOURCES = test/hand/ortho.cc
 hand_ortho_LDADD = libtheia.la
+
+hand_text_SOURCES = test/hand/text.cc
+hand_text_LDADD = libtheia.la
 
 if GTEST
 check_PROGRAMS += \
