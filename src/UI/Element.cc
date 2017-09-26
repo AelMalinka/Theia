@@ -9,7 +9,7 @@ using namespace Entropy::Theia;
 using namespace std;
 
 Element::Element()
-	: _pos(0, 0), _color(0.0, 0.0, 0.0), _scale(1.0)
+	: _pos(0, 0), _color(1.0, 1.0, 1.0), _scale(1.0)
 {}
 
 Element::~Element() = default;

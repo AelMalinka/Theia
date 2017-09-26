@@ -18,10 +18,6 @@ int main(int ArgC, char *ArgV[])
 		Application app(ArgC, ArgV);
 
 		auto text = make_shared<Text>("Hello Theia!", FT::Font("data/NotoSansUI-Regular.ttf"));
-
-		text->setPosition(ScreenVertex(10, 10));
-		text->setColor(Vertex(1.0, 1.0, 1.0));
-
 		app.Windows()->Scenes()->addDrawable(text);
 
 		app();
