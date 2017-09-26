@@ -27,8 +27,17 @@ int main(int ArgC, char *ArgV[])
 			}
 		});
 
-		auto text = make_shared<Text>("Hello Theia!", FT::Font("data/NotoSansUI-Regular.ttf"));
-		app.Windows()->Scenes()->addDrawable(text);
+		auto a = make_shared<Text>("Hello Theia!", FT::Font("data/NotoSansUI-Regular.ttf"));
+		auto b = make_shared<Text>("This is made with OpenGL!", FT::Font("data/NotoSansUI-Regular.ttf"));
+
+		a->setPosition(ScreenVertex(300, 150));
+		b->setPosition(ScreenVertex(20, 20));
+
+		a->setColor(Vertex(1.0, 0.5, 0.5));
+		b->setColor(Vertex(0.5, 0.5, 1.0));
+
+		app.Windows()->Scenes()->addDrawable(a);
+		app.Windows()->Scenes()->addDrawable(b);
 
 		app();
 
