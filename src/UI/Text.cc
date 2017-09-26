@@ -7,6 +7,7 @@
 
 using namespace Entropy::Theia::UI;
 using namespace Entropy::Theia::GL;
+using namespace Entropy::Theia;
 using namespace std;
 
 Text::Text(string &&t, FT::Font &&f)
