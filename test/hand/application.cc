@@ -44,7 +44,7 @@ class Application :
 	public:
 		Application(const int, char *[]);
 	private:
-		void onEvent(const Event &e);
+		void onEvent(const Entropy::Event &e);
 };
 
 int main(int ArgC, char *ArgV[])
@@ -70,7 +70,7 @@ void MyObject::Draw()
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-void ::Application::onEvent(const Event &ev)
+void ::Application::onEvent(const Entropy::Event &ev)
 {
 	if(ev.Id() == Events::Key::Id) {
 		const Events::Key &k = dynamic_cast<const Events::Key &>(ev);

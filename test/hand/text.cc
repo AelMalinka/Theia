@@ -17,6 +17,16 @@ int main(int ArgC, char *ArgV[])
 	{
 		Application app(ArgC, ArgV);
 
+		app.Windows()->addCallbacks([&app](const Event &ev) {
+			if(ev.Id() == Events::Key::Id) {
+				const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
+
+				if(k.Action() == GLFW_PRESS && k.Code() == GLFW_KEY_ESCAPE) {
+					app.Windows()->Close();
+				}
+			}
+		});
+
 		auto text = make_shared<Text>("Hello Theia!", FT::Font("data/NotoSansUI-Regular.ttf"));
 		app.Windows()->Scenes()->addDrawable(text);
 
