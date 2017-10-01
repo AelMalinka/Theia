@@ -7,6 +7,7 @@
 #include "GLFW/Window.hh"
 
 using namespace Entropy::Theia;
+using namespace Entropy;
 using namespace std;
 using namespace std::chrono;
 
@@ -15,7 +16,7 @@ struct GlfwWindow :
 {
 	GlfwWindow(Entropy::Theia::Window *, const std::string, const std::size_t, const std::size_t);
 	void Draw();
-	void onEvent(const Event &);
+	void onEvent(const Theia::Event &);
 	private:
 		Entropy::Theia::Window *_win;
 };
@@ -111,7 +112,7 @@ const Context &Window::getContext() const
 	return _window->getContext();
 }
 
-void Window::onEvent(const Event &ev)
+void Window::onEvent(const Theia::Event &ev)
 {
 	for(auto &&f : _cbs) {
 		f(ev);
@@ -142,7 +143,7 @@ void GlfwWindow::Draw()
 	_win->Draw();
 }
 
-void GlfwWindow::onEvent(const Event &ev)
+void GlfwWindow::onEvent(const Theia::Event &ev)
 {
 	_win->onEvent(ev);
 	GLFW::Window::onEvent(ev);

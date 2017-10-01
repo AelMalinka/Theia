@@ -9,6 +9,8 @@
 using namespace Entropy::Theia;
 using namespace std;
 
+using Entropy::DefaultedList;
+
 Application::Application()
 	: Entropy::Tethys::Application(), _window("Theia Application", 640, 360)
 {

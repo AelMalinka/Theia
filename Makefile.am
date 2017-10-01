@@ -23,17 +23,6 @@ theiaheaders_HEADERS = \
 	src/Window.hh \
 	src/Window.impl.hh
 
-utilityheadersdir = $(includedir)/Entropy/Theia/Utility
-utilityheaders_HEADERS = \
-	src/Utility/DefaultedList.hh \
-	src/Utility/DefaultedList.impl.hh \
-	src/Utility/PolymorphicList.hh \
-	src/Utility/PolymorphicList.impl.hh \
-	src/Utility/PolymorphicListIterator.hh \
-	src/Utility/PolymorphicListIterator.impl.hh \
-	src/Utility/SharedData.hh \
-	src/Utility/SharedData.impl.hh
-
 glheadersdir = $(includedir)/Entropy/Theia/GL
 glheaders_HEADERS = \
 	src/GL/Array.hh \
@@ -118,30 +107,9 @@ hand_ortho_LDADD = libtheia.la
 hand_text_SOURCES = test/hand/text.cc
 hand_text_LDADD = libtheia.la
 
-if GTEST
-check_PROGRAMS += \
-	utility-defaulted-list \
-	utility-polymorphic-list-iterator \
-	utility-polymorphic-list \
-	utility-shared-data
-
-utility_defaulted_list_SOURCES = test/utility/defaulted-list.cc
-utility_defaulted_list_LDADD = $(GTEST_LIBS) libtheia.la
-
-utility_polymorphic_list_SOURCES = test/utility/polymorphic-list.cc
-utility_polymorphic_list_LDADD = $(GTEST_LIBS) libtheia.la
-
-utility_polymorphic_list_iterator_SOURCES = test/utility/polymorphic-list-iterator.cc
-utility_polymorphic_list_iterator_LDADD = $(GTEST_LIBS) libtheia.la
-
-utility_shared_data_SOURCES = test/utility/shared-data.cc
-utility_shared_data_LDADD = $(GTEST_LIBS) libtheia.la
-endif
-
 TESTSUITE = $(srcdir)/test/testsuite
 
-TESTSUITE_FILES = \
-	$(srcdir)/test/utility.at
+TESTSUITE_FILES =
 
 EXTRA_DIST = $(TESTSUITE_FILES) \
 	$(srcdir)/test/testsuite.at \

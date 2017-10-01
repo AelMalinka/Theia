@@ -8,7 +8,7 @@
 #	include "Glfw.hh"
 
 #	include "../IWindow.hh"
-#	include "../Utility/SharedData.hh"
+#	include <Entropy/SharedData.hh>
 
 	namespace Entropy
 	{

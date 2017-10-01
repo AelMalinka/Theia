@@ -8,10 +8,9 @@
 #	include <vector>
 #	include <functional>
 #	include <chrono>
+#	include <Entropy/DefaultedList.hh>
 #	include <Entropy/Tethys/UV/Timer.hh>
-
 #	include "IWindow.hh"
-#	include "Utility/DefaultedList.hh"
 #	include "Scene.hh"
 
 	namespace Entropy
@@ -40,7 +39,7 @@
 					virtual bool isVisible() const;
 					virtual Context &getContext();
 					virtual const Context &getContext() const;
-					virtual void onEvent(const Event &);
+					virtual void onEvent(const Theia::Event &);
 				public:
 					virtual void setFoV(const Dimension &);
 					virtual void setNearClipping(const Dimension &);

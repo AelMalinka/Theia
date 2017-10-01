@@ -6,7 +6,7 @@
 #	define ENTROPY_THEIA_UI_FT_FACE_INC
 
 #	include "Library.hh"
-#	include "../../Utility/SharedData.hh"
+#	include <Entropy/SharedData.hh>
 
 	namespace Entropy
 	{

@@ -7,7 +7,7 @@
 
 #	include "Drawables.hh"
 #	include "Camera.hh"
-#	include "Utility/DefaultedList.hh"
+#	include <Entropy/DefaultedList.hh>
 
 	namespace Entropy
 	{

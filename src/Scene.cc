@@ -5,6 +5,7 @@
 #include "Scene.hh"
 
 using namespace Entropy::Theia;
+using namespace Entropy;
 using namespace std;
 
 Scene::Scene(Screen &s)

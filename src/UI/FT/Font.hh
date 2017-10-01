@@ -6,7 +6,7 @@
 #	define ENTROPY_THEIA_UI_FT_FONT_INC
 
 #	include "Face.hh"
-#	include "../../Utility/SharedData.hh"
+#	include <Entropy/SharedData.hh>
 #	include "../../Types.hh"
 #	include "../../GL/Texture.hh"
 #	include <map>

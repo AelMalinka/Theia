@@ -9,11 +9,13 @@
 #include "Object.hh"
 #include "GL/Array.hh"
 #include "GL/Bind.hh"
-#include "Utility/SharedData.hh"
+#include <Entropy/SharedData.hh>
 
 using namespace std;
 using namespace Entropy::Theia;
 using namespace Entropy::Theia::GL;
+
+using Entropy::SharedData;
 
 namespace detail
 {

@@ -6,7 +6,7 @@
 #	define ENTROPY_THEIA_DRAWABLES_INC
 
 #	include "Drawable.hh"
-#	include "Utility/PolymorphicList.hh"
+#	include <Entropy/PolymorphicList.hh>
 
 	namespace Entropy
 	{
