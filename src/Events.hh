@@ -19,7 +19,7 @@
 					public Event
 				{
 					public:
-						static constexpr std::size_t Id = 10;
+						static constexpr std::size_t Id = Event::First;
 						enum class Source;
 						enum class Severity;
 						enum class Type;
@@ -71,7 +71,7 @@
 					public Event
 				{
 					public:
-						static constexpr std::size_t Id = 11;
+						static constexpr std::size_t Id = Debug::Id + 1;
 						Show(IWindow &);
 						IWindow &Window() const;
 					private:
@@ -82,7 +82,7 @@
 					public Event
 				{
 					public:
-						static constexpr std::size_t Id = 12;
+						static constexpr std::size_t Id = Show::Id + 1;
 						Hide(IWindow &);
 						IWindow &Window() const;
 					private:
@@ -93,7 +93,7 @@
 					public Event
 				{
 					public:
-						static constexpr std::size_t Id = 13;
+						static constexpr std::size_t Id = Hide::Id + 1;
 						Close(IWindow &);
 						const IWindow &Window() const;
 					private:
@@ -104,7 +104,7 @@
 					public Event
 				{
 					public:
-						static constexpr std::size_t Id = 14;
+						static constexpr std::size_t Id = Close::Id + 1;
 						Resize(const ScreenDimension, const ScreenDimension);
 						const ScreenDimension &Width() const;
 						const ScreenDimension &Height() const;
@@ -118,7 +118,8 @@
 					public Event
 				{
 					public:
-						static constexpr std::size_t Id = 20;
+						// 2017-09-30 AMR TODO: maybe consolidate?
+						static constexpr std::size_t Id = Event::First + 10;
 						Key(const int, const int, const int);
 						const int &Code() const;
 						const int &Action() const;
@@ -136,7 +137,7 @@
 					public Event
 				{
 					public:
-						static constexpr std::size_t Id = 21;
+						static constexpr std::size_t Id = Key::Id + 1;
 						Mouse(const Dimension, const Dimension);
 						const Dimension &X() const;
 						const Dimension &Y() const;

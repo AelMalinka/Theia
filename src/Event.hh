@@ -18,7 +18,8 @@
 				public:
 					Event(const std::size_t &);
 					virtual ~Event();
-					static constexpr std::size_t Last = 21;
+					static constexpr std::size_t First = 10;
+					static constexpr std::size_t Last = First + 20;
 			};
 		}
 	}
