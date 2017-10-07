@@ -75,6 +75,9 @@ void APIENTRY debug_cb(GLenum src, GLenum type, GLuint id, GLenum sev, GLsizei l
 
 	const function<void(const Debug &)> &f = *reinterpret_cast<const function<void(const Debug &)> *>(data);
 
+	if(!f)
+		ENTROPY_THROW(GlfwException("Debug Callback w/o function to callback to"));
+
 	Debug ev(Debug::Source(src), Debug::Type(type), id, Debug::Severity(sev), string(msg, len));
 	f(ev);
 }
