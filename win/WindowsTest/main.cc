@@ -5,17 +5,18 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
-
+#include <Entropy/SharedData.hh>
 #include <Entropy/Theia/Application.hh>
 #include <Entropy/Theia/Object.hh>
 #include <Entropy/Theia/GL/Array.hh>
 #include <Entropy/Theia/GL/Bind.hh>
-#include <Entropy/Theia/Utility/SharedData.hh>
 #include <Entropy/Theia/UI/Text.hh>
 
 using namespace std;
 using namespace Entropy::Theia;
 using namespace Entropy::Theia::GL;
+
+using Entropy::SharedData;
 
 const size_t MAX_BUFFSIZE = 4096;
 

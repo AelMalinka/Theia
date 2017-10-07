@@ -188,14 +188,6 @@
     <ClInclude Include="..\..\src\UI\FT\Font.hh" />
     <ClInclude Include="..\..\src\UI\FT\Library.hh" />
     <ClInclude Include="..\..\src\UI\Text.hh" />
-    <ClInclude Include="..\..\src\Utility\DefaultedList.hh" />
-    <ClInclude Include="..\..\src\Utility\DefaultedList.impl.hh" />
-    <ClInclude Include="..\..\src\Utility\PolymorphicList.hh" />
-    <ClInclude Include="..\..\src\Utility\PolymorphicList.impl.hh" />
-    <ClInclude Include="..\..\src\Utility\PolymorphicListIterator.hh" />
-    <ClInclude Include="..\..\src\Utility\PolymorphicListIterator.impl.hh" />
-    <ClInclude Include="..\..\src\Utility\SharedData.hh" />
-    <ClInclude Include="..\..\src\Utility\SharedData.impl.hh" />
     <ClInclude Include="..\..\src\Window.hh" />
     <ClInclude Include="..\..\src\Window.impl.hh" />
   </ItemGroup>

@@ -68,8 +68,13 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental />
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental />
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -83,6 +88,7 @@
       <AdditionalLibraryDirectories>$(OutDir);F:\Source\External\boost\stage\lib;F:\Source\External\libpng\projects\vstudio\Release Library;F:\Source\External\libuv\Release\lib;F:\Source\External\glfw\build\src\RelWithDebInfo;F:\Source\External\libepoxy\build\src;F:\Source\External\freetype2\build\RelWithDebInfo</AdditionalLibraryDirectories>
       <AdditionalDependencies>Entropy.lib;libpng16.lib;zlib.lib;Tethys.lib;libuv.lib;ws2_32.lib;iphlpapi.lib;psapi.lib;userenv.lib;Theia.lib;epoxy.lib;glfw3.lib;opengl32.lib;glu32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>libcmt</IgnoreSpecificDefaultLibraries>
+      <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <CustomBuildStep />
     <PostBuildEvent>
@@ -100,6 +106,7 @@ xcopy /s /y "$(ProjectDir)..\..\data" "$(OutDir)data"</Command>
     <Link>
       <AdditionalLibraryDirectories>$(OutDir);F:\Source\boost\stage\lib;F:\Source\libepoxy\_build\src</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(OutDir)data"
