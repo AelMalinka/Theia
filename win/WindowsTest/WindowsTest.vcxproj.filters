@@ -5,10 +5,18 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Data Files">
+      <UniqueIdentifier>{9e0a51a7-3e56-4429-813b-780e88a104d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\data\NotoSansUI-Regular.ttf">
+      <Filter>Data Files</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>
