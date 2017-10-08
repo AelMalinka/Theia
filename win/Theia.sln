@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Theia", "Theia\Theia.vcxproj", "{54CED1F7-4C0E-4BB5-931E-ECCC4CC7A4CF}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tethys", "..\..\Tethys\win\
 	ProjectSection(ProjectDependencies) = postProject
 		{25B626B2-690C-4EEE-A3A9-2AA486E31542} = {25B626B2-690C-4EEE-A3A9-2AA486E31542}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TheiaTests", "TheiaTests\TheiaTests.vcxproj", "{6F8B899F-F573-4589-B7B1-81BFD3204CEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,14 @@ Global
 		{23BEC3A9-1AD4-49FA-8D60-0A0FFFA64F17}.Release|x64.Build.0 = Debug|x64
 		{23BEC3A9-1AD4-49FA-8D60-0A0FFFA64F17}.Release|x86.ActiveCfg = Debug|x64
 		{23BEC3A9-1AD4-49FA-8D60-0A0FFFA64F17}.Release|x86.Build.0 = Debug|x64
+		{6F8B899F-F573-4589-B7B1-81BFD3204CEF}.Debug|x64.ActiveCfg = Debug|x64
+		{6F8B899F-F573-4589-B7B1-81BFD3204CEF}.Debug|x64.Build.0 = Debug|x64
+		{6F8B899F-F573-4589-B7B1-81BFD3204CEF}.Debug|x86.ActiveCfg = Debug|Win32
+		{6F8B899F-F573-4589-B7B1-81BFD3204CEF}.Debug|x86.Build.0 = Debug|Win32
+		{6F8B899F-F573-4589-B7B1-81BFD3204CEF}.Release|x64.ActiveCfg = Release|x64
+		{6F8B899F-F573-4589-B7B1-81BFD3204CEF}.Release|x64.Build.0 = Release|x64
+		{6F8B899F-F573-4589-B7B1-81BFD3204CEF}.Release|x86.ActiveCfg = Release|Win32
+		{6F8B899F-F573-4589-B7B1-81BFD3204CEF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
