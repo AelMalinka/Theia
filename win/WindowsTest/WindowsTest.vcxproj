@@ -87,7 +87,7 @@
     <Link>
       <AdditionalLibraryDirectories>F:\Source\External\boost\stage\lib;F:\Source\External\libpng\projects\vstudio\Release Library;F:\Source\External\libuv\Release\lib;F:\Source\External\glfw\build\src\RelWithDebInfo;F:\Source\External\libepoxy\build\src;F:\Source\External\freetype2\build\RelWithDebInfo</AdditionalLibraryDirectories>
       <AdditionalDependencies>libpng16.lib;zlib.lib;libuv.lib;ws2_32.lib;iphlpapi.lib;psapi.lib;userenv.lib;epoxy.lib;glfw3.lib;opengl32.lib;glu32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;msvcrt.lib</IgnoreSpecificDefaultLibraries>
       <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <CustomBuildStep />
@@ -108,7 +108,7 @@
       </AdditionalLibraryDirectories>
       <AdditionalDependencies>libpng16.lib;zlib.lib;libuv.lib;ws2_32.lib;iphlpapi.lib;psapi.lib;userenv.lib;epoxy.lib;glfw3.lib;opengl32.lib;glu32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
-      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -129,7 +129,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>F:\Source\External\boost\stage\lib;F:\Source\External\libpng\projects\vstudio\Release Library;F:\Source\External\libuv\Release\lib;F:\Source\External\glfw\build\src\RelWithDebInfo;F:\Source\External\libepoxy\build\src;F:\Source\External\freetype2\build\RelWithDebInfo</AdditionalLibraryDirectories>
       <AdditionalDependencies>libpng16.lib;zlib.lib;libuv.lib;ws2_32.lib;iphlpapi.lib;psapi.lib;userenv.lib;epoxy.lib;glfw3.lib;opengl32.lib;glu32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
     <CustomBuildStep />
     <PostBuildEvent>
@@ -152,7 +152,7 @@
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
       <AdditionalDependencies>libpng16.lib;zlib.lib;libuv.lib;ws2_32.lib;iphlpapi.lib;psapi.lib;userenv.lib;epoxy.lib;glfw3.lib;opengl32.lib;glu32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>
