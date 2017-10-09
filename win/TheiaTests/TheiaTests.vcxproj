@@ -60,7 +60,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\src;F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\libepoxy\build\include;F:\Source\External\freetype2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\src;F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\libepoxy\build\include;F:\Source\External\freetype2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
@@ -85,7 +85,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\src;F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\freetype2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\src;F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\freetype2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
@@ -106,7 +106,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\src;F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\libepoxy\build\include;F:\Source\External\freetype2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\src;F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\libepoxy\build\include;F:\Source\External\freetype2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
@@ -131,7 +131,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\src;F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\freetype2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\src;F:\Source\External\boost;F:\Source\External\libpng;F:\Source\Repos\Entropy\win\include;F:\Source\External\libuv\include;F:\Source\Repos\Tethys\win\include;F:\Source\External\glm;F:\Source\External\glfw\include;F:\Source\External\libepoxy\include;F:\Source\External\freetype2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
