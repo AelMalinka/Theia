@@ -91,7 +91,7 @@ void ::Application::onEvent(const Entropy::Event &ev)
 }
 
 ::Application::Application(const int ArgC, char *ArgV[])
-	: Entropy::Theia::Application(ArgC, ArgV)
+	: Entropy::Tethys::Application(ArgC, ArgV), Entropy::Theia::Application(ArgC, ArgV)
 {
 	auto a = make_shared<MyObject>();
 	auto b = make_shared<MyObject>();

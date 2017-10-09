@@ -142,7 +142,7 @@ detail::shared_data::shared_data()
 }
 
 ::Application::Application(const string &name)
-	: Entropy::Theia::Application(name)
+	: Entropy::Tethys::Application(), Entropy::Theia::Application(name)
 {
 	auto a = make_shared<UI::Text>("Hello Theia!"s, UI::FT::Font("data/NotoSansUI-Regular.ttf"s));
 	auto b = make_shared<UI::Text>("This is made with OpenGL!"s, UI::FT::Font("data/NotoSansUI-Regular.ttf"s));
