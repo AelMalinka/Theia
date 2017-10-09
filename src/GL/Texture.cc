@@ -29,6 +29,7 @@ Texture::Texture(const Type &t, const string &name)
 	: _tex(0), _type(t)
 {
 	glGenTextures(1, &_tex);
+	CHECK_GL_ERRORS("failed to generate texture data");
 	Bind b(*this);
 	PNG image(name);
 	glTexImage2D(t.Value(), 0, RGBA8.Value(), image.Width(), image.Height(), 0, RGBA.Value(), UnsignedByte.Value(), image.data());
@@ -39,6 +40,7 @@ Texture::Texture(const Type &t, const Texture::Format &f, const Texture::Interna
 	: _tex(0), _type(t)
 {
 	glGenTextures(1, &_tex);
+	CHECK_GL_ERRORS("failed to generate texture data");
 	Bind b(*this);
 	glTexImage2D(t.Value(), 0, i.Value(), width, height, 0, f.Value(), s.Value(), data);
 	CHECK_GL_ERRORS("failed to load texture data");
