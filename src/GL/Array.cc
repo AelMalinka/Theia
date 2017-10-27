@@ -31,6 +31,8 @@ void Array::Bind(const Program &prog, const Buffer &buff, const string &name, co
 
 	GLint attrib = glGetAttribLocation(prog.Handle(), name.c_str());
 	CHECK_GL_ERRORS_WITH("Failed to get Attribute Location", AttributeName(name));
+	if(attrib < 0)
+		ENTROPY_THROW(Exception("Attribute doesn't exist") << AttributeName(name));
 	glEnableVertexAttribArray(attrib);
 	CHECK_GL_ERRORS_WITH("Failed to enable Attribute", AttributeName(name));
 	glVertexAttribPointer(attrib, count, type, GL_FALSE, stride, reinterpret_cast<void *>(offset));
