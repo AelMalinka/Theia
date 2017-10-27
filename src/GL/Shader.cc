@@ -5,7 +5,10 @@
 #include "Shader.hh"
 
 using namespace Entropy::Theia::GL;
+using namespace Entropy::Log;
 using namespace std;
+
+using Entropy::Theia::Log;
 
 const Shader::Type Shader::Vertex(GL_VERTEX_SHADER);
 const Shader::Type Shader::Fragment(GL_FRAGMENT_SHADER);
@@ -36,11 +39,14 @@ Shader::Shader(const Type &type, const string &code)
 			ShaderLog(buff)
 		);
 	}
+
+	ENTROPY_LOG(Log, Severity::Debug) << "Shader " << Handle() << " (" << type.Value() << ") created";
 }
 
 Shader::~Shader()
 {
 	glDeleteShader(_shader);
+	ENTROPY_LOG(Log, Severity::Debug) << "Shader " << Handle() << " deleted";
 }
 
 const GLuint &Shader::Handle() const

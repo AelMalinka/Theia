@@ -5,6 +5,9 @@
 #include "Buffer.hh"
 
 using namespace Entropy::Theia::GL;
+using namespace Entropy::Log;
+
+using Entropy::Theia::Log;
 
 const Buffer::Type Buffer::Vertex(GL_ARRAY_BUFFER);
 const Buffer::Type Buffer::Element(GL_ELEMENT_ARRAY_BUFFER);
@@ -17,11 +20,13 @@ Buffer::Buffer(const Type &t)
 	: _buffer(0), _type(t)
 {
 	glGenBuffers(1, &_buffer);
+	ENTROPY_LOG(Log, Severity::Debug) << "Buffer " << Handle() << " created (" << GlType() << ")";
 }
 
 Buffer::~Buffer()
 {
 	glDeleteBuffers(1, &_buffer);
+	ENTROPY_LOG(Log, Severity::Debug) << "Buffer " << Handle() << " deleted (" << GlType() << ")";
 }
 
 const GLenum &Buffer::GlType() const

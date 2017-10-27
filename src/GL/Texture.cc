@@ -8,7 +8,10 @@
 #include "Bind.hh"
 
 using namespace Entropy::Theia::GL;
+using namespace Entropy::Log;
 using namespace std;
+
+using Entropy::Theia::Log;
 
 const Texture::Type Texture::Texture2D(GL_TEXTURE_2D);
 
@@ -34,6 +37,8 @@ Texture::Texture(const Type &t, const string &name)
 	PNG image(name);
 	glTexImage2D(t.Value(), 0, RGBA8.Value(), image.Width(), image.Height(), 0, RGBA.Value(), UnsignedByte.Value(), image.data());
 	CHECK_GL_ERRORS_WITH("failed to load texture data", PNGFileName(name));
+
+	ENTROPY_LOG(Log, Severity::Debug) << "Texture " << Handle() << " created";
 }
 
 Texture::Texture(const Type &t, const Texture::Format &f, const Texture::Internal &i, const GLuint width, const GLuint height, void *data, const Texture::Size &s)
@@ -44,12 +49,15 @@ Texture::Texture(const Type &t, const Texture::Format &f, const Texture::Interna
 	Bind b(*this);
 	glTexImage2D(t.Value(), 0, i.Value(), width, height, 0, f.Value(), s.Value(), data);
 	CHECK_GL_ERRORS("failed to load texture data");
+
+	ENTROPY_LOG(Log, Severity::Debug) << "Texture " << Handle() << " created";
 }
 
 Texture::Texture(Texture &&o)
 	: _tex(0), _type(o._type)
 {
 	glGenTextures(1, &_tex);
+	ENTROPY_LOG(Log, Severity::Debug) << "Texture " << Handle() << " created";
 
 	swap(_tex, o._tex);
 }
@@ -57,10 +65,12 @@ Texture::Texture(Texture &&o)
 Texture::~Texture()
 {
 	glDeleteTextures(1, &_tex);
+	ENTROPY_LOG(Log, Severity::Debug) << "Texture " << Handle() << " deleted";
 }
 
 void Texture::generateMipmaps()
 {
+	ENTROPY_LOG(Log, Severity::Debug) << "Generating mipmaps for texture " << Handle();
 	Bind b(*this);
 	glGenerateMipmap(_type.Value());
 	CHECK_GL_ERRORS("failed to load texture data");
@@ -68,6 +78,7 @@ void Texture::generateMipmaps()
 
 void Texture::setUpscale(const Filter &f)
 {
+	ENTROPY_LOG(Log, Severity::Debug) << "setting upscale for texture " << Handle() << " to " << f.Value();
 	Bind b(*this);
 	glTexParameteri(_type.Value(), GL_TEXTURE_MAG_FILTER, f.Value());
 	CHECK_GL_ERRORS("failed to set upscale value");
@@ -75,6 +86,7 @@ void Texture::setUpscale(const Filter &f)
 
 void Texture::setDownscale(const Filter &f)
 {
+	ENTROPY_LOG(Log, Severity::Debug) << "setting downscale for texture " << Handle() << " to " << f.Value();
 	Bind b(*this);
 	glTexParameteri(_type.Value(), GL_TEXTURE_MIN_FILTER, f.Value());
 	CHECK_GL_ERRORS("failed to set downscale value");
@@ -82,6 +94,7 @@ void Texture::setDownscale(const Filter &f)
 
 void Texture::setRepeat(const Repeat &r)
 {
+	ENTROPY_LOG(Log, Severity::Debug) << "setting repeat for texture " << Handle() << " to " << r.Value();
 	Bind b(*this);
 	glTexParameteri(_type.Value(), GL_TEXTURE_WRAP_S, r.Value());
 	glTexParameteri(_type.Value(), GL_TEXTURE_WRAP_T, r.Value());

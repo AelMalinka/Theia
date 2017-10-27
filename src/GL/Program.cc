@@ -5,7 +5,10 @@
 #include "Program.hh"
 
 using namespace Entropy::Theia::GL;
+using namespace Entropy::Log;
 using namespace std;
+
+using Entropy::Theia::Log;
 
 Program::Program()
 	: _program(0)
@@ -13,21 +16,26 @@ Program::Program()
 	_program = glCreateProgram();
 	if (_program == 0)
 		ENTROPY_THROW(Exception("failed to create program"));
+
+	ENTROPY_LOG(Log, Severity::Debug) << "Program " << Handle() << " created";
 }
 
 Program::~Program()
 {
 	glDeleteProgram(_program);
+	ENTROPY_LOG(Log, Severity::Debug) << "Program " << Handle() << " deleted";
 }
 
 void Program::Attach(const Shader &shader)
 {
+	ENTROPY_LOG(Log, Severity::Debug) << "Attaching shader " << shader.Handle() << " to program " << Handle();
 	glAttachShader(_program, shader.Handle());
 	CHECK_GL_ERRORS("failed to attach shader");
 }
 
 void Program::Link()
 {
+	ENTROPY_LOG(Log, Severity::Debug) << "Linking program " << Handle();
 	glLinkProgram(_program);
 	CHECK_GL_ERRORS("failed to link program");
 

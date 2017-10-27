@@ -7,20 +7,26 @@
 #include "Bind.hh"
 
 using namespace Entropy::Theia::GL;
+using namespace Entropy::Log;
 using namespace std;
+
+using Entropy::Theia::Log;
 
 Array::Array()
 {
 	glGenVertexArrays(1, &_vao);
+	ENTROPY_LOG(Log, Severity::Debug) << "Array " << Handle() << " created";
 }
 
 Array::~Array()
 {
 	glDeleteVertexArrays(1, &_vao);
+	ENTROPY_LOG(Log, Severity::Debug) << "Array " << Handle() << " deleted";
 }
 
 void Array::Bind(const Program &prog, const Buffer &buff, const string &name, const size_t count, const GLenum type, const size_t stride, const size_t offset)
 {
+	ENTROPY_LOG(Log, Severity::Debug) << "Binding buffer " << buff.Handle() << " to array " << Handle();
 	GL::Bind a(*this), b(buff);
 
 	GLint attrib = glGetAttribLocation(prog.Handle(), name.c_str());
