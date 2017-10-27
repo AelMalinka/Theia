@@ -107,9 +107,20 @@ hand_ortho_LDADD = libtheia.la
 hand_text_SOURCES = test/hand/text.cc
 hand_text_LDADD = libtheia.la
 
+if GTEST
+check_PROGRAMS += \
+	basic-application
+
+gtestLDADD = $(GTEST_LIBS) libtheia.la
+
+basic_application_SOURCES = test/basic/application.cc
+basic_application_LDADD = $(gtestLDADD)
+endif
+
 TESTSUITE = $(srcdir)/test/testsuite
 
-TESTSUITE_FILES =
+TESTSUITE_FILES = \
+	test/basic.at
 
 EXTRA_DIST = $(TESTSUITE_FILES) \
 	$(srcdir)/test/testsuite.at \
