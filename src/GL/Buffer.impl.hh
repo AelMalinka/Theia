@@ -19,6 +19,7 @@
 				{
 					Bind b(*this);
 					glBufferData(_type.Value(), sizeof(typename C::value_type) * a.size(), a.data(), u.Value());
+					CHECK_GL_ERRORS("Failed to set buffer data");
 				}
 			}
 		}
