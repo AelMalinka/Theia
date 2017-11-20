@@ -83,7 +83,8 @@ check_PROGRAMS = \
 	hand-object \
 	hand-application \
 	hand-ortho \
-	hand-text
+	hand-text \
+	hand-basic
 
 dist_noinst_DATA = \
 	data/purple-stars.png \
@@ -107,14 +108,21 @@ hand_ortho_LDADD = libtheia.la
 hand_text_SOURCES = test/hand/text.cc
 hand_text_LDADD = libtheia.la
 
+hand_basic_SOURCES = test/hand/basic.cc
+hand_basic_LDADD = libtheia.la
+
 if GTEST
 check_PROGRAMS += \
-	basic-application
+	basic-application \
+	basic-scene
 
 gtestLDADD = $(GTEST_LIBS) libtheia.la
 
 basic_application_SOURCES = test/basic/application.cc
 basic_application_LDADD = $(gtestLDADD)
+
+basic_scene_SOURCES = test/basic/scene.cc
+basic_scene_LDADD = $(gtestLDADD)
 endif
 
 TESTSUITE = $(srcdir)/test/testsuite
