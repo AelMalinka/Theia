@@ -72,14 +72,16 @@ void Glfw::setDebug(const function<void(const Events::Debug &)> &cb)
 void APIENTRY debug_cb(GLenum src, GLenum type, GLuint id, GLenum sev, GLsizei len, const char *msg, const void *data)
 {
 	using namespace Entropy::Theia::Events;
+	using Entropy::Log::Severity;
 
 	const function<void(const Debug &)> *f = reinterpret_cast<const function<void(const Debug &)> *>(data);
 
-	if(!f)
-		ENTROPY_THROW(GlfwException("Debug Callback w/o function to callback to"));
-
-	Debug ev(Debug::Source(src), Debug::Type(type), id, Debug::Severity(sev), string(msg, len));
-	(*f)(ev);
+	if(f && *f) {
+		Debug ev(Debug::Source(src), Debug::Type(type), id, Debug::Severity(sev), string(msg, len));
+		(*f)(ev);
+	} else {
+		ENTROPY_LOG(Log, Severity::Debug) << "GL Debug:" << msg;
+	}
 }
 
 void error_cb(int error, const char *desc)
