@@ -58,9 +58,10 @@ bool Glfw::isDebug() const
 void Glfw::setDebug(const function<void(const Events::Debug &)> &cb)
 {
 	if(isDebug()) {
+		_cb = cb;
 		glEnable(GL_DEBUG_OUTPUT);
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-		glDebugMessageCallback(debug_cb, &cb);
+		glDebugMessageCallback(debug_cb, &_cb);
 		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
 #		ifdef DEBUG
 			glDebugMessageInsert(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_OTHER, 10, GL_DEBUG_SEVERITY_NOTIFICATION, -1, "OpenGL Logging Initialized");
@@ -74,7 +75,7 @@ void APIENTRY debug_cb(GLenum src, GLenum type, GLuint id, GLenum sev, GLsizei l
 	using namespace Entropy::Theia::Events;
 	using Entropy::Log::Severity;
 
-	const function<void(const Debug &)> *f = reinterpret_cast<const function<void(const Debug &)> *>(data);
+	const function<void(const Debug &)> *f = static_cast<const function<void(const Debug &)> *>(data);
 
 	if(f && *f) {
 		Debug ev(Debug::Source(src), Debug::Type(type), id, Debug::Severity(sev), string(msg, len));

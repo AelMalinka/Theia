@@ -23,6 +23,8 @@
 					~Glfw();
 					bool isDebug() const;
 					void setDebug(const std::function<void(const Events::Debug &)> &);
+				private:
+					std::function<void(const Events::Debug &)> _cb;
 			};
 		}
 	}
