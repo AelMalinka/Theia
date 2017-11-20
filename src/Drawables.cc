@@ -7,6 +7,8 @@
 using namespace Entropy::Theia;
 using namespace std;
 
+using Entropy::PolymorphicList;
+
 Drawables::Drawables(Screen &s)
 	: _screen(s), _draws()
 {
@@ -50,6 +52,16 @@ void Drawables::addDrawable(const shared_ptr<Drawable> &o)
 void Drawables::clearDrawables()
 {
 	_draws.clear();
+}
+
+PolymorphicList<Drawable>::iterator Drawables::begin()
+{
+	return _draws.begin();
+}
+
+PolymorphicList<Drawable>::iterator Drawables::end()
+{
+	return _draws.end();
 }
 
 void Drawables::NewDrawable(const shared_ptr<Drawable> &o)

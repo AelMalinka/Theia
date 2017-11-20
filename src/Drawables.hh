@@ -29,6 +29,9 @@
 					std::shared_ptr<T> emplaceDrawable(Args && ...);
 					//void removeDrawable(const std::shared_ptr<Drawable> &);
 					void clearDrawables();
+				public:
+					PolymorphicList<Drawable>::iterator begin();
+					PolymorphicList<Drawable>::iterator end();
 				protected:
 					virtual void NewDrawable(const std::shared_ptr<Drawable> &);
 				protected:

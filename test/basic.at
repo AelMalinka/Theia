@@ -7,3 +7,8 @@ AT_SETUP([Application])
 AT_SKIP_IF([test -z $GTEST])
 AT_CHECK([basic-application], [], [ignore], [ignore])
 AT_CLEANUP
+
+AT_SETUP([Scene])
+AT_SKIP_IF([test -z $GTEST])
+AT_CHECK([basic-scene], [], [ignore], [ignore])
+AT_CLEANUP
