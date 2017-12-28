@@ -27,8 +27,12 @@ void Window::operator () ()
 {
 	if(!_window->isDone())
 		(*_window)();
-	else
+	else {
+		Events::Close ev(*_window);
+		onEvent(ev);
+
 		Stop();
+	}
 }
 
 DefaultedList<Scene> &Window::Scenes()

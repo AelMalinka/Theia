@@ -46,9 +46,6 @@ void Window::Hide()
 void Window::Close()
 {
 	glfwSetWindowShouldClose(_handle, GLFW_TRUE);
-
-	Events::Close ev(*this);
-	onEvent(ev);
 }
 
 void Window::Fullscreen()
