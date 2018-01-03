@@ -98,7 +98,7 @@ void ::Application::onEvent(const Entropy::Event &ev)
 ::Application::Application(const int ArgC, char *ArgV[]) :
 	Entropy::Tethys::Application(ArgC, ArgV),
 	Entropy::Theia::Application(ArgC, ArgV),
-	objects(Windows()->Scenes().current()),
+	objects(Windows()->addScene()),
 	text(Windows()->addScene())
 {
 	auto a = make_shared<::Object>();
@@ -124,6 +124,8 @@ void ::Application::onEvent(const Entropy::Event &ev)
 
 	text->addDrawable(x);
 	text->addDrawable(y);
+
+	Windows()->Scenes().setDefault(text);
 }
 
 void ::Object::Draw()

@@ -51,14 +51,6 @@ void Application::_init()
 			w.onEvent(ev);
 		});
 	#endif
-
-	Windows()->setFoV(90.0);
-	Windows()->setNearClipping(0.0);
-	Windows()->setFarClipping(10.0);
-
-	Windows()->Scenes()->getCamera().setPosition(Vertex(0.0, 0.0, 10.0));
-	Windows()->Scenes()->getCamera().setLookAt(Vertex(0.0, 0.0, 0.0));
-	Windows()->Scenes()->getCamera().setUp(Vertex(0.0, 1.0, 0.0));
 }
 
 void Application::operator () ()

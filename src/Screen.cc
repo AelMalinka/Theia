@@ -11,8 +11,10 @@ using namespace std;
 
 Screen::Screen()
 	// 2017-06-07 AMR NOTE: if height is 0, aspect is NaN and there for glm asserts when we call Upate()
-	: _perspective(), _orthogonal(), _size(640, 360), _clipping(0, 0), _fov(0), _cbs()
-{}
+	: _perspective(), _orthogonal(), _size(640, 360), _clipping(0.0, 10.0), _fov(90.0), _cbs()
+{
+	Update();
+}
 
 Screen::~Screen() = default;
 

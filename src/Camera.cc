@@ -10,9 +10,16 @@ using namespace Entropy::Theia;
 using namespace std;
 using namespace glm;
 
-Camera::Camera(Screen &s)
-	: _screen(s), _view(), _pos(), _look_at(), _up(), _cbs()
-{}
+Camera::Camera(Screen &s) :
+	_screen(s),
+	_view(),
+	_pos(Vertex(0.0, 0.0, 10.0)),
+	_look_at(Vertex(0.0, 0.0, 0.0)),
+	_up(Vertex(0.0, 1.0, 0.0)),
+	_cbs()
+{
+	Update();
+}
 
 Camera::~Camera() = default;
 

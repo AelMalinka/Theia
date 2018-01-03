@@ -33,7 +33,7 @@ namespace {
 		auto c = make_shared<MyObject>(3);
 		auto d = make_shared<MyObject>(4);
 
-		auto i = app.Windows()->Scenes().current();
+		auto i = app.Windows()->addScene();
 		auto j = app.Windows()->addScene();
 		EXPECT_NE(i, j);
 
@@ -43,9 +43,15 @@ namespace {
 		j->addDrawable(c);
 		j->addDrawable(d);
 
-		auto x = 0;
+		EXPECT_NE(app.Windows()->Scenes().current(), i);
+		EXPECT_NE(app.Windows()->Scenes().current(), j);
+
+		app.Windows()->Scenes().setDefault(i);
+
 		EXPECT_EQ(app.Windows()->Scenes().current(), i);
 		EXPECT_NE(app.Windows()->Scenes().current(), j);
+
+		auto x = 0;
 		for(auto &u : *app.Windows()->Scenes()) {
 			MyObject &o = dynamic_cast<MyObject &>(u);
 

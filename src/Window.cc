@@ -53,6 +53,7 @@ DefaultedList<Scene>::iterator Window::addScene()
 
 void Window::make_window(const string &name, const size_t width, const size_t height)
 {
+	// 2018-01-02 AMR TODO: make selectable
 	_window = make_shared<GlfwWindow>(this, name, width, height);
 	_scene = make_shared<DefaultedList<Scene>>(*_window);
 }
