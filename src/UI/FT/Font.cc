@@ -24,7 +24,7 @@ Font::Font(const string &path, const size_t count, const FT_UInt height, const F
 		}
 		catch(FailedGlyphLoad &e)
 		{
-			ENTROPY_LOG(Log, Severity::Info) << "Failed to load character " << e.get<CharCode>();
+			ENTROPY_LOG(Log, Severity::Warning) << "Failed to load character " << e.get<CharCode>();
 		}
 	}
 }
