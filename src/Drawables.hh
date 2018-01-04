@@ -24,7 +24,8 @@
 					virtual void UpdateScreen(const Screen &);
 					virtual void UpdateCamera(const Camera &);
 				public:
-					void addDrawable(const std::shared_ptr<Drawable> &);
+					template<typename T>
+					void addDrawable(const std::shared_ptr<T> &);
 					template<typename T, typename ...Args>
 					std::shared_ptr<T> emplaceDrawable(Args && ...);
 					//void removeDrawable(const std::shared_ptr<Drawable> &);

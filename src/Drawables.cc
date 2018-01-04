@@ -38,12 +38,6 @@ void Drawables::UpdateCamera(const Camera &c)
 	}
 }
 
-void Drawables::addDrawable(const shared_ptr<Drawable> &o)
-{
-	_draws.push_back(o);
-	NewDrawable(o);
-}
-
 /*void Drawables::removeDrawables(const shared_ptr<Drawable> &o)
 {
 	_draws.erase(_draws.find(o));

@@ -12,6 +12,13 @@
 	{
 		namespace Theia
 		{
+			template<typename T>
+			void Drawables::addDrawable(const std::shared_ptr<T> &d)
+			{
+				_draws.push_back(d);
+				NewDrawable(d);
+			}
+
 			template<typename T, typename ...Args>
 			std::shared_ptr<T> Drawables::emplaceDrawable(Args && ...args)
 			{
