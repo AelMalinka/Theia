@@ -11,10 +11,18 @@ using namespace Entropy::Theia;
 using namespace std;
 
 Text::Text(string &&t, FT::Font &&f)
-	: Element(), _value(move(t)), _font(move(f))
+	: Element(), _value(move(t)), _font(make_shared<FT::Font>(move(f)))
 {}
 
 Text::Text(const string &t, const FT::Font &f)
+	: Element(), _value(t), _font(make_shared<FT::Font>(f))
+{}
+
+Text::Text(string &&t, const shared_ptr<FT::Font> &f)
+	: Element(), _value(move(t)), _font(f)
+{}
+
+Text::Text(const string &t, const shared_ptr<FT::Font> &f)
 	: Element(), _value(t), _font(f)
 {}
 
@@ -40,7 +48,7 @@ void Text::Draw()
 	Dimension pos = Position().x;
 
 	for(auto &&c : Value()) {
-		auto &&f = _font[c];
+		auto &&f = (*_font)[c];
 
 		Dimension x = pos + f.Bearing().x * Scale();
 		Dimension y = Position().y - (f.Size().y - f.Bearing().y) * Scale();

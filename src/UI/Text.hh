@@ -33,7 +33,9 @@
 				{
 					public:
 						Text(std::string &&, FT::Font &&);
+						Text(std::string &&, const std::shared_ptr<FT::Font> &);
 						Text(const std::string &, const FT::Font &);
+						Text(const std::string &, const std::shared_ptr<FT::Font> &);
 						void setValue(const std::string &);
 						void setValue(std::string &&);
 						const std::string &Value() const;
@@ -42,7 +44,7 @@
 						void UpdateScreen(const Screen &);
 					private:
 						std::string _value;
-						FT::Font _font;
+						std::shared_ptr<FT::Font> _font;
 				};
 			}
 		}
