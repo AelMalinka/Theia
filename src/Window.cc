@@ -124,6 +124,11 @@ void Window::onEvent(const Theia::Event &ev)
 	}
 }
 
+const Screen &Window::getScreen() const
+{
+	return *_window;
+}
+
 void Window::setFoV(const Dimension &v)
 {
 	_window->setFoV(v);

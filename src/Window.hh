@@ -40,6 +40,7 @@
 					virtual Context &getContext();
 					virtual const Context &getContext() const;
 					virtual void onEvent(const Theia::Event &);
+					virtual const Screen &getScreen() const;
 				public:
 					virtual void setFoV(const Dimension &);
 					virtual void setNearClipping(const Dimension &);
