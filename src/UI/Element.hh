@@ -31,6 +31,8 @@
 						const ScreenVertex &Position() const;
 						const Vertex &Color() const;
 						const Dimension &Scale() const;
+					public:
+						virtual const ScreenVertex Size() const = 0;
 					private:
 						ScreenVertex _pos;
 						Vertex _color;

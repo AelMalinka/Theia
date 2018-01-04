@@ -39,6 +39,7 @@
 						void setValue(const std::string &);
 						void setValue(std::string &&);
 						const std::string &Value() const;
+						const ScreenVertex Size() const;
 					protected:
 						void Draw();
 						void UpdateScreen(const Screen &);

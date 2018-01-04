@@ -41,6 +41,20 @@ const string &Text::Value() const
 	return _value;
 }
 
+const ScreenVertex Text::Size() const
+{
+	ScreenVertex r;
+	for(auto &&c : Value()) {
+		auto &&f = (*_font)[c];
+
+		r.x += (f.Size().x + f.Bearing().x) * Scale();
+		if(r.y < (f.Size().y + f.Bearing().y) * Scale())
+			r.y = (f.Size().y + f.Bearing().y) * Scale();
+	}
+
+	return r;
+}
+
 void Text::Draw()
 {
 	Bind p(shared()->program), a(shared()->array);
