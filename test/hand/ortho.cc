@@ -117,8 +117,6 @@ detail::shared_data::shared_data()
 	string vert_code =
 		"#version 130\n"
 
-		"uniform mat4 model;"
-		"uniform mat4 view;"
 		"uniform mat4 projection;"
 
 		"in vec2 in_position;"
