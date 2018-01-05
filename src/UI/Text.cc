@@ -58,7 +58,7 @@ const ScreenVertex Text::Size() const
 void Text::Draw()
 {
 	Bind p(shared()->program), a(shared()->array);
-	shared()->program.SetUniform("in_color"s, Color());
+	shared()->program.SetUniform("in_color"s, FullColor());
 	Dimension pos = Position().x;
 
 	for(auto &&c : Value()) {
@@ -118,10 +118,10 @@ detail::text::text()
 		"out vec4 out_color;"
 
 		"uniform sampler2D uni_texture;"
-		"uniform vec3 in_color;"
+		"uniform vec4 in_color;"
 
 		"void main() {"
-			"out_color = vec4(in_color, texture(uni_texture, texture_position).r);"
+			"out_color = vec4(in_color.rgb, texture(uni_texture, texture_position).r * in_color.a);"
 		"}"
 	;
 

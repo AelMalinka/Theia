@@ -9,7 +9,7 @@ using namespace Entropy::Theia;
 using namespace std;
 
 Element::Element()
-	: _pos(0, 0), _color(1.0, 1.0, 1.0), _scale(1.0)
+	: _pos(0, 0), _color(1.0, 1.0, 1.0, 1.0), _scale(1.0)
 {}
 
 Element::~Element() = default;
@@ -26,7 +26,9 @@ void Element::setPosition(const ScreenVertex &p)
 
 void Element::setColor(const Vertex &c)
 {
-	_color = c;
+	_color.r = c.r;
+	_color.g = c.g;
+	_color.b = c.b;
 }
 
 void Element::setScale(const Dimension &s)
@@ -34,17 +36,32 @@ void Element::setScale(const Dimension &s)
 	_scale = s;
 }
 
+void Element::setTransparency(const Dimension &a)
+{
+	_color.a = a;
+}
+
 const ScreenVertex &Element::Position() const
 {
 	return _pos;
 }
 
-const Vertex &Element::Color() const
+Vertex Element::Color() const
 {
-	return _color;
+	return Vertex(_color.r, _color.g, _color.b);
 }
 
 const Dimension &Element::Scale() const
 {
 	return _scale;
+}
+
+Dimension Element::Transparency() const
+{
+	return _color.a;
+}
+
+const FullVertex &Element::FullColor() const
+{
+	return _color;
 }

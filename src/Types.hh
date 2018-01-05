@@ -15,6 +15,7 @@
 			using Matrix = glm::mat4;
 			using Vertex = glm::vec3;
 			using Vertex2D = glm::vec2;
+			using FullVertex = glm::vec4;
 			using Dimension = glm::mat4::value_type;
 			using ScreenVertex = glm::ivec2;
 			using ScreenDimension = glm::ivec2::value_type;

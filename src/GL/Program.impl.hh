@@ -36,6 +36,15 @@
 				}
 
 				template<>
+				inline void Program::SetUniform(const std::string &where, const glm::vec4 &value)
+				{
+					Bind t(*this);
+					GLint w = glGetUniformLocation(_program, where.c_str());
+					glUniform4fv(w, 1, glm::value_ptr(value));
+					CHECK_GL_ERRORS("failed to set uniform (4fv)");
+				}
+
+				template<>
 				inline void Program::SetUniform(const std::string &where, const glm::mat4 &value)
 				{
 					Bind t(*this);

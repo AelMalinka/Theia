@@ -28,14 +28,18 @@
 						void setPosition(const ScreenVertex &);
 						void setColor(const Vertex &);
 						void setScale(const Dimension &);
+						void setTransparency(const Dimension &);
 						const ScreenVertex &Position() const;
-						const Vertex &Color() const;
 						const Dimension &Scale() const;
+						Vertex Color() const;
+						Dimension Transparency() const;
+					protected:
+						const FullVertex &FullColor() const;
 					public:
 						virtual const ScreenVertex Size() const = 0;
 					private:
 						ScreenVertex _pos;
-						Vertex _color;
+						FullVertex _color;
 						Dimension _scale;
 				};
 			}
