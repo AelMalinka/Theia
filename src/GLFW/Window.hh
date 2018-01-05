@@ -45,7 +45,7 @@
 					private:
 						GLFWwindow *_handle;
 						std::string _name;
-						std::tuple<int, int, int, int> _size_pos;
+						std::tuple<int, int> _pos;
 				};
 			}
 		}

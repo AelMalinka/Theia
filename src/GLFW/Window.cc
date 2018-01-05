@@ -17,8 +17,9 @@ void move_cb(GLFWwindow *, double, double);
 void resize_cb(GLFWwindow *, int, int);
 
 Window::Window(const string &name, const int width, const int height)
-	: SharedData<Glfw>(), _handle(nullptr), _name(name), _size_pos(width, height, 0, 0)
+	: SharedData<Glfw>(), _handle(nullptr), _name(name), _pos(0, 0)
 {
+	Resize(width, height);
 	_create_window(_name);
 }
 
@@ -51,14 +52,15 @@ void Window::Close()
 void Window::Fullscreen()
 {
 	if (!isFullscreen()) {
-		glfwGetWindowSize(_handle, &get<0>(_size_pos), &get<1>(_size_pos));
-		glfwGetWindowPos(_handle, &get<2>(_size_pos), &get<3>(_size_pos));
+		glfwGetWindowSize(_handle, &Width(), &Height());
+		glfwGetWindowPos(_handle, &get<0>(_pos), &get<1>(_pos));
 
 		const GLFWvidmode *mode = _get_mode();
 
+		Resize(mode->width, mode->height);
 		glfwSetWindowMonitor(_handle, _get_monitor(), 0, 0, mode->width, mode->height, mode->refreshRate);
 	} else {
-		glfwSetWindowMonitor(_handle, nullptr, get<2>(_size_pos), get<3>(_size_pos), get<0>(_size_pos), get<1>(_size_pos), 0);
+		glfwSetWindowMonitor(_handle, nullptr, get<0>(_pos), get<1>(_pos), Width(), Height(), 0);
 	}
 }
 
@@ -133,13 +135,13 @@ void Window::_create_window(const string &name)
 	glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
 	glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
 
-	_handle = glfwCreateWindow(get<0>(_size_pos), get<1>(_size_pos), name.c_str(), nullptr, nullptr);
+	_handle = glfwCreateWindow(Width(), Height(), name.c_str(), nullptr, nullptr);
 
 	glfwMakeContextCurrent(_handle);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 
 	glfwSetWindowUserPointer(_handle, this);
-	glfwSetWindowAspectRatio(_handle, get<0>(_size_pos), get<1>(_size_pos));
+	glfwSetWindowAspectRatio(_handle, Width(), Height());
 
 	glfwSetKeyCallback(_handle, key_cb);
 	glfwSetCursorPosCallback(_handle, move_cb);
