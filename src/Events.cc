@@ -13,6 +13,7 @@ constexpr std::size_t Show::Id;
 constexpr std::size_t Hide::Id;
 constexpr std::size_t Close::Id;
 constexpr std::size_t Resize::Id;
+constexpr std::size_t Tick::Id;
 constexpr std::size_t Key::Id;
 constexpr std::size_t Mouse::Id;
 
@@ -133,3 +134,7 @@ const Dimension &Mouse::Y() const
 {
 	return _y;
 }
+
+Tick::Tick()
+	: Event(Id)
+{}

@@ -112,6 +112,11 @@ void Window::operator () ()
 
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		{
+			Events::Tick t;
+			onEvent(t);
+		}
+
 		Draw();
 
 		glfwSwapBuffers(_handle);

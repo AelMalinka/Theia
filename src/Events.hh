@@ -113,6 +113,14 @@
 						ScreenDimension _height;
 				};
 
+				class Tick :
+					public Event
+				{
+					public:
+						static constexpr std::size_t Id = Resize::Id + 1;
+						Tick();
+				};
+
 				// 2017-06-06 AMR TODO: typing?
 				class Key :
 					public Event
