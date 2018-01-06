@@ -40,6 +40,7 @@
 						void setValue(std::string &&);
 						const std::string &Value() const;
 						ScreenVertex Size() const;
+						ScreenVertex Position() const;
 					protected:
 						void Draw();
 						void UpdateScreen(const Screen &);

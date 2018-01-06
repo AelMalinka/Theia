@@ -48,8 +48,24 @@ ScreenVertex Text::Size() const
 		auto &&f = (*_font)[c];
 
 		r.x += (f.Size().x + f.Bearing().x) * Scale();
+		r.x += (f.Advance() >> 6) * Scale();
+
 		if(r.y < (f.Size().y + f.Bearing().y) * Scale())
 			r.y = (f.Size().y + f.Bearing().y) * Scale();
+	}
+
+	return r;
+}
+
+ScreenVertex Text::Position() const
+{
+	ScreenVertex o = Element::Position();
+	ScreenVertex r = Element::Position();
+	for(auto &&c : Value()) {
+		auto &&f = (*_font)[c];
+
+		if(r.y > (o.y - f.Bearing().y) * Scale())
+			r.y = (o.y - f.Bearing().y) * Scale();
 	}
 
 	return r;
@@ -59,13 +75,13 @@ void Text::Draw()
 {
 	Bind p(shared()->program), a(shared()->array);
 	shared()->program.SetUniform("in_color"s, FullColor());
-	Dimension pos = Position().x;
+	Dimension pos = Element::Position().x;
 
 	for(auto &&c : Value()) {
 		auto &&f = (*_font)[c];
 
 		Dimension x = pos + f.Bearing().x * Scale();
-		Dimension y = Position().y - (f.Size().y - f.Bearing().y) * Scale();
+		Dimension y = Element::Position().y - (f.Size().y - f.Bearing().y) * Scale();
 
 		Dimension w = f.Size().x * Scale();
 		Dimension h = f.Size().y * Scale();
