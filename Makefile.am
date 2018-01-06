@@ -41,6 +41,7 @@ glfwheaders_HEADERS = \
 
 uiheadersdir = $(includedir)/Entropy/Theia/UI
 uiheaders_HEADERS = \
+	src/UI/Box.hh \
 	src/UI/Element.hh \
 	src/UI/Exception.hh \
 	src/UI/Text.hh
@@ -65,6 +66,7 @@ libtheia_la_SOURCES = \
 	src/UI/FT/Face.cc \
 	src/UI/FT/Font.cc \
 	src/UI/FT/Library.cc \
+	src/UI/Box.cc \
 	src/UI/Element.cc \
 	src/UI/Text.cc \
 	src/Application.cc \

@@ -9,7 +9,7 @@
 #include "Object.hh"
 #include "GL/Array.hh"
 #include "GL/Bind.hh"
-#include <Entropy/SharedData.hh>
+#include "UI/Box.hh"
 
 using namespace std;
 using namespace Entropy::Theia;
@@ -94,6 +94,12 @@ void ::Application::onEvent(const Entropy::Event &ev)
 	: Entropy::Tethys::Application(ArgC, ArgV), Entropy::Theia::Application(ArgC, ArgV)
 {
 	Windows()->Scenes()->emplaceDrawable<MyObject>();
+	Windows()->Scenes()->emplaceDrawable<UI::Box>(
+		ScreenVertex(10, 20),
+		ScreenVertex(20, 20),
+		ScreenVertex(10, 10),
+		ScreenVertex(20, 10)
+	);
 }
 
 MyObject::MyObject()
