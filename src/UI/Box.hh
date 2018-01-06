@@ -33,18 +33,16 @@
 					public Element
 				{
 					public:
-						Box(const ScreenVertex, const ScreenVertex, const ScreenVertex, const ScreenVertex);
+						Box(const ScreenDimension, const ScreenDimension);
 						virtual ~Box();
 						const ScreenVertex Size() const;
-						void setVertices(const ScreenVertex, const ScreenVertex, const ScreenVertex, const ScreenVertex);
-						const std::vector<ScreenDimension> &Vertices() const;
-					protected:
-						virtual void Update();
+						void setSize(const ScreenDimension, const ScreenDimension);
 					protected:
 						virtual void Draw();
 						virtual void UpdateScreen(const Screen &);
 					private:
-						std::vector<ScreenDimension> _vertices;
+						ScreenDimension _length;
+						ScreenDimension _height;
 				};
 			}
 		}

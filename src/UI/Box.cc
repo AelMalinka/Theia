@@ -13,52 +13,45 @@ using namespace Entropy::Theia::GL;
 using namespace Entropy;
 using namespace std;
 
-Box::Box(const ScreenVertex v1, const ScreenVertex v2, const ScreenVertex v3, const ScreenVertex v4)
-	: SharedData<detail::box>(), Element(), _vertices{v1.x, v1.y, v2.x, v2.y, v3.x, v3.y, v4.x, v4.y}
-{
-	Update();
-}
+Box::Box(const ScreenDimension l, const ScreenDimension h)
+	: SharedData<detail::box>(), Element(), _length(l), _height(h)
+{}
 
 Box::~Box() = default;
 
 const ScreenVertex Box::Size() const
 {
-	return ScreenVertex( 
-		abs(_vertices[0] - _vertices[4]),
-		abs(_vertices[1] - _vertices[5])
-	);
+	return ScreenVertex(_length, _height);
 }
 
-void Box::setVertices(const ScreenVertex v1, const ScreenVertex v2, const ScreenVertex v3, const ScreenVertex v4)
+void Box::setSize(const ScreenDimension l, const ScreenDimension h)
 {
-	_vertices[0] = v1.x;
-	_vertices[1] = v1.y;
-	_vertices[2] = v2.x;
-	_vertices[3] = v2.y;
-	_vertices[4] = v3.x;
-	_vertices[5] = v3.y;
-	_vertices[6] = v4.x;
-	_vertices[7] = v4.y;
-
-	Update();
-}
-
-const vector<ScreenDimension> &Box::Vertices() const
-{
-	return _vertices;
-}
-
-void Box::Update()
-{
-	Buffer buf(Buffer::Vertex);
-	buf.Data(Vertices(), Buffer::Static);
-	shared()->array.Bind(shared()->program, buf, "in_position"s, 2, GL_INT);
+	_length = l;
+	_height = h;
 }
 
 void Box::Draw()
 {
-	Bind p(shared()->program), a(shared()->array);
+	ScreenDimension
+		x = Position().x,
+		y = Position().y,
+		l = Position().x + (_length * Scale()),
+		h = Position().y + (_height * Scale())
+	;
+
+	vector<ScreenDimension> vertices = {
+		x, h,
+		l, h,
+		x, y,
+		l, y
+	};
+
+	Buffer buf(Buffer::Vertex);
+	buf.Data(vertices, Buffer::Stream);
+	shared()->array.Bind(shared()->program, buf, "in_position"s, 2, GL_INT);
 	shared()->program.SetUniform("in_color"s, FullColor());
+
+	Bind p(shared()->program), a(shared()->array);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
