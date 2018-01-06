@@ -19,7 +19,7 @@ Box::Box(const ScreenDimension l, const ScreenDimension h)
 
 Box::~Box() = default;
 
-const ScreenVertex Box::Size() const
+ScreenVertex Box::Size() const
 {
 	return ScreenVertex(_length, _height);
 }

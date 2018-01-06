@@ -41,7 +41,7 @@ void Element::setTransparency(const Dimension &a)
 	_color.a = a;
 }
 
-const ScreenVertex &Element::Position() const
+ScreenVertex Element::Position() const
 {
 	return _pos;
 }
@@ -51,7 +51,7 @@ Vertex Element::Color() const
 	return Vertex(_color.r, _color.g, _color.b);
 }
 
-const Dimension &Element::Scale() const
+Dimension Element::Scale() const
 {
 	return _scale;
 }
@@ -61,7 +61,7 @@ Dimension Element::Transparency() const
 	return _color.a;
 }
 
-const FullVertex &Element::FullColor() const
+FullVertex Element::FullColor() const
 {
 	return _color;
 }

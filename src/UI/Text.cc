@@ -41,7 +41,7 @@ const string &Text::Value() const
 	return _value;
 }
 
-const ScreenVertex Text::Size() const
+ScreenVertex Text::Size() const
 {
 	ScreenVertex r;
 	for(auto &&c : Value()) {

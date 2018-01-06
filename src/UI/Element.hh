@@ -29,14 +29,14 @@
 						virtual void setColor(const Vertex &);
 						virtual void setScale(const Dimension &);
 						virtual void setTransparency(const Dimension &);
-						virtual const ScreenVertex &Position() const;
-						virtual const Dimension &Scale() const;
+						virtual ScreenVertex Position() const;
+						virtual Dimension Scale() const;
 						virtual Vertex Color() const;
 						virtual Dimension Transparency() const;
 					protected:
-						virtual const FullVertex &FullColor() const;
+						virtual FullVertex FullColor() const;
 					public:
-						virtual const ScreenVertex Size() const = 0;
+						virtual ScreenVertex Size() const = 0;
 					private:
 						ScreenVertex _pos;
 						FullVertex _color;

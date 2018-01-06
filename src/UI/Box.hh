@@ -35,7 +35,7 @@
 					public:
 						Box(const ScreenDimension, const ScreenDimension);
 						virtual ~Box();
-						const ScreenVertex Size() const;
+						ScreenVertex Size() const;
 						void setSize(const ScreenDimension, const ScreenDimension);
 					protected:
 						virtual void Draw();
