@@ -25,16 +25,16 @@
 					protected:
 						virtual void Draw() = 0;
 					public:
-						void setPosition(const ScreenVertex &);
-						void setColor(const Vertex &);
-						void setScale(const Dimension &);
-						void setTransparency(const Dimension &);
-						const ScreenVertex &Position() const;
-						const Dimension &Scale() const;
-						Vertex Color() const;
-						Dimension Transparency() const;
+						virtual void setPosition(const ScreenVertex &);
+						virtual void setColor(const Vertex &);
+						virtual void setScale(const Dimension &);
+						virtual void setTransparency(const Dimension &);
+						virtual const ScreenVertex &Position() const;
+						virtual const Dimension &Scale() const;
+						virtual Vertex Color() const;
+						virtual Dimension Transparency() const;
 					protected:
-						const FullVertex &FullColor() const;
+						virtual const FullVertex &FullColor() const;
 					public:
 						virtual const ScreenVertex Size() const = 0;
 					private:
