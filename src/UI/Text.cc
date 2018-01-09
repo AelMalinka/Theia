@@ -47,12 +47,13 @@ ScreenVertex Text::Size() const
 	for(auto &&c : Value()) {
 		auto &&f = (*_font)[c];
 
-		r.x += (f.Size().x + f.Bearing().x) * Scale();
 		r.x += (f.Advance() >> 6) * Scale();
 
 		if(r.y < (f.Size().y + f.Bearing().y) * Scale())
 			r.y = (f.Size().y + f.Bearing().y) * Scale();
 	}
+
+	r.x += (*_font)[Value()[0]].Bearing().x;
 
 	return r;
 }
