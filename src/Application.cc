@@ -33,7 +33,7 @@ Application::~Application() = default;
 
 void Application::_init()
 {
-	#ifdef DEBUG
+	#if defined(DEBUG) && defined(WIN32)
 		if (ArgC() >= 0)
 			addFileLog(ArgV()[0] + "-%Y-%m-%d-%H-%M-%S.%N.log"s);
 		else
