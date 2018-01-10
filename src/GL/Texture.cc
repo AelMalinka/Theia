@@ -70,7 +70,6 @@ Texture::~Texture()
 
 void Texture::generateMipmaps()
 {
-	ENTROPY_LOG(Log, Severity::Debug) << "Generating mipmaps for texture " << Handle();
 	Bind b(*this);
 	glGenerateMipmap(_type.Value());
 	CHECK_GL_ERRORS("failed to load texture data");
@@ -78,7 +77,6 @@ void Texture::generateMipmaps()
 
 void Texture::setUpscale(const Filter &f)
 {
-	ENTROPY_LOG(Log, Severity::Debug) << "setting upscale for texture " << Handle() << " to " << f.Value();
 	Bind b(*this);
 	glTexParameteri(_type.Value(), GL_TEXTURE_MAG_FILTER, f.Value());
 	CHECK_GL_ERRORS("failed to set upscale value");
@@ -86,7 +84,6 @@ void Texture::setUpscale(const Filter &f)
 
 void Texture::setDownscale(const Filter &f)
 {
-	ENTROPY_LOG(Log, Severity::Debug) << "setting downscale for texture " << Handle() << " to " << f.Value();
 	Bind b(*this);
 	glTexParameteri(_type.Value(), GL_TEXTURE_MIN_FILTER, f.Value());
 	CHECK_GL_ERRORS("failed to set downscale value");
@@ -94,7 +91,6 @@ void Texture::setDownscale(const Filter &f)
 
 void Texture::setRepeat(const Repeat &r)
 {
-	ENTROPY_LOG(Log, Severity::Debug) << "setting repeat for texture " << Handle() << " to " << r.Value();
 	Bind b(*this);
 	glTexParameteri(_type.Value(), GL_TEXTURE_WRAP_S, r.Value());
 	glTexParameteri(_type.Value(), GL_TEXTURE_WRAP_T, r.Value());

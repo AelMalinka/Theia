@@ -20,13 +20,11 @@ Buffer::Buffer(const Type &t)
 	: _buffer(0), _type(t)
 {
 	glGenBuffers(1, &_buffer);
-	ENTROPY_LOG(Log, Severity::Debug) << "Buffer " << Handle() << " created (" << GlType() << ")";
 }
 
 Buffer::~Buffer()
 {
 	glDeleteBuffers(1, &_buffer);
-	ENTROPY_LOG(Log, Severity::Debug) << "Buffer " << Handle() << " deleted (" << GlType() << ")";
 }
 
 const GLenum &Buffer::GlType() const

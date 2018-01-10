@@ -43,7 +43,6 @@ Bind::Bind(const Program &p)
 	GLint o;
 	glGetIntegerv(GL_CURRENT_PROGRAM, &o);
 
-	ENTROPY_LOG(Log, Severity::Trace) << "Binding program " << p.Handle();
 	glUseProgram(p.Handle());
 
 	_clean = [o](){
@@ -56,7 +55,6 @@ Bind::Bind(const Array &a)
 	GLint o;
 	glGetIntegerv(GL_VERTEX_ARRAY_BINDING, &o);
 
-	ENTROPY_LOG(Log, Severity::Trace) << "Binding array " << a.Handle();
 	glBindVertexArray(a.Handle());
 
 	_clean = [o]() {
@@ -70,7 +68,6 @@ Bind::Bind(const Buffer &b)
 	auto t = b.GlType();
 	glGetIntegerv(buffer(t), &o);
 
-	ENTROPY_LOG(Log, Severity::Trace) << "Binding buffer " << b.Handle() << " (" << b.GlType() << ")";
 	glBindBuffer(t, b.Handle());
 
 	_clean = [t, o]() {
@@ -84,7 +81,6 @@ Bind::Bind(const Texture &t)
 	auto w = t.GlType();
 	glGetIntegerv(texture(w), &o);
 
-	ENTROPY_LOG(Log, Severity::Trace) << "Binding texture " << t.Handle() << " (" << t.GlType() << ")";
 	glBindTexture(w, t.Handle());
 
 	_clean = [w, o]() {
