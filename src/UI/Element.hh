@@ -21,10 +21,7 @@
 						Element();
 						virtual ~Element();
 						virtual void Update(const std::chrono::duration<double> &);
-						virtual void UpdateCamera(const Camera &) {}
-					protected:
 						virtual void Draw() = 0;
-					public:
 						virtual void setPosition(const ScreenVertex &);
 						virtual void setColor(const Vertex &);
 						virtual void setScale(const Dimension &);
@@ -33,6 +30,7 @@
 						virtual Dimension Scale() const;
 						virtual Vertex Color() const;
 						virtual Dimension Transparency() const;
+						virtual void UpdateCamera(const Camera &) {}
 					protected:
 						virtual FullVertex FullColor() const;
 					public:

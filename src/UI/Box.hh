@@ -37,7 +37,6 @@
 						virtual ~Box();
 						ScreenVertex Size() const;
 						void setSize(const ScreenDimension, const ScreenDimension);
-					protected:
 						virtual void Draw();
 						virtual void UpdateScreen(const Screen &);
 					private:

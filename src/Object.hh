@@ -20,7 +20,6 @@
 					virtual void Translate(const Vertex &);
 					virtual void Rotate(const Dimension &, const Vertex &);
 					virtual void Scale(const Vertex &);
-				protected:
 					virtual void Update(const std::chrono::duration<double> &);
 					virtual void Draw() = 0;
 					virtual void UpdateModel() = 0;
