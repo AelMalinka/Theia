@@ -22,6 +22,7 @@
 					virtual void setUp(const Vertex &);
 					virtual void addCallback(const std::function<void(Camera &)> &);
 					virtual void clearCallbacks();
+					virtual void RunCallbacks();
 				public:
 					const Matrix &View() const;
 					const Vertex &Position() const;
@@ -29,7 +30,6 @@
 					const Vertex &Up() const;
 				protected:
 					void Update();
-					void RunCallbacks();
 				protected:
 					Matrix &View();
 					Vertex &Position();
