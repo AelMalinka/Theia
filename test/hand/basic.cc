@@ -113,6 +113,8 @@ void ::Application::onEvent(const Entropy::Event &ev)
 	objects->addDrawable(b);
 	objects->addDrawable(c);
 
+	objects->getCamera().setPosition(Vertex(0, 0, 5.0));
+
 	auto x = make_shared<Text>("Hello Theia!", FT::Font("data/NotoSansUI-Regular.ttf"));
 	auto y = make_shared<Text>("This is made with Theia!", FT::Font("data/NotoSansUI-Regular.ttf"));
 
