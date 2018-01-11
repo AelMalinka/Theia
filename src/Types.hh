@@ -19,6 +19,14 @@
 			using Dimension = glm::mat4::value_type;
 			using ScreenVertex = glm::ivec2;
 			using ScreenDimension = glm::ivec2::value_type;
+
+			ENTROPY_ERROR_INFO(MatrixInfo, Matrix);
+			ENTROPY_ERROR_INFO(VertexInfo, Vertex);
+			ENTROPY_ERROR_INFO(Vertex2DInfo, Vertex2D);
+			ENTROPY_ERROR_INFO(FullVertexInfo, FullVertex);
+			ENTROPY_ERROR_INFO(DimensionInfo, Dimension);
+			ENTROPY_ERROR_INFO(ScreenVertexInfo, ScreenVertex);
+			ENTROPY_ERROR_INFO(ScreenDimensionInfo, ScreenDimension);
 		}
 	}
 
