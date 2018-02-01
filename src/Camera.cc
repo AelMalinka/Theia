@@ -25,21 +25,21 @@ Camera::~Camera() = default;
 
 void Camera::setPosition(const Vertex &v)
 {
-	Position() = v;
+	position() = v;
 
 	Update();
 }
 
 void Camera::setLookAt(const Vertex &v)
 {
-	LookAt() = v;
+	lookAt() = v;
 
 	Update();
 }
 
 void Camera::setUp(const Vertex &v)
 {
-	Up() = v;
+	up() = v;
 
 	Update();
 }
@@ -76,7 +76,7 @@ const Vertex &Camera::Up() const
 
 void Camera::Update()
 {
-	View() = glm::lookAt(Position(), LookAt(), Up());
+	view() = glm::lookAt(Position(), LookAt(), Up());
 
 	RunCallbacks();
 }
@@ -88,27 +88,22 @@ void Camera::RunCallbacks()
 	}
 }
 
-Matrix &Camera::View()
+Matrix &Camera::view()
 {
 	return _view;
 }
 
-Vertex &Camera::Position()
+Vertex &Camera::position()
 {
 	return _pos;
 }
 
-Vertex &Camera::LookAt()
+Vertex &Camera::lookAt()
 {
 	return _look_at;
 }
 
-Vertex &Camera::Up()
+Vertex &Camera::up()
 {
 	return _up;
-}
-
-Screen &Camera::getScreen()
-{
-	return _screen;
 }

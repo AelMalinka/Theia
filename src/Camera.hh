@@ -31,11 +31,11 @@
 				protected:
 					void Update();
 				protected:
-					Matrix &View();
-					Vertex &Position();
-					Vertex &LookAt();
-					Vertex &Up();
-					Screen &getScreen();
+					// 2018-01-31 AMR TODO: why do SFINAE rules fail to choose the const version when protected isn't available?
+					Matrix &view();
+					Vertex &position();
+					Vertex &lookAt();
+					Vertex &up();
 				private:
 					Screen &_screen;
 					Matrix _view;
