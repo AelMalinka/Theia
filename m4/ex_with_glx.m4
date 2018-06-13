@@ -8,6 +8,8 @@ AC_DEFUN([EX_WITH_GLX], [
 		[with_glx=check]
 	)
 
+	dnl 2018-06-13 AMR TODO: seperate out GL from GLX
+	dnl 2018-06-13 AMR TODO: glx should not be required
 	AS_IF([test "x$with_glx" == xno], [AC_MSG_FAILURE([glx is required])],
 		[
 			test "x$with_glx" != xyes -a "x$with_glx" != xcheck && GLX_LDFLAGS="-L$with_glx"
